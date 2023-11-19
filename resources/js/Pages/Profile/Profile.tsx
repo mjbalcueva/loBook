@@ -3,6 +3,7 @@ import { Head } from "@inertiajs/react"
 import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { PageProps } from "@/types"
 
+import DeleteAccount from "./components/delete-account"
 import ProfileInformation from "./components/profile-information"
 import UpdatePassword from "./components/update-password"
 
@@ -23,6 +24,7 @@ const Profile: React.FC<Props> = ({ auth, mustVerifyEmail, status }) => {
 					status={status}
 				/>
 				<UpdatePassword />
+				<DeleteAccount />
 			</div>
 		</AuthenticatedLayout>
 	)
