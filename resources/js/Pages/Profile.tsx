@@ -1,9 +1,8 @@
+import DeleteAccount from "@/Components/profile/delete-account"
+import ProfileInformation from "@/Components/profile/profile-information"
+import UpdatePassword from "@/Components/profile/update-password"
 import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { PageProps } from "@/types"
-
-import DeleteAccount from "./Profile/components/delete-account"
-import ProfileInformation from "./Profile/components/profile-information"
-import UpdatePassword from "./Profile/components/update-password"
 
 interface Props extends PageProps {
 	mustVerifyEmail: boolean
