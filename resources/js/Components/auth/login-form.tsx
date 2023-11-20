@@ -85,7 +85,7 @@ const LoginForm: FC<Props> = ({ canResetPassword, status }) => {
 						/>
 						<Label htmlFor="remember">Remember Me</Label>
 					</FormItem>
-					<FormItem className="mt-4 flex items-center justify-end">
+					<div className="mt-4 flex items-center justify-end">
 						{canResetPassword && (
 							<Link
 								href={route("password.request")}
@@ -108,7 +108,7 @@ const LoginForm: FC<Props> = ({ canResetPassword, status }) => {
 								textSuccess="Logged in!"
 							/>
 						</Button>
-					</FormItem>
+					</div>
 				</form>
 			</Form>
 		</>

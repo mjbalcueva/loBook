@@ -11,7 +11,7 @@ const Login: React.FC<Props> = ({ canResetPassword, status }) => {
 		<AuthLayout title="Login">
 			<ActionCard
 				title="Hello Again!"
-				description="Enter your credentials to access your account"
+				description="Enter your credentials to access your account."
 			>
 				<LoginForm
 					canResetPassword={canResetPassword}
