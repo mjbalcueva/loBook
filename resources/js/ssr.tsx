@@ -1,7 +1,8 @@
 import { createInertiaApp } from "@inertiajs/react"
 import createServer from "@inertiajs/react/server"
-import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
 import ReactDOMServer from "react-dom/server"
+
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
 import { RouteName } from "ziggy-js"
 
 import { DefaultLayout } from "@/Layouts/default-layout"
@@ -34,8 +35,7 @@ createServer((page) =>
           ...page.props.ziggy,
           // @ts-expect-error
           location: new URL(page.props.ziggy.location),
-        })
-
+      })
 			return <App {...props} />
 		},
 	}),

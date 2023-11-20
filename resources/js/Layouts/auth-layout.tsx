@@ -1,12 +1,11 @@
-import { PropsWithChildren } from "react"
-
 import { Head } from "@inertiajs/react"
+import { FC, PropsWithChildren } from "react"
 
 interface Props extends PropsWithChildren {
 	title: string
 }
 
-const AuthLayout: React.FC<Props> = ({ title, children }) => {
+const AuthLayout: FC<Props> = ({ title, children }) => {
 	return (
 		<>
 			<Head title={title} />

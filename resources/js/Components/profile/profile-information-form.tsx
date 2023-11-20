@@ -1,6 +1,5 @@
-import { FormEventHandler } from "react"
-
 import { Link, useForm } from "@inertiajs/react"
+import { FC, FormEventHandler } from "react"
 
 import {
 	Form,
@@ -18,7 +17,7 @@ interface Props extends PageProps {
 	status?: string
 }
 
-const ProfileInformationForm: React.FC<Props> = ({
+const ProfileInformationForm: FC<Props> = ({
 	auth,
 	mustVerifyEmail,
 	status,

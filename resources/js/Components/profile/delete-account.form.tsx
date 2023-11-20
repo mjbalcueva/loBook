@@ -1,12 +1,12 @@
+import { useForm } from "@inertiajs/react"
 import {
 	Dispatch,
+	FC,
 	FormEventHandler,
 	SetStateAction,
 	useEffect,
 	useRef,
 } from "react"
-
-import { useForm } from "@inertiajs/react"
 
 import { Form, FormItem, FormMessage } from "@/Components/form-inertia"
 import { PasswordInput } from "@/Components/password-input"
@@ -17,7 +17,7 @@ interface Props {
 	setLoading: Dispatch<SetStateAction<boolean>>
 }
 
-const DeleteAccountForm: React.FC<Props> = ({ setOpen, setLoading }) => {
+const DeleteAccountForm: FC<Props> = ({ setOpen, setLoading }) => {
 	const passwordInput = useRef<HTMLInputElement>(null)
 
 	const {

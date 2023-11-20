@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react"
+import { FC, PropsWithChildren } from "react"
 
-const DefaultLayout: React.FC<PropsWithChildren> = ({ children }) => {
+const DefaultLayout: FC<PropsWithChildren> = ({ children }) => {
 	return <>{children}</>
 }
 

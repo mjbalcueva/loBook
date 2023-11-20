@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react"
+import { FC, PropsWithChildren } from "react"
 
 import {
 	Card,
@@ -13,7 +13,7 @@ interface Props extends PropsWithChildren {
 	description: string
 }
 
-const ActionCard: React.FC<Props> = ({ title, description, children }) => {
+const ActionCard: FC<Props> = ({ title, description, children }) => {
 	return (
 		<Card>
 			<CardHeader>

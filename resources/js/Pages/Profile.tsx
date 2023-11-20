@@ -1,3 +1,5 @@
+import { FC } from "react"
+
 import { ActionCard } from "@/Components/action-card"
 import { DeleteAccount } from "@/Components/profile/delete-account"
 import { ProfileInformationForm } from "@/Components/profile/profile-information-form"
@@ -10,7 +12,7 @@ interface Props extends PageProps {
 	status?: string
 }
 
-const Profile: React.FC<Props> = ({ auth, mustVerifyEmail, status }) => {
+const Profile: FC<Props> = ({ auth, mustVerifyEmail, status }) => {
 	const cards = [
 		{
 			title: "Profile Information",

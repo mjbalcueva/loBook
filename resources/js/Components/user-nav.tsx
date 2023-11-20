@@ -1,4 +1,6 @@
 import { Link } from "@inertiajs/react"
+import { FC } from "react"
+
 import { LogOutIcon, UserIcon } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/Components/ui/avatar"
@@ -18,7 +20,7 @@ interface Props {
 	user: User
 }
 
-const UserNav: React.FC<Props> = ({ user }) => {
+const UserNav: FC<Props> = ({ user }) => {
 	const initials = user.name
 		.split(" ")
 		.map((n) => n[0])

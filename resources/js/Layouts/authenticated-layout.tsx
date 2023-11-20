@@ -1,6 +1,5 @@
-import { PropsWithChildren } from "react"
-
 import { Head } from "@inertiajs/react"
+import { FC, PropsWithChildren } from "react"
 
 import { UserNav } from "@/Components/user-nav"
 import { User } from "@/types"
@@ -10,7 +9,7 @@ interface Props extends PropsWithChildren {
 	title: string
 }
 
-const AuthenticatedLayout: React.FC<Props> = ({ user, title, children }) => {
+const AuthenticatedLayout: FC<Props> = ({ user, title, children }) => {
 	return (
 		<>
 			<UserNav user={user} />

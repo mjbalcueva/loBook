@@ -2,7 +2,7 @@
 const config = {
 	bracketSameLine: false,
 	importOrder: [
-		"^(next/(.*)$)|^(next$)|^(react/(.*)$)|^(react$)",
+		"^(react/(.*)$)|^(react$)|^(@inertiajs/(.*)$)|^(react-dom/(.*)$)",
 		"<THIRD_PARTY_MODULES>",
 		"^@/(.*)$",
 		"^[./]",

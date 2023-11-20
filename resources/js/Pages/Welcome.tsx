@@ -1,4 +1,5 @@
 import { Head, Link } from "@inertiajs/react"
+import { FC } from "react"
 
 import { Button } from "@/Components/ui/button"
 import { PageProps } from "@/types"
@@ -8,7 +9,7 @@ interface Props extends PageProps {
 	phpVersion: string
 }
 
-const Welcome: React.FC<Props> = ({ auth, laravelVersion, phpVersion }) => {
+const Welcome: FC<Props> = ({ auth, laravelVersion, phpVersion }) => {
 	return (
 		<>
 			<Head title="Welcome" />
