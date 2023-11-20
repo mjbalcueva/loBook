@@ -4,6 +4,8 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
 import ReactDOMServer from "react-dom/server"
 import { RouteName } from "ziggy-js"
 
+import { DefaultLayout } from "@/Layouts/default-layout"
+
 import route from "../../vendor/tightenco/ziggy/dist/index.m"
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel"
@@ -13,12 +15,19 @@ createServer((page) =>
 		page,
 		render: ReactDOMServer.renderToString,
 		title: (title) => `${title} - ${appName}`,
-		resolve: (name) =>
-			resolvePageComponent(
+		resolve: (name) => {
+			const page = resolvePageComponent(
 				`./Pages/${name}.tsx`,
 				import.meta.glob("./Pages/**/*.tsx"),
-			),
-    setup: ({ App, props }) => {
+			)
+			page.then((module: any) => {
+				module.default.layout =
+					module.default.layout ||
+					((page: any) => <DefaultLayout>{page}</DefaultLayout>)
+			})
+			return page
+		},
+		setup: ({ App, props }) => {
       global.route<RouteName> = (name, params, absolute) =>
         route(name, params, absolute, {
           // @ts-expect-error
@@ -27,7 +36,7 @@ createServer((page) =>
           location: new URL(page.props.ziggy.location),
         })
 
-      return <App {...props} />
-    },
+			return <App {...props} />
+		},
 	}),
 )
