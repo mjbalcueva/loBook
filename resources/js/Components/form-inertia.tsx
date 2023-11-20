@@ -17,36 +17,40 @@ const FormMessage = ({ message, ...props }: FormMessageProps) => {
 	return message && <p {...props}>{message}</p>
 }
 
-interface FormSavingProps {
-	text?: string
+interface FormProcessingProps {
 	processing: boolean
 	recentlySuccessful?: boolean
+	textDefault?: string
+	textProcessing?: string
+	textSuccess?: string
 }
 
-const FormSaving = ({
-	text,
+const FormProcessing = ({
 	processing,
 	recentlySuccessful,
-}: FormSavingProps) => {
-	if (processing) {
-		return (
-			<>
-				<Loader2Icon className="mr-2 h-5 w-5 animate-spin" />
-				<span>Saving...</span>
-			</>
-		)
-	}
-
-	if (recentlySuccessful) {
-		return (
-			<>
-				<CheckCircleIcon className="mr-2 h-5 w-5 " />
-				<span>Saved!</span>
-			</>
-		)
-	}
-
-	return <span>{text || "Save"}</span>
+	textDefault,
+	textProcessing,
+	textSuccess,
+}: FormProcessingProps) => {
+	return (
+		<>
+			{processing && (
+				<>
+					<Loader2Icon className="mr-2 h-5 w-5 animate-spin" />
+					<span>{textProcessing || "Saving..."}</span>
+				</>
+			)}
+			{recentlySuccessful && (
+				<>
+					<CheckCircleIcon className="mr-2 h-5 w-5 " />
+					<span>{textSuccess || "Saved"}</span>
+				</>
+			)}
+			{!processing && !recentlySuccessful && (
+				<span>{textDefault || "Save"}</span>
+			)}
+		</>
+	)
 }
 
-export { Form, FormItem, FormMessage, FormSaving }
+export { Form, FormItem, FormMessage, FormProcessing }

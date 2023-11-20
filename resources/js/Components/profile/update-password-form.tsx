@@ -5,7 +5,7 @@ import {
 	Form,
 	FormItem,
 	FormMessage,
-	FormSaving,
+	FormProcessing,
 } from "@/Components/form-inertia"
 import { PasswordInput } from "@/Components/password-input"
 import { Button } from "@/Components/ui/button"
@@ -93,12 +93,11 @@ const UpdatePasswordForm = () => {
 					disabled={processing}
 					type="submit"
 				>
-					Save
+					<FormProcessing
+						processing={processing}
+						recentlySuccessful={recentlySuccessful}
+					/>
 				</Button>
-				<FormSaving
-					processing={processing}
-					recentlySuccessful={recentlySuccessful}
-				/>
 			</form>
 		</Form>
 	)

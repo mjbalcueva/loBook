@@ -5,7 +5,7 @@ import {
 	Form,
 	FormItem,
 	FormMessage,
-	FormSaving,
+	FormProcessing,
 } from "@/Components/form-inertia"
 import { PasswordInput } from "@/Components/password-input"
 import { Button, buttonVariants } from "@/Components/ui/button"
@@ -101,7 +101,12 @@ const LoginForm: FC<Props> = ({ canResetPassword, status }) => {
 							disabled={processing}
 							type="submit"
 						>
-							<FormSaving processing={processing} />
+							<FormProcessing
+								processing={processing}
+								textDefault="Login"
+								textProcessing="Logging in..."
+								textSuccess="Logged in!"
+							/>
 						</Button>
 					</FormItem>
 				</form>

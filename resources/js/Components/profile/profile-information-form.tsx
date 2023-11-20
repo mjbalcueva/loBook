@@ -5,7 +5,7 @@ import {
 	Form,
 	FormItem,
 	FormMessage,
-	FormSaving,
+	FormProcessing,
 } from "@/Components/form-inertia"
 import { Button } from "@/Components/ui/button"
 import { Input } from "@/Components/ui/input"
@@ -95,12 +95,11 @@ const ProfileInformationForm: FC<Props> = ({
 					disabled={processing}
 					type="submit"
 				>
-					Save
+					<FormProcessing
+						processing={processing}
+						recentlySuccessful={recentlySuccessful}
+					/>
 				</Button>
-				<FormSaving
-					processing={processing}
-					recentlySuccessful={recentlySuccessful}
-				/>
 			</form>
 		</Form>
 	)
