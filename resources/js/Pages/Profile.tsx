@@ -51,9 +51,8 @@ const Profile: FC<Props> = ({ auth, mustVerifyEmail, status }) => {
 						key={card.title}
 						title={card.title}
 						description={card.description}
-					>
-						{card.component}
-					</ActionCard>
+						children={card.component}
+					/>
 				))}
 			</div>
 		</AuthenticatedLayout>
