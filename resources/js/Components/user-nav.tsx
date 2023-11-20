@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/react"
 import { LogOutIcon, UserIcon } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/Components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/Components/ui/avatar"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -24,16 +24,17 @@ const UserNav: React.FC<Props> = ({ user }) => {
 		.map((n) => n[0])
 		.join("")
 		.slice(0, 2)
+		.toUpperCase()
 
 	return (
 		<>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Avatar className="h-8 w-8 cursor-pointer">
-						<AvatarImage
+						{/* <AvatarImage
 							src="/avatars/01.png"
 							alt={user.name}
-						/>
+						/> */}
 						<AvatarFallback>{initials}</AvatarFallback>
 					</Avatar>
 				</DropdownMenuTrigger>
