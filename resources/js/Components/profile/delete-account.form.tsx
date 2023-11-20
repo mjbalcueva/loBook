@@ -72,4 +72,4 @@ const DeleteAccountForm: React.FC<Props> = ({ setOpen, setLoading }) => {
 	)
 }
 
-export default DeleteAccountForm
+export { DeleteAccountForm }

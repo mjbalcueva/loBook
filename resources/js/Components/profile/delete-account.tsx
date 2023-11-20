@@ -1,29 +1,62 @@
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@/Components/ui/card"
+import { useState } from "react"
 
-import DeleteAccountDialog from "./delete-account-dialog"
+import { DeleteAccountForm } from "@/Components/profile/delete-account.form"
+import { Button } from "@/Components/ui/button"
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/Components/ui/dialog"
 
 const DeleteAccount = () => {
+	const [open, setOpen] = useState(false)
+	const [loading, setLoading] = useState(false)
+
 	return (
-		<Card>
-			<CardHeader>
-				<CardTitle>Delete Account</CardTitle>
-				<CardDescription>
-					Once your account is deleted, all of its resources and data will be
-					permanently deleted. Before deleting your account, please download any
-					data or information that you wish to retain.
-				</CardDescription>
-			</CardHeader>
-			<CardContent>
-				<DeleteAccountDialog />
-			</CardContent>
-		</Card>
+		<Dialog
+			open={open}
+			onOpenChange={setOpen}
+		>
+			<DialogTrigger asChild>
+				<Button variant={"destructive"}>Delete Account</Button>
+			</DialogTrigger>
+			<DialogContent>
+				<DialogHeader>
+					<DialogTitle>Are you absolutely sure?</DialogTitle>
+					<DialogDescription>
+						This action cannot be undone. This will permanently delete your
+						account and remove your data from our servers.{" "}
+						<span className="font-medium">Enter your password</span> to confirm
+						that you would like to permanently delete your account.
+					</DialogDescription>
+				</DialogHeader>
+				<DeleteAccountForm
+					setOpen={setOpen}
+					setLoading={setLoading}
+				/>
+				<DialogFooter>
+					<Button
+						variant={"outline"}
+						onClick={() => setOpen(false)}
+					>
+						Cancel
+					</Button>
+					<Button
+						disabled={loading}
+						variant={"destructive"}
+						type="submit"
+						form="delete-account-form"
+					>
+						Continue
+					</Button>
+				</DialogFooter>
+			</DialogContent>
+		</Dialog>
 	)
 }
 
-export default DeleteAccount
+export { DeleteAccount }

@@ -107,4 +107,4 @@ const ProfileInformationForm: React.FC<Props> = ({
 	)
 }
 
-export default ProfileInformationForm
+export { ProfileInformationForm }

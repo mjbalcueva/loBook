@@ -105,4 +105,4 @@ const UpdatePasswordForm = () => {
 	)
 }
 
-export default UpdatePasswordForm
+export { UpdatePasswordForm }
