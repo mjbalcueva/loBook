@@ -18,27 +18,35 @@ const FormMessage = ({ message, ...props }: FormMessageProps) => {
 }
 
 interface FormSavingProps {
+	text?: string
 	processing: boolean
-	recentlySuccessful: boolean
+	recentlySuccessful?: boolean
 }
 
-const FormSaving = ({ processing, recentlySuccessful }: FormSavingProps) => {
-	return (
-		<>
-			{processing && (
-				<div className="flex items-center space-x-2">
-					<Loader2Icon className="h-5 w-5 animate-spin" />
-					<span>Saving...</span>
-				</div>
-			)}
-			{recentlySuccessful && (
-				<div className="flex items-center space-x-2">
-					<CheckCircleIcon className="h-5 w-5 " />
-					<span>Saved!</span>
-				</div>
-			)}
-		</>
-	)
+const FormSaving = ({
+	text,
+	processing,
+	recentlySuccessful,
+}: FormSavingProps) => {
+	if (processing) {
+		return (
+			<>
+				<Loader2Icon className="mr-2 h-5 w-5 animate-spin" />
+				<span>Saving...</span>
+			</>
+		)
+	}
+
+	if (recentlySuccessful) {
+		return (
+			<>
+				<CheckCircleIcon className="mr-2 h-5 w-5 " />
+				<span>Saved!</span>
+			</>
+		)
+	}
+
+	return <span>{text || "Save"}</span>
 }
 
 export { Form, FormItem, FormMessage, FormSaving }
