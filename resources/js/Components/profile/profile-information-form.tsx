@@ -1,13 +1,7 @@
 import { Link, useForm } from "@inertiajs/react"
 import { FC, FormEventHandler } from "react"
 
-import {
-	Form,
-	FormItem,
-	FormMessage,
-	FormProcessing,
-} from "@/Components/form-inertia"
-import { Button } from "@/Components/ui/button"
+import { Form, FormItem, FormMessage } from "@/Components/form-inertia"
 import { Input } from "@/Components/ui/input"
 import { Label } from "@/Components/ui/label"
 import { PageProps } from "@/types"
@@ -90,15 +84,14 @@ const ProfileInformationForm: FC<Props> = ({
 				</div>
 			)}
 
-			<Button
-				disabled={processing}
-				type="submit"
+			<Form.Action
+				processing={processing}
+				recentlySuccessful={recentlySuccessful}
+				onProcess="Saving..."
+				onSuccess="Saved!"
 			>
-				<FormProcessing
-					processing={processing}
-					recentlySuccessful={recentlySuccessful}
-				/>
-			</Button>
+				Save
+			</Form.Action>
 		</Form>
 	)
 }

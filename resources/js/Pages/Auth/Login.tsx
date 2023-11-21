@@ -1,14 +1,9 @@
 import { Link, useForm } from "@inertiajs/react"
 import { FormEventHandler, useEffect } from "react"
 
-import {
-	Form,
-	FormItem,
-	FormMessage,
-	FormProcessing,
-} from "@/Components/form-inertia"
+import { Form, FormItem, FormMessage } from "@/Components/form-inertia"
 import { PasswordInput } from "@/Components/password-input"
-import { Button, buttonVariants } from "@/Components/ui/button"
+import { buttonVariants } from "@/Components/ui/button"
 import { Checkbox } from "@/Components/ui/checkbox"
 import { Input } from "@/Components/ui/input"
 import { Label } from "@/Components/ui/label"
@@ -92,17 +87,7 @@ const Login = ({ canResetPassword, status }: Props) => {
 						Forgot your password?
 					</Link>
 				)}
-				<Button
-					disabled={processing}
-					type="submit"
-				>
-					<FormProcessing
-						processing={processing}
-						textDefault="Login"
-						textProcessing="Logging in..."
-						textSuccess="Logged in!"
-					/>
-				</Button>
+				<Form.Action processing={processing}>Login</Form.Action>
 			</div>
 		</Form>
 	)

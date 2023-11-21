@@ -1,13 +1,7 @@
 import { useForm } from "@inertiajs/react"
 import { FormEventHandler } from "react"
 
-import {
-	Form,
-	FormItem,
-	FormMessage,
-	FormProcessing,
-} from "@/Components/form-inertia"
-import { Button } from "@/Components/ui/button"
+import { Form, FormItem, FormMessage } from "@/Components/form-inertia"
 import { Input } from "@/Components/ui/input"
 import { Label } from "@/Components/ui/label"
 import { AuthLayout } from "@/Layouts/auth-layout"
@@ -54,18 +48,14 @@ const ForgotPassword = ({ status }: Props) => {
 			</FormItem>
 
 			<div className="mt-4 flex items-center justify-end">
-				<Button
-					disabled={processing}
-					type="submit"
+				<Form.Action
+					processing={processing}
+					recentlySuccessful={recentlySuccessful}
+					onProcess="Sending..."
+					onSuccess="Sent!"
 				>
-					<FormProcessing
-						processing={processing}
-						recentlySuccessful={recentlySuccessful}
-						textDefault="Email Password Reset Link"
-						textProcessing="Sending..."
-						textSuccess="Sent!"
-					/>
-				</Button>
+					Email Password Reset Link
+				</Form.Action>
 			</div>
 		</Form>
 	)

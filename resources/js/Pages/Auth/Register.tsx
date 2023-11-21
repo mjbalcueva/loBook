@@ -1,14 +1,9 @@
 import { Link, useForm } from "@inertiajs/react"
 import { FormEventHandler, useEffect } from "react"
 
-import {
-	Form,
-	FormItem,
-	FormMessage,
-	FormProcessing,
-} from "@/Components/form-inertia"
+import { Form, FormItem, FormMessage } from "@/Components/form-inertia"
 import { PasswordInput } from "@/Components/password-input"
-import { Button, buttonVariants } from "@/Components/ui/button"
+import { buttonVariants } from "@/Components/ui/button"
 import { Input } from "@/Components/ui/input"
 import { Label } from "@/Components/ui/label"
 import { AuthLayout } from "@/Layouts/auth-layout"
@@ -104,17 +99,8 @@ const Register = () => {
 				>
 					Already registered?
 				</Link>
-				<Button
-					disabled={processing}
-					type="submit"
-				>
-					<FormProcessing
-						processing={processing}
-						textDefault="Register"
-						textProcessing="Registering..."
-						textSuccess="Registered!"
-					/>
-				</Button>
+
+				<Form.Action processing={processing}>Register</Form.Action>
 			</div>
 		</Form>
 	)

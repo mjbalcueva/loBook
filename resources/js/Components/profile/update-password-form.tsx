@@ -1,14 +1,8 @@
 import { useForm } from "@inertiajs/react"
 import { FormEventHandler, useRef } from "react"
 
-import {
-	Form,
-	FormItem,
-	FormMessage,
-	FormProcessing,
-} from "@/Components/form-inertia"
+import { Form, FormItem, FormMessage } from "@/Components/form-inertia"
 import { PasswordInput } from "@/Components/password-input"
-import { Button } from "@/Components/ui/button"
 import { Label } from "@/Components/ui/label"
 
 const UpdatePasswordForm = () => {
@@ -88,15 +82,14 @@ const UpdatePasswordForm = () => {
 				/>
 			</FormItem>
 
-			<Button
-				disabled={processing}
-				type="submit"
+			<Form.Action
+				processing={processing}
+				recentlySuccessful={recentlySuccessful}
+				onProcess="Saving..."
+				onSuccess="Saved"
 			>
-				<FormProcessing
-					processing={processing}
-					recentlySuccessful={recentlySuccessful}
-				/>
-			</Button>
+				Save
+			</Form.Action>
 		</Form>
 	)
 }
