@@ -1,15 +1,7 @@
 import { useForm } from "@inertiajs/react"
 import { FormEventHandler } from "react"
 
-import {
-	Form,
-	FormItem,
-	FormMessage,
-	FormProcessing,
-} from "@/Components/form-inertia"
-import { Button } from "@/Components/ui/button"
-import { Input } from "@/Components/ui/input"
-import { Label } from "@/Components/ui/label"
+import { Form, FormMessage } from "@/Components/form-inertia"
 import { AuthLayout } from "@/Layouts/auth-layout"
 
 interface Props {
@@ -33,39 +25,30 @@ const ForgotPassword = ({ status }: Props) => {
 			onSubmit={onSubmit}
 			className="space-y-2"
 		>
-			<FormItem>
-				<Label htmlFor="email">Email</Label>
-				<Input
-					id="email"
-					type="email"
-					value={data.email}
-					onChange={(e) => setData("email", e.target.value)}
-					placeholder="Your Email"
-					autoComplete="username"
-				/>
+			<Form.Input
+				label="Email"
+				type="email"
+				value={data.email}
+				onChange={(e) => setData("email", e.target.value)}
+				placeholder="Your Email"
+				autoComplete="username"
+			>
+				<FormMessage message={errors.email} />
 				<FormMessage
-					message={errors.email}
-					className="mt-2 text-sm font-medium text-destructive"
-				/>
-				<FormMessage
+					success
 					message={status}
-					className="mt-2 text-sm font-medium text-green-600"
 				/>
-			</FormItem>
+			</Form.Input>
 
 			<div className="mt-4 flex items-center justify-end">
-				<Button
-					disabled={processing}
-					type="submit"
+				<Form.Action
+					processing={processing}
+					recentlySuccessful={recentlySuccessful}
+					onProcess="Sending..."
+					onSuccess="Sent!"
 				>
-					<FormProcessing
-						processing={processing}
-						recentlySuccessful={recentlySuccessful}
-						textDefault="Email Password Reset Link"
-						textProcessing="Sending..."
-						textSuccess="Sent!"
-					/>
-				</Button>
+					Email Password Reset Link
+				</Form.Action>
 			</div>
 		</Form>
 	)

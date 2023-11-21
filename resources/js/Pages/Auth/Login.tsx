@@ -1,17 +1,8 @@
 import { Link, useForm } from "@inertiajs/react"
 import { FormEventHandler, useEffect } from "react"
 
-import {
-	Form,
-	FormItem,
-	FormMessage,
-	FormProcessing,
-} from "@/Components/form-inertia"
-import { PasswordInput } from "@/Components/password-input"
-import { Button, buttonVariants } from "@/Components/ui/button"
-import { Checkbox } from "@/Components/ui/checkbox"
-import { Input } from "@/Components/ui/input"
-import { Label } from "@/Components/ui/label"
+import { Form } from "@/Components/form-inertia"
+import { buttonVariants } from "@/Components/ui/button"
 import { AuthLayout } from "@/Layouts/auth-layout"
 import { cn } from "@/Lib/utils"
 
@@ -44,42 +35,29 @@ const Login = ({ canResetPassword, status }: Props) => {
 			{status && (
 				<div className="mb-4 text-sm font-medium text-green-600">{status}</div>
 			)}
-			<FormItem>
-				<Label htmlFor="email">Email</Label>
-				<Input
-					id="email"
-					type="email"
-					value={data.email}
-					onChange={(e) => setData("email", e.target.value)}
-					placeholder="Your Email"
-					autoComplete="username"
-				/>
-				<FormMessage
-					message={errors.email}
-					className="mt-2 text-sm font-medium text-destructive"
-				/>
-			</FormItem>
-			<FormItem>
-				<Label htmlFor="password">Password</Label>
-				<PasswordInput
-					id="password"
-					value={data.password}
-					onChange={(e) => setData("password", e.target.value)}
-					autoComplete="password"
-				/>
-				<FormMessage
-					message={errors.password}
-					className="mt-2 text-sm font-medium text-destructive"
-				/>
-			</FormItem>
-			<FormItem className="flex items-center space-x-2 pt-2">
-				<Checkbox
-					id="remember"
-					checked={data.remember}
-					onCheckedChange={(checked) => setData("remember", checked as boolean)}
-				/>
-				<Label htmlFor="remember">Remember Me</Label>
-			</FormItem>
+			<Form.Input
+				type="email"
+				value={data.email}
+				onChange={(e) => setData("email", e.target.value)}
+				placeholder="Your Email"
+				autoComplete="username"
+				label="Email"
+				message={errors.email}
+			/>
+
+			<Form.Input
+				password
+				value={data.password}
+				onChange={(e) => setData("password", e.target.value)}
+				autoComplete="password"
+				label="Password"
+				message={errors.password}
+			/>
+			<Form.Checkbox
+				label="Remember Me"
+				checked={data.remember}
+				onCheckedChange={(checked) => setData("remember", checked as boolean)}
+			/>
 			<div className="mt-4 flex items-center justify-end">
 				{canResetPassword && (
 					<Link
@@ -92,17 +70,7 @@ const Login = ({ canResetPassword, status }: Props) => {
 						Forgot your password?
 					</Link>
 				)}
-				<Button
-					disabled={processing}
-					type="submit"
-				>
-					<FormProcessing
-						processing={processing}
-						textDefault="Login"
-						textProcessing="Logging in..."
-						textSuccess="Logged in!"
-					/>
-				</Button>
+				<Form.Action processing={processing}>Login</Form.Action>
 			</div>
 		</Form>
 	)

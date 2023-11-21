@@ -1,59 +1,54 @@
-import { useEffect, FormEventHandler } from 'react';
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Head, useForm } from '@inertiajs/react';
+import { useForm } from "@inertiajs/react"
+import { FormEventHandler, useEffect } from "react"
 
-export default function ConfirmPassword() {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        password: '',
-    });
+import { Form } from "@/Components/form-inertia"
+import { AuthLayout } from "@/Layouts/auth-layout"
 
-    useEffect(() => {
-        return () => {
-            reset('password');
-        };
-    }, []);
+const ConfirmPassword = () => {
+	const { data, setData, post, processing, errors, reset } = useForm({
+		password: "",
+	})
+	useEffect(() => {
+		return () => {
+			reset("password")
+		}
+	}, [])
 
-    const submit: FormEventHandler = (e) => {
-        e.preventDefault();
+	const onSubmit: FormEventHandler = (e) => {
+		e.preventDefault()
 
-        post(route('password.confirm'));
-    };
+		post(route("password.confirm"))
+	}
 
-    return (
-        <GuestLayout>
-            <Head title="Confirm Password" />
+	return (
+		<Form
+			onSubmit={onSubmit}
+			className="space-y-2"
+		>
+			<Form.Input
+				label="Password"
+				password
+				value={data.password}
+				onChange={(e) => setData("password", e.target.value)}
+				autoComplete="password"
+				message={errors.password}
+			/>
 
-            <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                This is a secure area of the application. Please confirm your password before continuing.
-            </div>
-
-            <form onSubmit={submit}>
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        isFocused={true}
-                        onChange={(e) => setData('password', e.target.value)}
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="flex items-center justify-end mt-4">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Confirm
-                    </PrimaryButton>
-                </div>
-            </form>
-        </GuestLayout>
-    );
+			<div className="flex items-center justify-end">
+				<Form.Action processing={processing}>Confirm</Form.Action>
+			</div>
+		</Form>
+	)
 }
+
+ConfirmPassword.layout = (page: React.ReactNode) => (
+	<AuthLayout
+		pageTitle="Confirm Password"
+		cardTitle="Confirm password"
+		cardDescription="This is a secure area of the application. Please confirm your password before continuing."
+	>
+		{page}
+	</AuthLayout>
+)
+
+export default ConfirmPassword
