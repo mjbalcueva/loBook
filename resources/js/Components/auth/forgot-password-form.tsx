@@ -28,46 +28,44 @@ const ForgotPasswordForm: FC<Props> = ({ status }) => {
 	}
 
 	return (
-		<Form>
-			<form
-				onSubmit={onSubmit}
-				className="space-y-2"
-			>
-				<FormItem>
-					<Label htmlFor="email">Email</Label>
-					<Input
-						id="email"
-						type="email"
-						value={data.email}
-						onChange={(e) => setData("email", e.target.value)}
-						placeholder="Your Email"
-						autoComplete="username"
-					/>
-					<FormMessage
-						message={errors.email}
-						className="mt-2 text-sm font-medium text-destructive"
-					/>
-					<FormMessage
-						message={status}
-						className="mt-2 text-sm font-medium text-green-600"
-					/>
-				</FormItem>
+		<Form
+			onSubmit={onSubmit}
+			className="space-y-2"
+		>
+			<FormItem>
+				<Label htmlFor="email">Email</Label>
+				<Input
+					id="email"
+					type="email"
+					value={data.email}
+					onChange={(e) => setData("email", e.target.value)}
+					placeholder="Your Email"
+					autoComplete="username"
+				/>
+				<FormMessage
+					message={errors.email}
+					className="mt-2 text-sm font-medium text-destructive"
+				/>
+				<FormMessage
+					message={status}
+					className="mt-2 text-sm font-medium text-green-600"
+				/>
+			</FormItem>
 
-				<div className="mt-4 flex items-center justify-end">
-					<Button
-						disabled={processing}
-						type="submit"
-					>
-						<FormProcessing
-							processing={processing}
-							recentlySuccessful={recentlySuccessful}
-							textDefault="Email Password Reset Link"
-							textProcessing="Sending..."
-							textSuccess="Sent!"
-						/>
-					</Button>
-				</div>
-			</form>
+			<div className="mt-4 flex items-center justify-end">
+				<Button
+					disabled={processing}
+					type="submit"
+				>
+					<FormProcessing
+						processing={processing}
+						recentlySuccessful={recentlySuccessful}
+						textDefault="Email Password Reset Link"
+						textProcessing="Sending..."
+						textSuccess="Sent!"
+					/>
+				</Button>
+			</div>
 		</Form>
 	)
 }

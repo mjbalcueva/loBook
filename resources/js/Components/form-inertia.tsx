@@ -2,8 +2,8 @@ import { HTMLAttributes } from "react"
 
 import { CheckCircleIcon, Loader2Icon } from "lucide-react"
 
-const Form = ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => {
-	return <div {...props}>{children}</div>
+const Form = ({ children, ...props }: HTMLAttributes<HTMLFormElement>) => {
+	return <form {...props}>{children}</form>
 }
 
 const FormItem = ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => {

@@ -34,73 +34,71 @@ const ProfileInformationForm: FC<Props> = ({
 	}
 
 	return (
-		<Form>
-			<form
-				onSubmit={onSubmit}
-				className="space-y-4"
+		<Form
+			onSubmit={onSubmit}
+			className="space-y-4"
+		>
+			<FormItem>
+				<Label htmlFor="name">Name</Label>
+				<Input
+					id="name"
+					type="text"
+					value={data.name}
+					onChange={(e) => setData("name", e.target.value)}
+					placeholder="Your Name"
+					autoComplete="name"
+				/>
+				<FormMessage
+					message={errors.name}
+					className="text-sm font-medium text-destructive"
+				/>
+			</FormItem>
+			<FormItem>
+				<Label htmlFor="email">Email</Label>
+				<Input
+					id="email"
+					type="email"
+					value={data.email}
+					onChange={(e) => setData("email", e.target.value)}
+					placeholder="Your Email"
+					autoComplete="username"
+				/>
+				<FormMessage
+					message={errors.email}
+					className="mt-2 text-sm font-medium text-destructive"
+				/>
+			</FormItem>
+
+			{mustVerifyEmail && auth.user.email_verified_at === null && (
+				<div>
+					<p>
+						Your email address is unverified.
+						<Link
+							href={route("verification.send")}
+							method="post"
+							as="button"
+						>
+							Click here to re-send the verification email.
+						</Link>
+					</p>
+
+					{status === "verification-link-sent" && (
+						<div>
+							A new verification link has been sent to your email address.
+						</div>
+					)}
+				</div>
+			)}
+
+			<Button
+				disabled={processing}
+				type="submit"
 			>
-				<FormItem>
-					<Label htmlFor="name">Name</Label>
-					<Input
-						id="name"
-						type="text"
-						value={data.name}
-						onChange={(e) => setData("name", e.target.value)}
-						placeholder="Your Name"
-						autoComplete="name"
-					/>
-					<FormMessage
-						message={errors.name}
-						className="text-sm font-medium text-destructive"
-					/>
-				</FormItem>
-				<FormItem>
-					<Label htmlFor="email">Email</Label>
-					<Input
-						id="email"
-						type="email"
-						value={data.email}
-						onChange={(e) => setData("email", e.target.value)}
-						placeholder="Your Email"
-						autoComplete="username"
-					/>
-					<FormMessage
-						message={errors.email}
-						className="mt-2 text-sm font-medium text-destructive"
-					/>
-				</FormItem>
-
-				{mustVerifyEmail && auth.user.email_verified_at === null && (
-					<div>
-						<p>
-							Your email address is unverified.
-							<Link
-								href={route("verification.send")}
-								method="post"
-								as="button"
-							>
-								Click here to re-send the verification email.
-							</Link>
-						</p>
-
-						{status === "verification-link-sent" && (
-							<div>
-								A new verification link has been sent to your email address.
-							</div>
-						)}
-					</div>
-				)}
-
-				<Button
-					disabled={processing}
-					type="submit"
-				>
-					<FormProcessing
-						processing={processing}
-						recentlySuccessful={recentlySuccessful}
-					/>
-				</Button>
-			</form>
+				<FormProcessing
+					processing={processing}
+					recentlySuccessful={recentlySuccessful}
+				/>
+			</Button>
 		</Form>
 	)
 }

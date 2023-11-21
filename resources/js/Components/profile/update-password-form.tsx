@@ -42,63 +42,61 @@ const UpdatePasswordForm = () => {
 	}
 
 	return (
-		<Form>
-			<form
-				onSubmit={onSubmit}
-				className="space-y-4"
-			>
-				<FormItem>
-					<Label htmlFor="current_password">Current Password</Label>
-					<PasswordInput
-						id="current_password"
-						value={data.current_password}
-						onChange={(e) => setData("current_password", e.target.value)}
-						ref={currentPasswordInput}
-						autoComplete="current-password"
-					/>
-					<FormMessage
-						message={errors.current_password}
-						className="text-sm font-medium text-destructive"
-					/>
-				</FormItem>
-				<FormItem>
-					<Label htmlFor="password">New Password</Label>
-					<PasswordInput
-						id="password"
-						value={data.password}
-						onChange={(e) => setData("password", e.target.value)}
-						ref={passwordInput}
-						autoComplete="new-password"
-					/>
-					<FormMessage
-						message={errors.password}
-						className="mt-2 text-sm font-medium text-destructive"
-					/>
-				</FormItem>
-				<FormItem>
-					<Label htmlFor="password_confirmation">Confirm Password</Label>
-					<PasswordInput
-						id="password_confirmation"
-						value={data.password_confirmation}
-						onChange={(e) => setData("password_confirmation", e.target.value)}
-						autoComplete="new-password"
-					/>
-					<FormMessage
-						message={errors.password}
-						className="mt-2 text-sm font-medium text-destructive"
-					/>
-				</FormItem>
+		<Form
+			onSubmit={onSubmit}
+			className="space-y-4"
+		>
+			<FormItem>
+				<Label htmlFor="current_password">Current Password</Label>
+				<PasswordInput
+					id="current_password"
+					value={data.current_password}
+					onChange={(e) => setData("current_password", e.target.value)}
+					ref={currentPasswordInput}
+					autoComplete="current-password"
+				/>
+				<FormMessage
+					message={errors.current_password}
+					className="text-sm font-medium text-destructive"
+				/>
+			</FormItem>
+			<FormItem>
+				<Label htmlFor="password">New Password</Label>
+				<PasswordInput
+					id="password"
+					value={data.password}
+					onChange={(e) => setData("password", e.target.value)}
+					ref={passwordInput}
+					autoComplete="new-password"
+				/>
+				<FormMessage
+					message={errors.password}
+					className="mt-2 text-sm font-medium text-destructive"
+				/>
+			</FormItem>
+			<FormItem>
+				<Label htmlFor="password_confirmation">Confirm Password</Label>
+				<PasswordInput
+					id="password_confirmation"
+					value={data.password_confirmation}
+					onChange={(e) => setData("password_confirmation", e.target.value)}
+					autoComplete="new-password"
+				/>
+				<FormMessage
+					message={errors.password}
+					className="mt-2 text-sm font-medium text-destructive"
+				/>
+			</FormItem>
 
-				<Button
-					disabled={processing}
-					type="submit"
-				>
-					<FormProcessing
-						processing={processing}
-						recentlySuccessful={recentlySuccessful}
-					/>
-				</Button>
-			</form>
+			<Button
+				disabled={processing}
+				type="submit"
+			>
+				<FormProcessing
+					processing={processing}
+					recentlySuccessful={recentlySuccessful}
+				/>
+			</Button>
 		</Form>
 	)
 }

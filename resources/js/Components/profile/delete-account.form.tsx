@@ -47,27 +47,25 @@ const DeleteAccountForm: FC<Props> = ({ setOpen, setLoading }) => {
 	}
 
 	return (
-		<Form>
-			<form
-				id="delete-account-form"
-				onSubmit={onSubmit}
-				className="space-y-4"
-			>
-				<FormItem>
-					<Label htmlFor="password">Password</Label>
-					<PasswordInput
-						id="password"
-						value={data.password}
-						onChange={(e) => setData("password", e.target.value)}
-						ref={passwordInput}
-						autoComplete="new-password"
-					/>
-					<FormMessage
-						message={errors.password}
-						className="mt-2 text-sm font-medium text-destructive"
-					/>
-				</FormItem>
-			</form>
+		<Form
+			id="delete-account-form"
+			onSubmit={onSubmit}
+			className="space-y-4"
+		>
+			<FormItem>
+				<Label htmlFor="password">Password</Label>
+				<PasswordInput
+					id="password"
+					value={data.password}
+					onChange={(e) => setData("password", e.target.value)}
+					ref={passwordInput}
+					autoComplete="new-password"
+				/>
+				<FormMessage
+					message={errors.password}
+					className="mt-2 text-sm font-medium text-destructive"
+				/>
+			</FormItem>
 		</Form>
 	)
 }
