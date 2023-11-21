@@ -41,6 +41,9 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.3.5)
+  ziggy-js:
+    specifier: ^1.8.1
+    version: 1.8.1
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -2135,7 +2138,6 @@ packages:
   /qs@6.9.7:
     resolution: {integrity: sha512-IhMFgUmuNpyRfxA90umL7ByLlgRXu6tIfKPpF5TmcfRLlLCckfP/g3IQmju6jjpu+Hh8rA+2p6A27ZSPOOHdKw==}
     engines: {node: '>=0.6'}
-    dev: true
 
   /queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -2508,7 +2510,6 @@ packages:
     resolution: {integrity: sha512-fnf30uG0yvUQBPL4T8YPgmkBHUdjYaOFgUb1K1gj0+rclnLTNr9/K/cxC3xkCZyYCZz8oTnXkdf3oJXRPSzavw==}
     dependencies:
       qs: 6.9.7
-    dev: true
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
