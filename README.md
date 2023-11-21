@@ -18,7 +18,7 @@
 
 <!-- Description -->
 <p align="center">
-  <span style="margin: 0 40%;">
+  <span style="margin: 0 50%;">
     Booklet is a software that lets you view, save, and search for books as PDFs. It is designed for book lovers who want to read anytime, anywhere.
   </span>
 </p>
