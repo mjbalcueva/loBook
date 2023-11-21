@@ -1,3 +1,5 @@
+import { FC } from "react"
+
 import { ActionCard } from "@/Components/action-card"
 import { LoginForm } from "@/Components/auth/login-form"
 import { AuthLayout } from "@/Layouts/auth-layout"
@@ -6,7 +8,7 @@ interface Props {
 	canResetPassword: boolean
 	status?: string
 }
-const Login: React.FC<Props> = ({ canResetPassword, status }) => {
+const Login: FC<Props> = ({ canResetPassword, status }) => {
 	return (
 		<AuthLayout title="Login">
 			<ActionCard
