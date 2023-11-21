@@ -2,9 +2,8 @@ import { Link, useForm } from "@inertiajs/react"
 import { FC, FormEventHandler } from "react"
 
 import { Form } from "@/Components/form-inertia"
+import { Badge } from "@/Components/ui/badge"
 import { PageProps } from "@/types"
-
-import { Badge } from "../ui/badge"
 
 interface Props extends PageProps {
 	mustVerifyEmail: boolean
