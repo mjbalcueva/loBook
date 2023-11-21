@@ -1,6 +1,5 @@
 import { FC } from "react"
 
-import { ActionCard } from "@/Components/action-card"
 import { LoginForm } from "@/Components/auth/login-form"
 import { AuthLayout } from "@/Layouts/auth-layout"
 
@@ -10,16 +9,15 @@ interface Props {
 }
 const Login: FC<Props> = ({ canResetPassword, status }) => {
 	return (
-		<AuthLayout title="Login">
-			<ActionCard
-				title="Hello Again!"
-				description="Enter your credentials to access your account."
-			>
-				<LoginForm
-					canResetPassword={canResetPassword}
-					status={status}
-				/>
-			</ActionCard>
+		<AuthLayout
+			pageTitle="Login"
+			cardTitle="Hello Again!"
+			cardDescription="Enter your credentials to access your account."
+		>
+			<LoginForm
+				canResetPassword={canResetPassword}
+				status={status}
+			/>
 		</AuthLayout>
 	)
 }

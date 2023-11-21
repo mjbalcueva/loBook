@@ -1,5 +1,5 @@
-import { Link, useForm } from "@inertiajs/react"
-import { FC, FormEventHandler, useEffect } from "react"
+import { useForm } from "@inertiajs/react"
+import { FC, FormEventHandler } from "react"
 
 import {
 	Form,
@@ -51,11 +51,6 @@ const ForgotPasswordForm: FC<Props> = ({ status }) => {
 						message={status}
 						className="mt-2 text-sm font-medium text-green-600"
 					/>
-					{status && (
-						<div className="mb-4 text-sm font-medium text-green-600">
-							{status}
-						</div>
-					)}
 				</FormItem>
 
 				<div className="mt-4 flex items-center justify-end">
