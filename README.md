@@ -17,11 +17,10 @@
 </div>
 
 <!-- Description -->
-<div align="center" style="margin: 0 25%;">
-  <p>
-    Booklet is a software that lets you view, save, and search for books as PDFs. It is designed for book lovers who want to read anytime, anywhere.
-  </p>
-</div>
+<p align="center">
+  loBook is a software that lets you view, save, and search for books as PDFs. It is designed for book lovers who want to read anytime, anywhere.
+</p>
+
 
 <!-- Quick Links -->
 <div align="center">
@@ -42,5 +41,5 @@
 <!-- About SECTION -->
 <h2>About</h2>
 <p>
-  Booklet is a library software that allows you to view books as PDFs on your device. You can create an account and save multiple books for later reading, browsing, or sharing. Booklet lets you access a wide range of books from different genres, authors, and publishers. You can also search for books by keywords, titles, or categories. Booklet is the ultimate software for book lovers who want to enjoy reading anytime, anywhere.
+  loBook is a library software that allows you to view books as PDFs on your device. You can create an account and save multiple books for later reading, browsing, or sharing. loBook lets you access a wide range of books from different genres, authors, and publishers. You can also search for books by keywords, titles, or categories. loBook is the ultimate software for book lovers who want to enjoy reading anytime, anywhere.
 </p>
