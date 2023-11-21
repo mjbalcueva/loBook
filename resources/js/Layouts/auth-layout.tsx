@@ -10,7 +10,7 @@ const AuthLayout: FC<Props> = ({ title, children }) => {
 		<>
 			<Head title={title} />
 			<div className="flex min-h-screen items-center justify-center">
-				<div className="min-w-[500px]">{children}</div>
+				<div className="w-[500px]">{children}</div>
 			</div>
 		</>
 	)
