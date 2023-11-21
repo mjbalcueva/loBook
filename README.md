@@ -17,9 +17,11 @@
 </div>
 
 <!-- Description -->
-<p align="center">
-  Booklet is a software that lets you view, save, and search for books as PDFs. It is designed for book lovers who want to read anytime, anywhere.
-</p>
+<div align="center" style="margin: 0 25%;">
+  <p>
+    Booklet is a software that lets you view, save, and search for books as PDFs. It is designed for book lovers who want to read anytime, anywhere.
+  </p>
+</div>
 
 <!-- Quick Links -->
 <div align="center">
