@@ -59,13 +59,22 @@ const DeleteAccountForm: FC<Props> = ({ setOpen, setLoading }) => {
 					value={data.password}
 					onChange={(e) => setData("password", e.target.value)}
 					ref={passwordInput}
-					autoComplete="new-password"
+					autoComplete="password"
 				/>
 				<FormMessage
 					message={errors.password}
 					className="mt-2 text-sm font-medium text-destructive"
 				/>
 			</FormItem>
+
+			<Form.Input
+				label="Password"
+				password
+				value={data.password}
+				onChange={(e) => setData("password", e.target.value)}
+				autoComplete="password"
+				message={errors.password}
+			/>
 		</Form>
 	)
 }
