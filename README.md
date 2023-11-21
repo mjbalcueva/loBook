@@ -17,11 +17,11 @@
 </div>
 
 <!-- Description -->
-<div align="center" style="margin: 0 25%;">
-  <p>
+<p align="center">
+  <span style="margin: 0 20%;">
     Booklet is a software that lets you view, save, and search for books as PDFs. It is designed for book lovers who want to read anytime, anywhere.
-  </p>
-</div>
+  </span>
+</p>
 
 <!-- Quick Links -->
 <div align="center">
