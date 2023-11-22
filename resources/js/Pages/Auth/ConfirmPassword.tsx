@@ -23,14 +23,14 @@ const ConfirmPassword = () => {
 	return (
 		<Form
 			onSubmit={onSubmit}
-			className="space-y-2"
+			className="space-y-4"
 		>
 			<Form.Input
 				label="Password"
 				password
 				value={data.password}
 				onChange={(e) => setData("password", e.target.value)}
-				autoComplete="password"
+				placeholder="**********"
 				message={errors.password}
 			/>
 

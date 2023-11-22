@@ -30,7 +30,7 @@ const Login = ({ canResetPassword, status }: Props) => {
 	return (
 		<Form
 			onSubmit={onSubmit}
-			className="space-y-2"
+			className="space-y-4"
 		>
 			{status && (
 				<div className="mb-4 text-sm font-medium text-green-600">{status}</div>
@@ -39,8 +39,7 @@ const Login = ({ canResetPassword, status }: Props) => {
 				type="email"
 				value={data.email}
 				onChange={(e) => setData("email", e.target.value)}
-				placeholder="Your Email"
-				autoComplete="username"
+				placeholder="juandelacruz@gmail.com"
 				label="Email"
 				message={errors.email}
 			/>
@@ -49,8 +48,8 @@ const Login = ({ canResetPassword, status }: Props) => {
 				password
 				value={data.password}
 				onChange={(e) => setData("password", e.target.value)}
-				autoComplete="password"
 				label="Password"
+				placeholder="**********"
 				message={errors.password}
 			/>
 			<Form.Checkbox

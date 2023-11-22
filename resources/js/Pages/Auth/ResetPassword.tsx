@@ -30,15 +30,14 @@ const ResetPassword = ({ token, email }: Props) => {
 	return (
 		<Form
 			onSubmit={onSubmit}
-			className="space-y-2"
+			className="space-y-4"
 		>
 			<Form.Input
 				label="Email"
 				type="email"
 				value={data.email}
 				onChange={(e) => setData("email", e.target.value)}
-				placeholder="Your Email"
-				autoComplete="username"
+				placeholder="juandelacruz@gmail.com"
 				message={errors.email}
 			/>
 
@@ -47,8 +46,8 @@ const ResetPassword = ({ token, email }: Props) => {
 				password
 				value={data.password}
 				onChange={(e) => setData("password", e.target.value)}
-				autoComplete="new-password"
 				message={errors.password}
+				placeholder="**********"
 			/>
 
 			<Form.Input
@@ -56,8 +55,8 @@ const ResetPassword = ({ token, email }: Props) => {
 				label="Confirm Password"
 				value={data.password_confirmation}
 				onChange={(e) => setData("password_confirmation", e.target.value)}
-				autoComplete="new-password"
 				message={errors.password_confirmation}
+				placeholder="**********"
 			/>
 
 			<div className="mt-4 flex items-center justify-end">

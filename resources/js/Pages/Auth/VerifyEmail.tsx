@@ -22,7 +22,7 @@ const VerifyEmail = ({ status }: Props) => {
 	return (
 		<Form
 			onSubmit={onSubmit}
-			className="space-y-6"
+			className="space-y-4"
 		>
 			{status === "verification-link-sent" && (
 				<p className="text-sm text-muted-foreground">

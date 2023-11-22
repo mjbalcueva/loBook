@@ -43,8 +43,8 @@ const UpdatePasswordForm = () => {
 				label="Current Password"
 				value={data.current_password}
 				onChange={(e) => setData("current_password", e.target.value)}
-				autoComplete="password"
 				message={errors.current_password}
+				placeholder="**********"
 			/>
 
 			<Form.Input
@@ -52,8 +52,8 @@ const UpdatePasswordForm = () => {
 				label="New Password"
 				value={data.password}
 				onChange={(e) => setData("password", e.target.value)}
-				autoComplete="new-password"
 				message={errors.password}
+				placeholder="**********"
 			/>
 
 			<Form.Input
@@ -61,8 +61,8 @@ const UpdatePasswordForm = () => {
 				label="Confirm Password"
 				value={data.password_confirmation}
 				onChange={(e) => setData("password_confirmation", e.target.value)}
-				autoComplete="new-password"
 				message={errors.password_confirmation}
+				placeholder="**********"
 			/>
 
 			<Form.Action

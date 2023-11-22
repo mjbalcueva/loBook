@@ -23,15 +23,14 @@ const ForgotPassword = ({ status }: Props) => {
 	return (
 		<Form
 			onSubmit={onSubmit}
-			className="space-y-2"
+			className="space-y-4"
 		>
 			<Form.Input
 				label="Email"
 				type="email"
 				value={data.email}
 				onChange={(e) => setData("email", e.target.value)}
-				placeholder="Your Email"
-				autoComplete="username"
+				placeholder="juandelacruz@gmail.com"
 			>
 				<FormMessage message={errors.email} />
 				<FormMessage
