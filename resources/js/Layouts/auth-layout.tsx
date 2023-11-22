@@ -2,6 +2,7 @@ import { Head } from "@inertiajs/react"
 import { FC, PropsWithChildren } from "react"
 
 import { ActionCard } from "@/Components/action-card"
+import { ThemeProvider } from "@/Components/providers/theme-provider"
 
 interface Props extends PropsWithChildren {
 	pageTitle: string
@@ -16,7 +17,10 @@ const AuthLayout: FC<Props> = ({
 	children,
 }) => {
 	return (
-		<>
+		<ThemeProvider
+			defaultTheme="system"
+			storageKey="vite-ui-theme"
+		>
 			<Head title={pageTitle} />
 			<div className="flex min-h-screen items-center justify-center">
 				<div className="w-[500px]">
@@ -28,7 +32,7 @@ const AuthLayout: FC<Props> = ({
 					</ActionCard>
 				</div>
 			</div>
-		</>
+		</ThemeProvider>
 	)
 }
 
