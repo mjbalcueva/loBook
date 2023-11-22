@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react"
 
-import { ModeToggle } from "@/Components/mode-toggle"
+import { TailwindProvider } from "@/Components/providers/tailwind-provider"
 import { ThemeProvider } from "@/Components/providers/theme-provider"
 
 const DefaultLayout: FC<PropsWithChildren> = ({ children }) => {
@@ -9,7 +9,7 @@ const DefaultLayout: FC<PropsWithChildren> = ({ children }) => {
 			defaultTheme="system"
 			storageKey="vite-ui-theme"
 		>
-			<ModeToggle />
+			<TailwindProvider />
 			{children}
 		</ThemeProvider>
 	)

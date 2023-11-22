@@ -1,7 +1,9 @@
 import { Head } from "@inertiajs/react"
-import { FC, PropsWithChildren } from "react"
+import { PropsWithChildren } from "react"
 
+import { ModeToggle } from "@/Components/mode-toggle"
 import { UserNav } from "@/Components/user-nav"
+import { DefaultLayout } from "@/Layouts/default-layout"
 import { User } from "@/types"
 
 interface Props extends PropsWithChildren {
@@ -9,13 +11,14 @@ interface Props extends PropsWithChildren {
 	title: string
 }
 
-const AuthenticatedLayout: FC<Props> = ({ user, title, children }) => {
+const AuthenticatedLayout = ({ user, title, children }: Props) => {
 	return (
-		<>
+		<DefaultLayout>
+			<ModeToggle />
 			<UserNav user={user} />
 			<Head title={title} />
 			{children}
-		</>
+		</DefaultLayout>
 	)
 }
 

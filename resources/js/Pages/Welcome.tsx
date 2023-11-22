@@ -1,7 +1,8 @@
 import { Head, Link } from "@inertiajs/react"
-import { FC } from "react"
+import { ReactNode } from "react"
 
 import { Button } from "@/Components/ui/button"
+import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { PageProps } from "@/types"
 
 interface Props extends PageProps {
@@ -9,7 +10,7 @@ interface Props extends PageProps {
 	phpVersion: string
 }
 
-const Welcome: FC<Props> = ({ auth, laravelVersion, phpVersion }) => {
+const Welcome = ({ auth, laravelVersion, phpVersion }: Props) => {
 	return (
 		<>
 			<Head title="Welcome" />
@@ -36,5 +37,14 @@ const Welcome: FC<Props> = ({ auth, laravelVersion, phpVersion }) => {
 		</>
 	)
 }
+
+Welcome.layout = (page: ReactNode & PageProps) => (
+	<AuthenticatedLayout
+		user={page.props.auth.user}
+		title="Dashboard"
+	>
+		{page}
+	</AuthenticatedLayout>
+)
 
 export default Welcome
