@@ -56,7 +56,7 @@ const FormInput = ({
 	message?: string
 } & InputProps) => {
 	return (
-		<div>
+		<div className="space-y-2">
 			<Label htmlFor={label}>{label}</Label>
 			{password ? (
 				<PasswordInput

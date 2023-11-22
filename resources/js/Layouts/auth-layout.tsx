@@ -49,9 +49,9 @@ const AuthLayout = ({
 						<span>loBook</span>
 					</Link>
 					<div className="absolute bottom-6 left-8 z-20 line-clamp-3 text-base">
-						&ldquo;This library has saved me countless hours of work and helped
-						me deliver stunning designs to my clients faster than ever
-						before.&rdquo;
+						&ldquo;loBook is a software that lets you view, save, and search for
+						books as PDFs. It is designed for book lovers who want to read
+						anytime, anywhere.&rdquo;
 					</div>
 				</AspectRatio>
 				<main className="container absolute top-1/2 col-span-1 flex -translate-y-1/2 items-center md:static md:top-0 md:col-span-1 md:flex md:translate-y-0">
