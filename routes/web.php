@@ -37,7 +37,7 @@ Route::middleware('auth', 'verified')->group(function () {
 // Route::get('/', function () {
 //   return Inertia::render('Welcome', [
 //     'canSignin' => Route::has('signin'),
-//     'canRegister' => Route::has('register'),
+//     'canSignup' => Route::has('signup'),
 //     'laravelVersion' => Application::VERSION,
 //     'phpVersion' => PHP_VERSION,
 //   ]);

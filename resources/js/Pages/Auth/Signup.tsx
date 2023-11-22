@@ -6,7 +6,7 @@ import { buttonVariants } from "@/Components/ui/button"
 import { AuthLayout } from "@/Layouts/auth-layout"
 import { cn } from "@/Lib/utils"
 
-const Register = () => {
+const Signup = () => {
 	const { data, setData, post, processing, errors, reset } = useForm({
 		name: "",
 		email: "",
@@ -22,7 +22,7 @@ const Register = () => {
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
-		post(route("register"))
+		post(route("signup"))
 	}
 
 	return (
@@ -73,18 +73,18 @@ const Register = () => {
 						"text-muted-foreground hover:text-secondary-foreground",
 					)}
 				>
-					Already registered?
+					Already have an account?
 				</Link>
 
-				<Form.Action processing={processing}>Register</Form.Action>
+				<Form.Action processing={processing}>Continue</Form.Action>
 			</div>
 		</Form>
 	)
 }
 
-Register.layout = (page: React.ReactNode) => (
+Signup.layout = (page: React.ReactNode) => (
 	<AuthLayout
-		pageTitle="Register"
+		pageTitle="Sign Up"
 		cardTitle="Create an Account"
 		cardDescription="Enter your name and email to create an account."
 	>
@@ -92,4 +92,4 @@ Register.layout = (page: React.ReactNode) => (
 	</AuthLayout>
 )
 
-export default Register
+export default Signup

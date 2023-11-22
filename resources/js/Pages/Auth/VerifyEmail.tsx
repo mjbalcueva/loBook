@@ -27,7 +27,7 @@ const VerifyEmail = ({ status }: Props) => {
 			{status === "verification-link-sent" && (
 				<p className="text-sm text-muted-foreground">
 					A new verification link has been sent to the email address you
-					provided during registration.
+					provided during the sign up process.
 					<Badge
 						variant={"outline"}
 						className="ml-2 text-secondary-foreground"

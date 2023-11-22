@@ -29,8 +29,8 @@ const Welcome = ({ auth, laravelVersion, phpVersion }: Props) => {
 						<Button variant={"outline"}>Log In</Button>
 					</Link>
 
-					<Link href={route("register")}>
-						<Button>Register</Button>
+					<Link href={route("signup")}>
+						<Button>Sign Up</Button>
 					</Link>
 				</>
 			)}

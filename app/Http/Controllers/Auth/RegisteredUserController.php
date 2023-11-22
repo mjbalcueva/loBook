@@ -17,15 +17,15 @@ use Inertia\Response;
 class RegisteredUserController extends Controller
 {
   /**
-   * Display the registration view.
+   * Display the sign up view.
    */
   public function create(): Response
   {
-    return Inertia::render('Auth/Register');
+    return Inertia::render('Auth/Signup');
   }
 
   /**
-   * Handle an incoming registration request.
+   * Handle an incoming sign up request.
    *
    * @throws \Illuminate\Validation\ValidationException
    */
