@@ -1,95 +1,48 @@
-import { Link, useForm } from "@inertiajs/react"
-import { FormEventHandler, useEffect } from "react"
+import { Link } from "@inertiajs/react"
 
-import { Form } from "@/Components/form-inertia"
-import { buttonVariants } from "@/Components/ui/button"
+import SignupForm from "@/Components/auth/signup-form"
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/Components/ui/card"
 import { AuthLayout } from "@/Layouts/auth-layout"
-import { cn } from "@/Lib/utils"
 
 const Signup = () => {
-	const { data, setData, post, processing, errors, reset } = useForm({
-		name: "",
-		email: "",
-		password: "",
-		password_confirmation: "",
-	})
-
-	useEffect(() => {
-		return () => {
-			reset("password", "password_confirmation")
-		}
-	}, [])
-
-	const onSubmit: FormEventHandler = (e) => {
-		e.preventDefault()
-		post(route("signup"))
-	}
-
 	return (
-		<Form
-			onSubmit={onSubmit}
-			className="space-y-4"
-		>
-			<Form.Input
-				label="Name"
-				value={data.name}
-				onChange={(e) => setData("name", e.target.value)}
-				placeholder="Juan Dela Cruz"
-				message={errors.name}
-			/>
-
-			<Form.Input
-				label="Email"
-				type="email"
-				value={data.email}
-				onChange={(e) => setData("email", e.target.value)}
-				placeholder="juandelacruz@gmail.com"
-				message={errors.email}
-			/>
-
-			<Form.Input
-				label="Password"
-				password
-				value={data.password}
-				onChange={(e) => setData("password", e.target.value)}
-				placeholder="**********"
-				message={errors.password}
-			/>
-
-			<Form.Input
-				password
-				label="Confirm Password"
-				value={data.password_confirmation}
-				onChange={(e) => setData("password_confirmation", e.target.value)}
-				placeholder="**********"
-				message={errors.password_confirmation}
-			/>
-
-			<div className="mt-4 flex items-center justify-end">
-				<Link
-					href={route("signin")}
-					className={cn(
-						buttonVariants({ variant: "link", size: "sm" }),
-						"text-muted-foreground hover:text-secondary-foreground",
-					)}
-				>
-					Already have an account?
-				</Link>
-
-				<Form.Action processing={processing}>Continue</Form.Action>
-			</div>
-		</Form>
+		<Card>
+			<CardHeader>
+				<CardTitle>Sign up</CardTitle>
+				<CardDescription>
+					Enter your name and email to create an account
+				</CardDescription>
+			</CardHeader>
+			<CardContent>
+				<SignupForm />
+			</CardContent>
+			<CardFooter className="flex flex-wrap items-center justify-between gap-2">
+				<div className="text-sm text-muted-foreground">
+					<span className="mr-1 hidden sm:inline-block">
+						Already have an account?
+					</span>
+					<Link
+						aria-label="Sign in"
+						href={route("signin")}
+						className="text-primary underline-offset-4 transition-colors hover:underline"
+					>
+						Sign in
+					</Link>
+				</div>
+			</CardFooter>
+		</Card>
 	)
 }
 
 Signup.layout = (page: React.ReactNode) => (
-	<AuthLayout
-		pageTitle="Sign Up"
-		cardTitle="Create an Account"
-		cardDescription="Enter your name and email to create an account."
-	>
-		{page}
-	</AuthLayout>
+	<AuthLayout pageTitle="Sign Up">{page}</AuthLayout>
 )
 
 export default Signup
