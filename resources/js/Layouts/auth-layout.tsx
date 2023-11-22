@@ -1,9 +1,8 @@
 import { Head, Link } from "@inertiajs/react"
 import { PropsWithChildren } from "react"
 
-import { ActionCard } from "@/Components/action-card"
 import { AspectRatio } from "@/Components/ui/aspect-ratio"
-import { DefaultLayout } from "@/Layouts/default-layout"
+import { RootLayout } from "@/Layouts/root-layout"
 
 interface Props extends PropsWithChildren {
 	pageTitle: string
@@ -11,7 +10,7 @@ interface Props extends PropsWithChildren {
 
 const AuthLayout = ({ pageTitle, children }: Props) => {
 	return (
-		<DefaultLayout>
+		<RootLayout>
 			<Head title={pageTitle} />
 			<div className="grid min-h-screen grid-cols-1 overflow-hidden md:grid-cols-2">
 				<AspectRatio ratio={16 / 9}>
@@ -51,7 +50,7 @@ const AuthLayout = ({ pageTitle, children }: Props) => {
 					<div className="mx-auto w-[450px]">{children}</div>
 				</main>
 			</div>
-		</DefaultLayout>
+		</RootLayout>
 	)
 }
 

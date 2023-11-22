@@ -3,7 +3,7 @@ import { PropsWithChildren } from "react"
 
 import { ModeToggle } from "@/Components/mode-toggle"
 import { UserNav } from "@/Components/user-nav"
-import { DefaultLayout } from "@/Layouts/default-layout"
+import { RootLayout } from "@/Layouts/root-layout"
 import { User } from "@/types"
 
 interface Props extends PropsWithChildren {
@@ -13,12 +13,12 @@ interface Props extends PropsWithChildren {
 
 const AuthenticatedLayout = ({ user, title, children }: Props) => {
 	return (
-		<DefaultLayout>
+		<RootLayout>
 			<ModeToggle />
 			<UserNav user={user} />
 			<Head title={title} />
 			{children}
-		</DefaultLayout>
+		</RootLayout>
 	)
 }
 

@@ -3,7 +3,7 @@ import { FC, PropsWithChildren } from "react"
 import { TailwindProvider } from "@/Components/providers/tailwind-provider"
 import { ThemeProvider } from "@/Components/providers/theme-provider"
 
-const DefaultLayout: FC<PropsWithChildren> = ({ children }) => {
+const RootLayout: FC<PropsWithChildren> = ({ children }) => {
 	return (
 		<ThemeProvider
 			defaultTheme="system"
@@ -15,4 +15,4 @@ const DefaultLayout: FC<PropsWithChildren> = ({ children }) => {
 	)
 }
 
-export { DefaultLayout }
+export { RootLayout }

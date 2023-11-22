@@ -14,9 +14,9 @@ const VerifyEmailForm = ({ status }: Props) => {
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
-
 		post(route("verification.send"))
 	}
+
 	return (
 		<Form
 			onSubmit={onSubmit}

@@ -23,6 +23,7 @@ const SigninForm = ({ status }: Props) => {
 
 		post(route("signin"))
 	}
+
 	return (
 		<Form
 			onSubmit={onSubmit}

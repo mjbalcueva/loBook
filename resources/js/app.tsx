@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client"
 
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
 
-import { DefaultLayout } from "@/Layouts/default-layout"
+import { RootLayout } from "@/Layouts/root-layout"
 
 import "../css/app.css"
 import "./bootstrap"
@@ -21,7 +21,7 @@ createInertiaApp({
 		page.then((module: any) => {
 			module.default.layout =
 				module.default.layout ||
-				((page: ReactNode) => <DefaultLayout>{page}</DefaultLayout>)
+				((page: ReactNode) => <RootLayout>{page}</RootLayout>)
 		})
 		return page
 	},

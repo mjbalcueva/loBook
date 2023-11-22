@@ -16,7 +16,6 @@ const ConfirmPasswordForm = () => {
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
-
 		post(route("password.confirm"))
 	}
 
