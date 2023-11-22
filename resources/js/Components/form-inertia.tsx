@@ -1,10 +1,10 @@
 import { HTMLAttributes } from "react"
 
-import { cva } from "class-variance-authority"
+import { CheckboxProps } from "@radix-ui/react-checkbox"
 import { CheckCircleIcon, Loader2Icon } from "lucide-react"
 
 import { PasswordInput } from "@/Components/password-input"
-import { Button } from "@/Components/ui/button"
+import { Button, ButtonProps } from "@/Components/ui/button"
 import { Checkbox } from "@/Components/ui/checkbox"
 import { Input, InputProps } from "@/Components/ui/input"
 import { Label } from "@/Components/ui/label"
@@ -79,17 +79,21 @@ const FormCheckbox = ({
 	label,
 	checked,
 	onCheckedChange,
+	className,
+	...props
 }: {
 	label: string
 	checked?: boolean
 	onCheckedChange?: (checked: boolean) => void
-}) => {
+} & CheckboxProps) => {
 	return (
-		<div className="flex items-center space-x-2 pt-2">
+		<div className={cn("flex items-center space-x-2", className)}>
 			<Checkbox
 				id={label}
 				checked={checked}
 				onCheckedChange={onCheckedChange}
+				className="dark:border-slate-500"
+				{...props}
 			/>
 			<Label htmlFor={label}>{label}</Label>
 		</div>
@@ -103,6 +107,7 @@ const FormAction = ({
 	onProcess,
 	onSuccess,
 	children,
+	...props
 }: {
 	text?: string
 	onProcess?: string
@@ -110,11 +115,12 @@ const FormAction = ({
 	processing: boolean
 	recentlySuccessful?: boolean
 	children?: React.ReactNode
-}) => {
+} & ButtonProps) => {
 	return (
 		<Button
 			disabled={processing}
 			type="submit"
+			{...props}
 		>
 			{processing && (
 				<>

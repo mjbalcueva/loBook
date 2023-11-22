@@ -7,16 +7,9 @@ import { DefaultLayout } from "@/Layouts/default-layout"
 
 interface Props extends PropsWithChildren {
 	pageTitle: string
-	cardTitle: string
-	cardDescription: string
 }
 
-const AuthLayout = ({
-	pageTitle,
-	cardTitle,
-	cardDescription,
-	children,
-}: Props) => {
+const AuthLayout = ({ pageTitle, children }: Props) => {
 	return (
 		<DefaultLayout>
 			<Head title={pageTitle} />
@@ -55,14 +48,7 @@ const AuthLayout = ({
 					</div>
 				</AspectRatio>
 				<main className="container absolute top-1/2 col-span-1 flex -translate-y-1/2 items-center md:static md:top-0 md:col-span-1 md:flex md:translate-y-0">
-					<div className="mx-auto w-[450px]">
-						<ActionCard
-							title={cardTitle}
-							description={cardDescription}
-						>
-							{children}
-						</ActionCard>
-					</div>
+					<div className="mx-auto w-[450px]">{children}</div>
 				</main>
 			</div>
 		</DefaultLayout>

@@ -1,10 +1,16 @@
 import { Link, useForm } from "@inertiajs/react"
 import { FormEventHandler, useEffect } from "react"
 
-import { Form } from "@/Components/form-inertia"
-import { buttonVariants } from "@/Components/ui/button"
+import SigninForm from "@/Components/auth/signin-form"
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/Components/ui/card"
 import { AuthLayout } from "@/Layouts/auth-layout"
-import { cn } from "@/Lib/utils"
 
 interface Props {
 	canResetPassword: boolean
@@ -12,78 +18,43 @@ interface Props {
 }
 
 const Signin = ({ canResetPassword, status }: Props) => {
-	const { data, setData, post, processing, errors, reset } = useForm({
-		email: "",
-		password: "",
-		remember: false,
-	})
-
-	useEffect(() => {
-		return () => reset("password")
-	}, [])
-
-	const onSubmit: FormEventHandler = (e) => {
-		e.preventDefault()
-
-		post(route("signin"))
-	}
 	return (
-		<Form
-			onSubmit={onSubmit}
-			className="space-y-4"
-		>
-			{status && (
-				<div className="mb-4 text-sm font-medium text-green-600">{status}</div>
-			)}
-			<Form.Input
-				type="email"
-				value={data.email}
-				onChange={(e) => setData("email", e.target.value)}
-				placeholder="juandelacruz@gmail.com"
-				label="Email"
-				message={errors.email}
-			/>
-
-			<Form.Input
-				password
-				value={data.password}
-				onChange={(e) => setData("password", e.target.value)}
-				label="Password"
-				placeholder="**********"
-				message={errors.password}
-			/>
-
-			<Form.Checkbox
-				label="Remember Me"
-				checked={data.remember}
-				onCheckedChange={(checked) => setData("remember", checked as boolean)}
-			/>
-
-			<div className="mt-4 flex items-center justify-end">
+		<Card>
+			<CardHeader>
+				<CardTitle>Sign in</CardTitle>
+				<CardDescription>Sign in to continue</CardDescription>
+			</CardHeader>
+			<CardContent>
+				<SigninForm status={status} />
+			</CardContent>
+			<CardFooter className="flex flex-wrap items-center justify-between gap-2">
+				<div className="text-sm text-muted-foreground">
+					<span className="mr-1 hidden sm:inline-block">
+						Don&apos;t have an account?
+					</span>
+					<Link
+						aria-label="Sign up"
+						href={route("signup")}
+						className="text-primary underline-offset-4 transition-colors hover:underline"
+					>
+						Sign up
+					</Link>
+				</div>
 				{canResetPassword && (
 					<Link
+						aria-label="Reset password"
 						href={route("password.request")}
-						className={cn(
-							buttonVariants({ variant: "link", size: "sm" }),
-							"text-muted-foreground hover:text-secondary-foreground",
-						)}
+						className="text-sm text-primary underline-offset-4 transition-colors hover:underline"
 					>
-						Forgot your password?
+						Reset password
 					</Link>
 				)}
-				<Form.Action processing={processing}>Sign In</Form.Action>
-			</div>
-		</Form>
+			</CardFooter>
+		</Card>
 	)
 }
 
 Signin.layout = (page: React.ReactNode) => (
-	<AuthLayout
-		pageTitle="Sign In"
-		cardTitle="Sign In"
-		cardDescription="Sign in to continue"
-	>
-		{page}
-	</AuthLayout>
+	<AuthLayout pageTitle="Sign In">{page}</AuthLayout>
 )
 export default Signin
