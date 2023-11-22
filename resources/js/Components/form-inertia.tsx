@@ -119,13 +119,13 @@ const FormAction = ({
 			{processing && (
 				<>
 					<Loader2Icon className="mr-2 h-5 w-5 animate-spin" />
-					<span>{onProcess || text}</span>
+					<span>{onProcess || text || children}</span>
 				</>
 			)}
 			{recentlySuccessful && (
 				<>
 					<CheckCircleIcon className="mr-2 h-4 w-4 " />
-					<span>{onSuccess || text}</span>
+					<span>{onSuccess || text || children}</span>
 				</>
 			)}
 			{!processing && !recentlySuccessful && (children || "Submit")}

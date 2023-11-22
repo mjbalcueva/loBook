@@ -52,11 +52,13 @@ const Signin = ({ canResetPassword, status }: Props) => {
 				placeholder="**********"
 				message={errors.password}
 			/>
+
 			<Form.Checkbox
 				label="Remember Me"
 				checked={data.remember}
 				onCheckedChange={(checked) => setData("remember", checked as boolean)}
 			/>
+
 			<div className="mt-4 flex items-center justify-end">
 				{canResetPassword && (
 					<Link
@@ -78,8 +80,8 @@ const Signin = ({ canResetPassword, status }: Props) => {
 Signin.layout = (page: React.ReactNode) => (
 	<AuthLayout
 		pageTitle="Sign In"
-		cardTitle="Hello Again!"
-		cardDescription="Enter your credentials to access your account."
+		cardTitle="Sign In"
+		cardDescription="Sign in to continue"
 	>
 		{page}
 	</AuthLayout>
