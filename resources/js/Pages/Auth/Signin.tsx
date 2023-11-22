@@ -9,7 +9,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/Components/ui/card"
-import { AuthLayout } from "@/Layouts/auth-layout"
+import { UnauthenticatedLayout } from "@/Layouts/unauthenticated-layout"
 
 interface Props {
 	canResetPassword: boolean
@@ -54,6 +54,6 @@ const Signin = ({ canResetPassword, status }: Props) => {
 }
 
 Signin.layout = (page: React.ReactNode) => (
-	<AuthLayout pageTitle="Sign In">{page}</AuthLayout>
+	<UnauthenticatedLayout pageTitle="Sign In">{page}</UnauthenticatedLayout>
 )
 export default Signin

@@ -6,7 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/Components/ui/card"
-import { AuthLayout } from "@/Layouts/auth-layout"
+import { UnauthenticatedLayout } from "@/Layouts/unauthenticated-layout"
 
 interface Props {
 	status?: string
@@ -31,7 +31,7 @@ const VerifyEmail = ({ status }: Props) => {
 }
 
 VerifyEmail.layout = (page: React.ReactNode) => (
-	<AuthLayout pageTitle="Verify Email">{page}</AuthLayout>
+	<UnauthenticatedLayout pageTitle="Verify Email">{page}</UnauthenticatedLayout>
 )
 
 export default VerifyEmail

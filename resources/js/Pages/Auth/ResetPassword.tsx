@@ -6,7 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/Components/ui/card"
-import { AuthLayout } from "@/Layouts/auth-layout"
+import { UnauthenticatedLayout } from "@/Layouts/unauthenticated-layout"
 
 interface Props {
 	token: string
@@ -31,7 +31,9 @@ const ResetPassword = ({ token, email }: Props) => {
 }
 
 ResetPassword.layout = (page: React.ReactNode) => (
-	<AuthLayout pageTitle="Password Reset">{page}</AuthLayout>
+	<UnauthenticatedLayout pageTitle="Password Reset">
+		{page}
+	</UnauthenticatedLayout>
 )
 
 export default ResetPassword

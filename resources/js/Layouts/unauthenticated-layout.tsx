@@ -8,7 +8,7 @@ interface Props extends PropsWithChildren {
 	pageTitle: string
 }
 
-const AuthLayout = ({ pageTitle, children }: Props) => {
+const UnauthenticatedLayout = ({ pageTitle, children }: Props) => {
 	return (
 		<RootLayout>
 			<Head title={pageTitle} />
@@ -54,4 +54,4 @@ const AuthLayout = ({ pageTitle, children }: Props) => {
 	)
 }
 
-export { AuthLayout }
+export { UnauthenticatedLayout }

@@ -6,7 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/Components/ui/card"
-import { AuthLayout } from "@/Layouts/auth-layout"
+import { UnauthenticatedLayout } from "@/Layouts/unauthenticated-layout"
 
 interface Props {
 	status?: string
@@ -30,7 +30,9 @@ const ForgotPassword = ({ status }: Props) => {
 }
 
 ForgotPassword.layout = (page: React.ReactNode) => (
-	<AuthLayout pageTitle="Forgot Password">{page}</AuthLayout>
+	<UnauthenticatedLayout pageTitle="Forgot Password">
+		{page}
+	</UnauthenticatedLayout>
 )
 
 export default ForgotPassword

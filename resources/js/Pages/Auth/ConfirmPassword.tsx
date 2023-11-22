@@ -6,7 +6,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/Components/ui/card"
-import { AuthLayout } from "@/Layouts/auth-layout"
+import { UnauthenticatedLayout } from "@/Layouts/unauthenticated-layout"
 
 const ConfirmPassword = () => {
 	return (
@@ -26,7 +26,9 @@ const ConfirmPassword = () => {
 }
 
 ConfirmPassword.layout = (page: React.ReactNode) => (
-	<AuthLayout pageTitle="Confirm Password">{page}</AuthLayout>
+	<UnauthenticatedLayout pageTitle="Confirm Password">
+		{page}
+	</UnauthenticatedLayout>
 )
 
 export default ConfirmPassword

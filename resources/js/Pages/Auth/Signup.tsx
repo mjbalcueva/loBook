@@ -9,7 +9,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/Components/ui/card"
-import { AuthLayout } from "@/Layouts/auth-layout"
+import { UnauthenticatedLayout } from "@/Layouts/unauthenticated-layout"
 
 const Signup = () => {
 	return (
@@ -42,7 +42,7 @@ const Signup = () => {
 }
 
 Signup.layout = (page: React.ReactNode) => (
-	<AuthLayout pageTitle="Sign Up">{page}</AuthLayout>
+	<UnauthenticatedLayout pageTitle="Sign Up">{page}</UnauthenticatedLayout>
 )
 
 export default Signup
