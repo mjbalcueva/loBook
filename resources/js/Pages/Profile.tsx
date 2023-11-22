@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { ReactNode } from "react"
 
 import { ActionCard } from "@/Components/action-card"
 import { DeleteAccount } from "@/Components/profile/delete-account"
@@ -12,7 +12,7 @@ interface Props extends PageProps {
 	status?: string
 }
 
-const Profile: FC<Props> = ({ auth, mustVerifyEmail, status }) => {
+const Profile = ({ auth, mustVerifyEmail, status }: Props) => {
 	const cards = [
 		{
 			title: "Profile Information",
@@ -41,22 +41,26 @@ const Profile: FC<Props> = ({ auth, mustVerifyEmail, status }) => {
 	]
 
 	return (
-		<AuthenticatedLayout
-			user={auth.user}
-			title="Profile"
-		>
-			<div className="container max-w-[800px] space-y-4 pb-16">
-				{cards.map((card) => (
-					<ActionCard
-						key={card.title}
-						title={card.title}
-						description={card.description}
-						children={card.component}
-					/>
-				))}
-			</div>
-		</AuthenticatedLayout>
+		<div className="container max-w-[800px] space-y-4 pb-16">
+			{cards.map((card) => (
+				<ActionCard
+					key={card.title}
+					title={card.title}
+					description={card.description}
+					children={card.component}
+				/>
+			))}
+		</div>
 	)
 }
+
+Profile.layout = (page: ReactNode & PageProps) => (
+	<AuthenticatedLayout
+		user={page.props.auth.user}
+		title="Profile"
+	>
+		{page}
+	</AuthenticatedLayout>
+)
 
 export default Profile

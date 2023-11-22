@@ -1,4 +1,4 @@
-import { Head, Link } from "@inertiajs/react"
+import { Link } from "@inertiajs/react"
 import { ReactNode } from "react"
 
 import { Button } from "@/Components/ui/button"
@@ -13,8 +13,6 @@ interface Props extends PageProps {
 const Welcome = ({ auth, laravelVersion, phpVersion }: Props) => {
 	return (
 		<>
-			<Head title="Welcome" />
-
 			<p>
 				Laravel version {laravelVersion} (PHP version {phpVersion})
 			</p>
@@ -41,7 +39,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }: Props) => {
 Welcome.layout = (page: ReactNode & PageProps) => (
 	<AuthenticatedLayout
 		user={page.props.auth.user}
-		title="Dashboard"
+		title="Welcome"
 	>
 		{page}
 	</AuthenticatedLayout>
