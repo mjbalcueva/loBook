@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\SigninRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -15,11 +15,11 @@ use Inertia\Response;
 class AuthenticatedSessionController extends Controller
 {
   /**
-   * Display the login view.
+   * Display the sign in view.
    */
   public function create(): Response
   {
-    return Inertia::render('Auth/Login', [
+    return Inertia::render('Auth/Signin', [
       'canResetPassword' => Route::has('password.request'),
       'status' => session('status'),
     ]);
@@ -28,7 +28,7 @@ class AuthenticatedSessionController extends Controller
   /**
    * Handle an incoming authentication request.
    */
-  public function store(LoginRequest $request): RedirectResponse
+  public function store(SigninRequest $request): RedirectResponse
   {
     $request->authenticate();
 

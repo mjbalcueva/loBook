@@ -11,7 +11,7 @@ interface Props {
 	status?: string
 }
 
-const Login = ({ canResetPassword, status }: Props) => {
+const Signin = ({ canResetPassword, status }: Props) => {
 	const { data, setData, post, processing, errors, reset } = useForm({
 		email: "",
 		password: "",
@@ -25,7 +25,7 @@ const Login = ({ canResetPassword, status }: Props) => {
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
 
-		post(route("login"))
+		post(route("signin"))
 	}
 	return (
 		<Form
@@ -69,19 +69,19 @@ const Login = ({ canResetPassword, status }: Props) => {
 						Forgot your password?
 					</Link>
 				)}
-				<Form.Action processing={processing}>Login</Form.Action>
+				<Form.Action processing={processing}>Sign In</Form.Action>
 			</div>
 		</Form>
 	)
 }
 
-Login.layout = (page: React.ReactNode) => (
+Signin.layout = (page: React.ReactNode) => (
 	<AuthLayout
-		pageTitle="Login"
+		pageTitle="Sign In"
 		cardTitle="Hello Again!"
 		cardDescription="Enter your credentials to access your account."
 	>
 		{page}
 	</AuthLayout>
 )
-export default Login
+export default Signin

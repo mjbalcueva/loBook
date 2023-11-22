@@ -67,7 +67,7 @@ const Register = () => {
 
 			<div className="mt-4 flex items-center justify-end">
 				<Link
-					href={route("login")}
+					href={route("signin")}
 					className={cn(
 						buttonVariants({ variant: "link", size: "sm" }),
 						"text-muted-foreground hover:text-secondary-foreground",
