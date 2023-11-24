@@ -16,7 +16,7 @@ interface Props extends PropsWithChildren {
 
 const AuthenticatedLayout = ({ user, title, children }: Props) => {
 	return (
-		<RootLayout className="flex h-screen">
+		<RootLayout className="flex h-screen antialiased">
 			<Sidebar>
 				<Sidebar.Item
 					title="Home"

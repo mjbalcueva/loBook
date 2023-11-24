@@ -10,7 +10,7 @@ interface Props extends PropsWithChildren {
 
 const UnauthenticatedLayout = ({ pageTitle, children }: Props) => {
 	return (
-		<RootLayout>
+		<RootLayout className="antialiased">
 			<Head title={pageTitle} />
 			<div className="grid min-h-screen grid-cols-1 overflow-hidden md:grid-cols-2">
 				<AspectRatio ratio={16 / 9}>
