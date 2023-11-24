@@ -1,17 +1,22 @@
-import { FC, PropsWithChildren } from "react"
+import { FC, HTMLAttributes } from "react"
 
 import { TailwindProvider } from "@/Components/providers/tailwind-provider"
 import { ThemeProvider } from "@/Components/providers/theme-provider"
 
-const RootLayout: FC<PropsWithChildren> = ({ children }) => {
+const RootLayout: FC<HTMLAttributes<HTMLDivElement>> = ({
+	children,
+	...props
+}) => {
 	return (
-		<ThemeProvider
-			defaultTheme="system"
-			storageKey="vite-ui-theme"
-		>
-			<TailwindProvider />
-			{children}
-		</ThemeProvider>
+		<div {...props}>
+			<ThemeProvider
+				defaultTheme="system"
+				storageKey="vite-ui-theme"
+			>
+				<TailwindProvider />
+				{children}
+			</ThemeProvider>
+		</div>
 	)
 }
 

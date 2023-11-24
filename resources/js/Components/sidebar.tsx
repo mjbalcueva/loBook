@@ -1,73 +1,122 @@
 import { Link } from "@inertiajs/react"
-import { useState } from "react"
-
 import {
-	ChevronFirstIcon,
-	ChevronLastIcon,
-	HomeIcon,
-	LayoutDashboardIcon,
-	PersonStanding,
-} from "lucide-react"
+	HTMLAttributes,
+	PropsWithChildren,
+	ReactNode,
+	createContext,
+	useContext,
+	useState,
+} from "react"
+
+import { ChevronLeftIcon } from "lucide-react"
 
 import { ModeToggle } from "@/Components/mode-toggle"
-import { Button } from "@/Components/ui/button"
+import { Button, buttonVariants } from "@/Components/ui/button"
 import { cn } from "@/Lib/utils"
 
-const Sidebar = () => {
+import { Separator } from "./ui/separator"
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipProvider,
+	TooltipTrigger,
+} from "./ui/tooltip"
+
+const SidebarContext = createContext({})
+
+const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
 	const [expanded, setExpanded] = useState(true)
 
 	return (
-		<aside className="h-screen border-r">
-			<nav
-				className={cn(
-					"flex h-full flex-col bg-background shadow-sm transition-all duration-300",
-					expanded ? "w-52" : "w-20",
-				)}
+		<aside
+			className={cn(
+				"relative hidden h-full border-r px-2 pb-2 pt-4 transition-all duration-300 lg:block",
+				expanded ? "w-52" : "w-14",
+			)}
+		>
+			<button
+				className="absolute -right-2.5 z-50 rounded-full bg-background"
+				onClick={() => setExpanded(!expanded)}
+				aria-hidden
 			>
-				<div className="flex items-center justify-between ">
-					<span>rawr</span>
-					<Button
-						variant={"outline"}
-						size={"icon"}
-						onClick={() => setExpanded(!expanded)}
-					>
-						{expanded ? <ChevronFirstIcon /> : <ChevronLastIcon />}
-					</Button>
+				<div className="rounded-full bg-secondary/80 p-0.5 text-accent-foreground/80 transition-transform duration-150 hover:bg-secondary">
+					<ChevronLeftIcon
+						className={cn(
+							"h-4 w-4 transition-transform delay-300 duration-300",
+							expanded && "-rotate-180 transform",
+						)}
+					/>
 				</div>
+			</button>
 
-				<div className="flex flex-1 flex-col px-2">
-					<Button
-						variant={"ghost"}
-						className="w-full"
-					>
-						<Link href="/">
-							<HomeIcon />
-						</Link>
-					</Button>
-					<Button
-						variant={"ghost"}
-						className="w-full"
-					>
-						<Link href="/dashboard">
-							<LayoutDashboardIcon />
-						</Link>
-					</Button>
-					<Button
-						variant={"ghost"}
-						className="w-full"
-					>
-						<Link href="/profile">
-							<PersonStanding />
-						</Link>
-					</Button>
-				</div>
+			<nav className="flex h-full flex-col space-y-2">
+				<Button variant={"link"}>Logo</Button>
 
-				<div className="place-self-end">
+				<Separator className="w-full" />
+
+				<SidebarContext.Provider value={expanded}>
+					<ul className="mt-2 flex-1 space-y-0.5">{children}</ul>
+				</SidebarContext.Provider>
+
+				<Separator className="w-full" />
+
+				<div className="transition-all">
 					<ModeToggle />
 				</div>
 			</nav>
 		</aside>
 	)
 }
+
+const SidebarItem = ({
+	title,
+	href,
+	icon,
+}: {
+	title: string
+	href: string
+	icon: ReactNode
+} & PropsWithChildren) => {
+	const expanded = useContext(SidebarContext)
+
+	return (
+		<li key={href}>
+			<TooltipProvider>
+				<Tooltip>
+					<TooltipTrigger asChild>
+						<Link
+							href={href}
+							className={cn(
+								buttonVariants({ variant: "ghost", size: "icon" }),
+								"flex w-full items-center justify-start transition-all duration-300",
+								expanded ? "space-x-4 px-2" : "space-x-0 px-0",
+							)}
+						>
+							<div
+								className={cn(
+									"mx-0 transition-all duration-300",
+									!expanded && "mx-2",
+								)}
+							>
+								{icon}
+							</div>
+							<span className={cn("transition-all", !expanded && "hidden")}>
+								{title}
+							</span>
+						</Link>
+					</TooltipTrigger>
+					<TooltipContent
+						side="right"
+						sideOffset={5}
+					>
+						<p>{title}</p>
+					</TooltipContent>
+				</Tooltip>
+			</TooltipProvider>
+		</li>
+	)
+}
+
+Sidebar.Item = SidebarItem
 
 export { Sidebar }
