@@ -1,7 +1,7 @@
 import { Head } from "@inertiajs/react"
 import { PropsWithChildren } from "react"
 
-import { HomeIcon, LayoutDashboardIcon, PlusCircleIcon } from "lucide-react"
+import { HomeIcon, PlusCircleIcon } from "lucide-react"
 
 import { Sidebar } from "@/Components/sidebar"
 import { ScrollArea } from "@/Components/ui/scroll-area"
@@ -40,7 +40,7 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 				))}
 			</Sidebar>
 
-			<ScrollArea className="flex-1 overflow-hidden px-5 pt-5">
+			<ScrollArea className="flex-1 overflow-hidden">
 				<UserNav user={user} />
 				<Head title={title} />
 				{children}
