@@ -1,9 +1,15 @@
 import { ReactNode } from "react"
 
-import { ActionCard } from "@/Components/action-card"
 import { DeleteAccount } from "@/Components/profile/delete-account"
 import { ProfileInformationForm } from "@/Components/profile/profile-information-form"
 import { UpdatePasswordForm } from "@/Components/profile/update-password-form"
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/Components/ui/card"
 import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { PageProps } from "@/types"
 
@@ -43,12 +49,13 @@ const Profile = ({ auth, mustVerifyEmail, status }: Props) => {
 	return (
 		<div className="container max-w-[800px] space-y-4 pb-16">
 			{cards.map((card) => (
-				<ActionCard
-					key={card.title}
-					title={card.title}
-					description={card.description}
-					children={card.component}
-				/>
+				<Card key={card.title}>
+					<CardHeader>
+						<CardTitle>{card.title}</CardTitle>
+						<CardDescription>{card.description}</CardDescription>
+					</CardHeader>
+					<CardContent>{card.component}</CardContent>
+				</Card>
 			))}
 		</div>
 	)
