@@ -66,42 +66,55 @@ const SidebarItem = ({
 
 	return (
 		<li key={href}>
-			<TooltipProvider>
-				<Tooltip>
-					<TooltipTrigger asChild>
-						<Link
-							href={href}
-							className={cn(
-								buttonVariants({ variant: "ghost", size: "icon" }),
-								"flex w-full items-center justify-start transition-all duration-300",
-								expanded ? "space-x-4 px-2" : "space-x-0 px-0",
-							)}
-						>
-							<div
-								className={cn(
-									"mx-0 transition-all duration-300",
-									!expanded && "mx-2",
-								)}
-							>
-								{icon}
-							</div>
-							<span className={cn("transition-all", !expanded && "hidden")}>
-								{title}
-							</span>
-						</Link>
-					</TooltipTrigger>
-					<TooltipContent
-						side="right"
-						sideOffset={5}
+			<Sidebar.Tooltip content={<p>{title}</p>}>
+				<Link
+					href={href}
+					className={cn(
+						buttonVariants({ variant: "ghost", size: "icon" }),
+						"flex w-full items-center justify-start transition-all duration-300",
+						expanded ? "space-x-4 px-2" : "space-x-0 px-0",
+					)}
+				>
+					<div
+						className={cn(
+							"mx-0 transition-all duration-300",
+							!expanded && "mx-2",
+						)}
 					>
-						<p>{title}</p>
-					</TooltipContent>
-				</Tooltip>
-			</TooltipProvider>
+						{icon}
+					</div>
+					<span className={cn("transition-all", !expanded && "hidden")}>
+						{title}
+					</span>
+				</Link>
+			</Sidebar.Tooltip>
 		</li>
 	)
 }
 
+const SidebarTooltip = ({
+	children,
+	content,
+}: {
+	children: ReactNode
+	content: ReactNode
+}) => {
+	return (
+		<TooltipProvider>
+			<Tooltip>
+				<TooltipTrigger asChild>{children}</TooltipTrigger>
+				<TooltipContent
+					side="right"
+					sideOffset={5}
+				>
+					{content}
+				</TooltipContent>
+			</Tooltip>
+		</TooltipProvider>
+	)
+}
+
 Sidebar.Item = SidebarItem
+Sidebar.Tooltip = SidebarTooltip
 
 export { Sidebar }
