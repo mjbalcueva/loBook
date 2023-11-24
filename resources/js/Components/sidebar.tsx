@@ -12,15 +12,14 @@ import { ChevronLeftIcon } from "lucide-react"
 
 import { ModeToggle } from "@/Components/mode-toggle"
 import { Button, buttonVariants } from "@/Components/ui/button"
-import { cn } from "@/Lib/utils"
-
-import { Separator } from "./ui/separator"
+import { Separator } from "@/Components/ui/separator"
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "./ui/tooltip"
+} from "@/Components/ui/tooltip"
+import { cn } from "@/Lib/utils"
 
 const SidebarContext = createContext({})
 
