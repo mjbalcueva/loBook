@@ -8,9 +8,8 @@ import {
 	useState,
 } from "react"
 
-import { ChevronLeftIcon } from "lucide-react"
-
 import { ModeToggle } from "@/Components/mode-toggle"
+import { SidebarToggle } from "@/Components/sidebar-toggle"
 import { Button, buttonVariants } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
 import {
@@ -29,40 +28,27 @@ const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
 	return (
 		<aside
 			className={cn(
-				"relative hidden h-full border-r px-2 pb-2 pt-4 transition-all duration-300 lg:block",
+				"relative hidden h-full flex-col space-y-2 border-r px-2 pb-2 pt-4 transition-all duration-300 lg:flex",
 				expanded ? "w-52" : "w-14",
 			)}
 		>
-			<button
-				className="absolute -right-2.5 z-50 rounded-full bg-background"
-				onClick={() => setExpanded(!expanded)}
-				aria-hidden
-			>
-				<div className="rounded-full bg-secondary/80 p-0.5 text-accent-foreground/80 transition-transform duration-150 hover:bg-secondary">
-					<ChevronLeftIcon
-						className={cn(
-							"h-4 w-4 transition-transform delay-300 duration-300",
-							expanded && "-rotate-180 transform",
-						)}
-					/>
-				</div>
-			</button>
+			<Button variant={"link"}>Logo</Button>
 
-			<nav className="flex h-full flex-col space-y-2">
-				<Button variant={"link"}>Logo</Button>
+			<Separator className="w-full" />
 
-				<Separator className="w-full" />
+			<SidebarContext.Provider value={expanded}>
+				<ul className="mt-2 flex-1 space-y-0.5">{children}</ul>
+			</SidebarContext.Provider>
 
-				<SidebarContext.Provider value={expanded}>
-					<ul className="mt-2 flex-1 space-y-0.5">{children}</ul>
-				</SidebarContext.Provider>
+			<Separator className="w-full" />
 
-				<Separator className="w-full" />
-
-				<div className="transition-all">
-					<ModeToggle />
-				</div>
-			</nav>
+			<div className="flex flex-wrap justify-between">
+				<ModeToggle />
+				<SidebarToggle
+					onClick={() => setExpanded(!expanded)}
+					expanded={expanded}
+				/>
+			</div>
 		</aside>
 	)
 }
