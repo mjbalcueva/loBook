@@ -31,6 +31,8 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 
 	return (
 		<RootLayout className="flex h-screen antialiased">
+			<Head title={title} />
+
 			<Sidebar>
 				{links.map((item) => (
 					<Sidebar.Item
@@ -40,7 +42,8 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 					/>
 				))}
 			</Sidebar>
-			<div className="flex-1">
+
+			<div className="flex flex-1 flex-col">
 				<MainNav user={user}>
 					{links.map((item) => (
 						<MainNav.Item
@@ -50,10 +53,7 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 						/>
 					))}
 				</MainNav>
-				<ScrollArea className="overflow-hidden">
-					<Head title={title} />
-					{children}
-				</ScrollArea>
+				<ScrollArea className="overflow-hidden">{children}</ScrollArea>
 			</div>
 		</RootLayout>
 	)

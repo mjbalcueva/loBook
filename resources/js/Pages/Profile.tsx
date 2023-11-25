@@ -47,7 +47,7 @@ const Profile = ({ auth, mustVerifyEmail, status }: Props) => {
 	]
 
 	return (
-		<div className="container max-w-[800px] space-y-4 pb-16">
+		<div className="container space-y-4 pb-24 pt-4">
 			{cards.map((card) => (
 				<Card key={card.title}>
 					<CardHeader>
