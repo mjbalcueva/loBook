@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react"
+import { Link, usePage } from "@inertiajs/react"
 import { HTMLAttributes, PropsWithChildren, ReactNode } from "react"
 
 import { MenuIcon } from "lucide-react"
@@ -15,13 +15,15 @@ import {
 } from "@/Components/ui/sheet"
 import { UserNav } from "@/Components/user-nav"
 import { cn } from "@/Lib/utils"
-import { User } from "@/types"
+import { PageProps, User } from "@/types"
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	user: User
 }
 
 const MainNav = ({ user, className, children }: Props) => {
+	const appName = usePage<PageProps>().props.appName
+
 	return (
 		<div
 			className={cn(
@@ -45,7 +47,7 @@ const MainNav = ({ user, className, children }: Props) => {
 						className="flex flex-col"
 					>
 						<SheetHeader>
-							<SheetTitle className="text-start">loBook</SheetTitle>
+							<SheetTitle className="text-start">{appName}</SheetTitle>
 						</SheetHeader>
 						<Separator className="my-2 w-full" />
 						<ul className="flex-1 space-y-2">{children}</ul>

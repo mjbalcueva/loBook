@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react"
+import { Link, usePage } from "@inertiajs/react"
 import {
 	HTMLAttributes,
 	PropsWithChildren,
@@ -19,10 +19,12 @@ import {
 	TooltipTrigger,
 } from "@/Components/ui/tooltip"
 import { cn } from "@/Lib/utils"
+import { PageProps } from "@/types"
 
 const SidebarContext = createContext({})
 
 const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
+	const appName = usePage<PageProps>().props.appName
 	const [expanded, setExpanded] = useState(true)
 
 	return (
@@ -32,7 +34,7 @@ const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
 				expanded ? "w-52" : "w-14",
 			)}
 		>
-			<Button variant={"link"}>Logo</Button>
+			<Button variant={"link"}>{appName}</Button>
 
 			<Separator className="w-full" />
 

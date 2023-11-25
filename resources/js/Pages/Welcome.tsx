@@ -14,7 +14,7 @@ const Welcome = ({ auth, laravelVersion, phpVersion }: Props) => {
 	return (
 		<>
 			<p>
-				Laravel version {laravelVersion} (PHP version {phpVersion})
+				Laravel version {laravelVersion} (PHP version {phpVersion}) Hello{" "}
 			</p>
 
 			{auth.user ? (
