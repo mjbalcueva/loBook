@@ -3,7 +3,6 @@ import { PropsWithChildren, ReactNode } from "react"
 
 import { MenuIcon } from "lucide-react"
 
-import { ModeToggle } from "@/Components/mode-toggle"
 import { SearchInput } from "@/Components/search-input"
 import { Button, buttonVariants } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
@@ -52,10 +51,6 @@ const MainNav = ({ user, children }: Props) => {
 			<div className="flex items-center space-x-2">
 				<SearchInput />
 				<UserNav user={user} />
-				<ModeToggle
-					className="h-8 w-8 rounded-full lg:hidden"
-					side="bottom"
-				/>
 			</div>
 		</div>
 	)

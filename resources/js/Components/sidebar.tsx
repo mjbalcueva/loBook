@@ -28,7 +28,7 @@ const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
 	return (
 		<aside
 			className={cn(
-				"relative hidden h-full flex-col space-y-2 border-r px-2 pb-2 pt-4 transition-all duration-300 lg:flex",
+				"relative hidden h-full flex-col space-y-2 border-r px-2 pb-2 pt-4 transition-all lg:flex",
 				expanded ? "w-52" : "w-14",
 			)}
 		>
@@ -42,13 +42,10 @@ const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
 
 			<Separator className="w-full" />
 
-			<div className="flex flex-wrap justify-between">
-				<ModeToggle />
-				<SidebarToggle
-					onClick={() => setExpanded(!expanded)}
-					expanded={expanded}
-				/>
-			</div>
+			<SidebarToggle
+				onClick={() => setExpanded(!expanded)}
+				expanded={expanded}
+			/>
 		</aside>
 	)
 }
@@ -83,7 +80,7 @@ const SidebarItem = ({
 					>
 						{icon}
 					</div>
-					<span className={cn("transition-all", !expanded && "hidden")}>
+					<span className={cn("transition", !expanded && "hidden")}>
 						{title}
 					</span>
 				</Link>

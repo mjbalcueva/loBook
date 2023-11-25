@@ -35,7 +35,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
 		{...props}
 	>
 		{children}
-		<ChevronRight className="ml-auto h-4 w-4" />
+		<ChevronRight className="-mr-0.5 ml-auto h-4 w-4 opacity-60 transition" />
 	</DropdownMenuPrimitive.SubTrigger>
 ))
 DropdownMenuSubTrigger.displayName =
