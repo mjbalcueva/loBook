@@ -1,17 +1,19 @@
-import { FC } from "react"
+import { ReactNode } from "react"
 
 import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { PageProps } from "@/types"
 
-interface Props extends PageProps {}
-
-const Dashboard: FC<Props> = ({ auth }) => {
-	return (
-		<AuthenticatedLayout
-			user={auth.user}
-			title="Dashboard"
-		></AuthenticatedLayout>
-	)
+const Dashboard = () => {
+	return <>love</>
 }
+
+Dashboard.layout = (page: ReactNode & PageProps) => (
+	<AuthenticatedLayout
+		user={page.props.auth.user}
+		title="Dashboard"
+	>
+		{page}
+	</AuthenticatedLayout>
+)
 
 export default Dashboard

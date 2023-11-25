@@ -3,16 +3,16 @@
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 
-test('login screen can be rendered', function () {
-  $response = $this->get('/login');
+test('sign in screen can be rendered', function () {
+  $response = $this->get('/signin');
 
   $response->assertStatus(200);
 });
 
-test('users can authenticate using the login screen', function () {
+test('users can authenticate using the sign in screen', function () {
   $user = User::factory()->create();
 
-  $response = $this->post('/login', [
+  $response = $this->post('/signin', [
     'email' => $user->email,
     'password' => 'password',
   ]);
@@ -24,7 +24,7 @@ test('users can authenticate using the login screen', function () {
 test('users can not authenticate with invalid password', function () {
   $user = User::factory()->create();
 
-  $this->post('/login', [
+  $this->post('/signin', [
     'email' => $user->email,
     'password' => 'wrong-password',
   ]);

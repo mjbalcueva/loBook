@@ -35,8 +35,7 @@ const ProfileInformationForm: FC<Props> = ({
 				label="Name"
 				value={data.name}
 				onChange={(e) => setData("name", e.target.value)}
-				placeholder="Your Name"
-				autoComplete="name"
+				placeholder="Juan Dela Cruz"
 				message={errors.name}
 			/>
 
@@ -45,8 +44,7 @@ const ProfileInformationForm: FC<Props> = ({
 				type="email"
 				value={data.email}
 				onChange={(e) => setData("email", e.target.value)}
-				placeholder="Your Email"
-				autoComplete="username"
+				placeholder="juandelacruz@gmail.com"
 				message={errors.email}
 			/>
 

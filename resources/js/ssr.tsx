@@ -5,7 +5,7 @@ import ReactDOMServer from "react-dom/server"
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
 import { RouteName } from "ziggy-js"
 
-import { DefaultLayout } from "@/Layouts/default-layout"
+import { RootLayout } from "@/Layouts/root-layout"
 
 import route from "../../vendor/tightenco/ziggy/dist/index.m"
 
@@ -24,7 +24,7 @@ createServer((page) =>
 			page.then((module: any) => {
 				module.default.layout =
 					module.default.layout ||
-					((page: any) => <DefaultLayout>{page}</DefaultLayout>)
+					((page: any) => <RootLayout>{page}</RootLayout>)
 			})
 			return page
 		},
