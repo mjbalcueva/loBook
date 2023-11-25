@@ -1,16 +1,32 @@
 import { Head } from "@inertiajs/react"
 import { FC, PropsWithChildren } from "react"
 
+import { ActionCard } from "@/Components/action-card"
+
 interface Props extends PropsWithChildren {
-	title: string
+	pageTitle: string
+	cardTitle: string
+	cardDescription: string
 }
 
-const AuthLayout: FC<Props> = ({ title, children }) => {
+const AuthLayout: FC<Props> = ({
+	pageTitle,
+	cardTitle,
+	cardDescription,
+	children,
+}) => {
 	return (
 		<>
-			<Head title={title} />
+			<Head title={pageTitle} />
 			<div className="flex min-h-screen items-center justify-center">
-				<div className="min-w-[500px]">{children}</div>
+				<div className="w-[500px]">
+					<ActionCard
+						title={cardTitle}
+						description={cardDescription}
+					>
+						{children}
+					</ActionCard>
+				</div>
 			</div>
 		</>
 	)
