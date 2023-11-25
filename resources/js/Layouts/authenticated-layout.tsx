@@ -6,7 +6,6 @@ import { HomeIcon, PlusCircleIcon } from "lucide-react"
 import { MainNav } from "@/Components/main-nav"
 import { Sidebar } from "@/Components/sidebar"
 import { ScrollArea } from "@/Components/ui/scroll-area"
-import { UserNav } from "@/Components/user-nav"
 import { RootLayout } from "@/Layouts/root-layout"
 import { User } from "@/types"
 
@@ -43,17 +42,22 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 				))}
 			</Sidebar>
 
-			<div className="flex flex-1 flex-col">
-				<MainNav user={user}>
-					{links.map((item) => (
-						<MainNav.Item
-							title={item.title}
-							href={item.href}
-							icon={item.icon}
-						/>
-					))}
-				</MainNav>
-				<ScrollArea className="overflow-hidden">{children}</ScrollArea>
+			<div className="flex flex-1">
+				<ScrollArea className="w-full overflow-hidden">
+					<MainNav
+						user={user}
+						className="absolute z-50 w-full bg-background/40 backdrop-blur-lg dark:bg-background/90"
+					>
+						{links.map((item) => (
+							<MainNav.Item
+								title={item.title}
+								href={item.href}
+								icon={item.icon}
+							/>
+						))}
+					</MainNav>
+					<div className="mt-14 lg:mt-16">{children}</div>
+				</ScrollArea>
 			</div>
 		</RootLayout>
 	)
