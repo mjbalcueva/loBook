@@ -1,14 +1,13 @@
 import { createInertiaApp } from "@inertiajs/react"
-import { ReactNode } from "react"
 import { createRoot } from "react-dom/client"
 
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
 
 import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
+import { RootLayout } from "@/Layouts/root-layout"
 
 import "../css/app.css"
 import "./bootstrap"
-import { PageProps } from "./types"
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel"
 
@@ -22,11 +21,14 @@ createInertiaApp({
 		page.then((module: any) => {
 			module.default.layout =
 				module.default.layout ||
-				((page: ReactNode & PageProps) => (
-					<AuthenticatedLayout user={page.props.auth.user}>
-						{page}
-					</AuthenticatedLayout>
-				))
+				((page: any) =>
+					page.props.auth.user ? (
+						<AuthenticatedLayout user={page.props.auth.user}>
+							{page}
+						</AuthenticatedLayout>
+					) : (
+						<RootLayout>{page}</RootLayout>
+					))
 		})
 		return page
 	},
