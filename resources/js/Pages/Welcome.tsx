@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react"
+import { Head, Link } from "@inertiajs/react"
 
 import { Button } from "@/Components/ui/button"
 import { PageProps } from "@/types"
@@ -11,6 +11,7 @@ interface Props extends PageProps {
 const Welcome = ({ auth, laravelVersion, phpVersion }: Props) => {
 	return (
 		<>
+			<Head title="Welcome" />
 			<p>
 				Laravel version {laravelVersion} (PHP version {phpVersion}) Hello{" "}
 			</p>
