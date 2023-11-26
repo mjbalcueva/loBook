@@ -94,6 +94,7 @@ const UserNav: FC<Props> = ({ user }) => {
 				<Link
 					href={route("logout")}
 					method="post"
+					as="button"
 				>
 					<DropdownMenuItem className="cursor-pointer">
 						<LogOutIcon className="mr-2 h-4 w-4" />
