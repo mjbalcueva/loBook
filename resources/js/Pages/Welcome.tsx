@@ -1,8 +1,6 @@
 import { Link } from "@inertiajs/react"
-import { ReactNode } from "react"
 
 import { Button } from "@/Components/ui/button"
-import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { PageProps } from "@/types"
 
 interface Props extends PageProps {
@@ -35,14 +33,5 @@ const Welcome = ({ auth, laravelVersion, phpVersion }: Props) => {
 		</>
 	)
 }
-
-Welcome.layout = (page: ReactNode & PageProps) => (
-	<AuthenticatedLayout
-		user={page.props.auth.user}
-		title="Welcome"
-	>
-		{page}
-	</AuthenticatedLayout>
-)
 
 export default Welcome

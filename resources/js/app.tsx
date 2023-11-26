@@ -4,15 +4,16 @@ import { createRoot } from "react-dom/client"
 
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
 
-import { RootLayout } from "@/Layouts/root-layout"
+import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 
 import "../css/app.css"
 import "./bootstrap"
+import { PageProps } from "./types"
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel"
 
 createInertiaApp({
-	title: (title) => `${title} - ${appName}`,
+	title: (title) => (title ? `${title} - ${appName}` : appName),
 	resolve: async (name) => {
 		const page = resolvePageComponent(
 			`./Pages/${name}.tsx`,
@@ -21,7 +22,11 @@ createInertiaApp({
 		page.then((module: any) => {
 			module.default.layout =
 				module.default.layout ||
-				((page: ReactNode) => <RootLayout>{page}</RootLayout>)
+				((page: ReactNode & PageProps) => (
+					<AuthenticatedLayout user={page.props.auth.user}>
+						{page}
+					</AuthenticatedLayout>
+				))
 		})
 		return page
 	},

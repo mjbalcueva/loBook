@@ -1,5 +1,3 @@
-import { ReactNode } from "react"
-
 import { DeleteAccount } from "@/Components/profile/delete-account"
 import { ProfileInformationForm } from "@/Components/profile/profile-information-form"
 import { UpdatePasswordForm } from "@/Components/profile/update-password-form"
@@ -10,7 +8,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/Components/ui/card"
-import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { PageProps } from "@/types"
 
 interface Props extends PageProps {
@@ -60,14 +57,5 @@ const Profile = ({ auth, mustVerifyEmail, status }: Props) => {
 		</div>
 	)
 }
-
-Profile.layout = (page: ReactNode & PageProps) => (
-	<AuthenticatedLayout
-		user={page.props.auth.user}
-		title="Profile"
-	>
-		{page}
-	</AuthenticatedLayout>
-)
 
 export default Profile

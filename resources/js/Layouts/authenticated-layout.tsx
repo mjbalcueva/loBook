@@ -1,4 +1,3 @@
-import { Head } from "@inertiajs/react"
 import { PropsWithChildren } from "react"
 
 import { HomeIcon, PlusCircleIcon } from "lucide-react"
@@ -11,10 +10,9 @@ import { User } from "@/types"
 
 interface Props extends PropsWithChildren {
 	user: User
-	title: string
 }
 
-const AuthenticatedLayout = ({ user, title, children }: Props) => {
+const AuthenticatedLayout = ({ user, children }: Props) => {
 	const links = [
 		{
 			title: "Home",
@@ -30,11 +28,10 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 
 	return (
 		<RootLayout className="flex h-screen antialiased">
-			<Head title={title} />
-
 			<Sidebar>
 				{links.map((item) => (
 					<Sidebar.Item
+						key={item.href}
 						title={item.title}
 						href={item.href}
 						icon={item.icon}
@@ -50,6 +47,7 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 					>
 						{links.map((item) => (
 							<MainNav.Item
+								key={item.href}
 								title={item.title}
 								href={item.href}
 								icon={item.icon}
