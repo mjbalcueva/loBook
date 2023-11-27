@@ -1,22 +1,9 @@
 <!-- Logo -->
-<div align="center">
-  <img alt="Logo" src="./resources/img/BlackLogo.png" width="400" height="450" id="logo">
-</div>
-
-<!-- Custom Style for Dark Mode -->
-<!-- begin custom-style -->
-<img alt="Logo" src="./resources/img/WhiteLogo.png.png" width="400" height="450" style="display: none;" id="dark-logo">
-<style>
-  @media (prefers-color-scheme: dark) {
-    #logo {
-      display: none;
-    }
-    #dark-logo {
-      display: block;
-    }
-  }
-</style>
-<!-- end custom-style -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./resources/img/WhiteLogo.png">
+  <source media="(prefers-color-scheme: light)" srcset="./resources/img/BlackLogo.png">
+  <img alt="Logo" src="./resources/img/BlackLogo.png">
+</picture>
 
 <!-- Badges -->
 <div align="center">
