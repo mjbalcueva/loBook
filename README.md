@@ -1,9 +1,9 @@
 <!-- Logo -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./resources/img/WhiteLogo.png" width="400" height="450">
-    <source media="(prefers-color-scheme: light)" srcset="./resources/img/BlackLogo.png" width="400" height="450">
-    <img alt="Logo" src="./resources/img/BlackLogo.png" width="400" height="450">
+    <source media="(prefers-color-scheme: dark)" srcset="./resources/img/WhiteLogo.png" width="400" height="480">
+    <source media="(prefers-color-scheme: light)" srcset="./resources/img/BlackLogo.png" width="400" height="480">
+    <img alt="Logo" src="./resources/img/BlackLogo.png" width="400" height="480">
   </picture>
 </p>
 
