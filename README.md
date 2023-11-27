@@ -1,9 +1,11 @@
 <!-- Logo -->
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./resources/img/WhiteLogo.png">
-  <source media="(prefers-color-scheme: light)" srcset="./resources/img/BlackLogo.png">
-  <img alt="Logo" src="./resources/img/BlackLogo.png">
-</picture>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./resources/img/WhiteLogo.png">
+    <source media="(prefers-color-scheme: light)" srcset="./resources/img/BlackLogo.png">
+    <img alt="Logo" src="./resources/img/BlackLogo.png" style="max-width: 400px; max-height: 450px;">
+  </picture>
+</p>
 
 <!-- Badges -->
 <div align="center">
