@@ -9,7 +9,6 @@ import {
 } from "react"
 
 import { Logo } from "@/Components/logo"
-import { ModeToggle } from "@/Components/mode-toggle"
 import { SidebarToggle } from "@/Components/sidebar-toggle"
 import { Button, buttonVariants } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
