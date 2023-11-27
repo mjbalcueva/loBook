@@ -28,7 +28,7 @@ const MainNav = ({ user, className, children }: Props) => {
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-between border-b px-2 py-2 lg:py-4",
+				"flex items-center justify-between border-b px-2 py-2 md:container lg:py-4",
 				className,
 			)}
 		>
