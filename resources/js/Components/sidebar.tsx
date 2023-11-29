@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react"
+import { Link, usePage } from "@inertiajs/react"
 import {
 	HTMLAttributes,
 	PropsWithChildren,
@@ -8,7 +8,7 @@ import {
 	useState,
 } from "react"
 
-import { ModeToggle } from "@/Components/mode-toggle"
+import { Logo } from "@/Components/logo"
 import { SidebarToggle } from "@/Components/sidebar-toggle"
 import { Button, buttonVariants } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
@@ -19,10 +19,12 @@ import {
 	TooltipTrigger,
 } from "@/Components/ui/tooltip"
 import { cn } from "@/Lib/utils"
+import { PageProps } from "@/types"
 
 const SidebarContext = createContext({})
 
 const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
+	const appName = usePage<PageProps>().props.appName
 	const [expanded, setExpanded] = useState(true)
 
 	return (
@@ -32,7 +34,16 @@ const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
 				expanded ? "w-52" : "w-14",
 			)}
 		>
-			<Button variant={"link"}>Logo</Button>
+			<Button
+				variant={"none"}
+				size={"icon"}
+				className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
+			>
+				<Logo className="mr-3 h-8 w-8" />
+				<span className={cn("transition", !expanded && "hidden")}>
+					{appName}
+				</span>
+			</Button>
 
 			<Separator className="w-full" />
 
@@ -74,7 +85,7 @@ const SidebarItem = ({
 				>
 					<div
 						className={cn(
-							"mx-0 transition-all duration-300",
+							"mx-0 pl-[1.5px] transition-all duration-300",
 							!expanded && "mx-2",
 						)}
 					>

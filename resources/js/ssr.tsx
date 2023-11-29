@@ -5,6 +5,7 @@ import ReactDOMServer from "react-dom/server"
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
 import { RouteName } from "ziggy-js"
 
+import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { RootLayout } from "@/Layouts/root-layout"
 
 import route from "../../vendor/tightenco/ziggy/dist/index.m"
@@ -15,7 +16,7 @@ createServer((page) =>
 	createInertiaApp({
 		page,
 		render: ReactDOMServer.renderToString,
-		title: (title) => `${title} - ${appName}`,
+		title: (title) => (title ? `${title} - ${appName}` : appName),
 		resolve: (name) => {
 			const page = resolvePageComponent(
 				`./Pages/${name}.tsx`,
@@ -24,7 +25,14 @@ createServer((page) =>
 			page.then((module: any) => {
 				module.default.layout =
 					module.default.layout ||
-					((page: any) => <RootLayout>{page}</RootLayout>)
+					((page: any) =>
+						page.props.auth.user ? (
+							<AuthenticatedLayout user={page.props.auth.user}>
+								{page}
+							</AuthenticatedLayout>
+						) : (
+							<RootLayout>{page}</RootLayout>
+						))
 			})
 			return page
 		},

@@ -1,19 +1,12 @@
-import { ReactNode } from "react"
-
-import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
-import { PageProps } from "@/types"
+import { Head } from "@inertiajs/react"
 
 const Dashboard = () => {
-	return <>love</>
+	return (
+		<>
+			<Head title="Dashboard" />
+			<h1>Love</h1>
+		</>
+	)
 }
-
-Dashboard.layout = (page: ReactNode & PageProps) => (
-	<AuthenticatedLayout
-		user={page.props.auth.user}
-		title="Dashboard"
-	>
-		{page}
-	</AuthenticatedLayout>
-)
 
 export default Dashboard

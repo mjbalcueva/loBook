@@ -27,6 +27,7 @@ const PasswordInput = forwardRef<HTMLInputElement, InputProps>(
 					className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
 					onClick={() => setShowPassword((prev) => !prev)}
 					disabled={disabled}
+					tabIndex={-1}
 				>
 					{showPassword && !disabled ? (
 						<EyeIcon

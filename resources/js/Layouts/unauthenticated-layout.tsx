@@ -1,14 +1,17 @@
-import { Head, Link } from "@inertiajs/react"
+import { Head, Link, usePage } from "@inertiajs/react"
 import { PropsWithChildren } from "react"
 
 import { AspectRatio } from "@/Components/ui/aspect-ratio"
 import { RootLayout } from "@/Layouts/root-layout"
+import { PageProps } from "@/types"
 
 interface Props extends PropsWithChildren {
 	pageTitle: string
 }
 
 const UnauthenticatedLayout = ({ pageTitle, children }: Props) => {
+	const appName = usePage<PageProps>().props.appName
+
 	return (
 		<RootLayout className="antialiased">
 			<Head title={pageTitle} />
@@ -38,7 +41,7 @@ const UnauthenticatedLayout = ({ pageTitle, children }: Props) => {
 						>
 							<path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
 						</svg>
-						<span>loBook</span>
+						<span>{appName}</span>
 					</Link>
 					<div className="absolute bottom-6 left-8 z-20 line-clamp-3 text-base">
 						&ldquo;loBook is a software that lets you view, save, and search for

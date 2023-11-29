@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { Head } from "@inertiajs/react"
 
 import { DeleteAccount } from "@/Components/profile/delete-account"
 import { ProfileInformationForm } from "@/Components/profile/profile-information-form"
@@ -10,7 +10,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/Components/ui/card"
-import { AuthenticatedLayout } from "@/Layouts/authenticated-layout"
 import { PageProps } from "@/types"
 
 interface Props extends PageProps {
@@ -47,27 +46,21 @@ const Profile = ({ auth, mustVerifyEmail, status }: Props) => {
 	]
 
 	return (
-		<div className="space-y-4 px-4 pb-14 pt-4">
-			{cards.map((card) => (
-				<Card key={card.title}>
-					<CardHeader>
-						<CardTitle>{card.title}</CardTitle>
-						<CardDescription>{card.description}</CardDescription>
-					</CardHeader>
-					<CardContent>{card.component}</CardContent>
-				</Card>
-			))}
-		</div>
+		<>
+			<Head title="Profile" />
+			<div className="space-y-4 pb-14 pt-4">
+				{cards.map((card) => (
+					<Card key={card.title}>
+						<CardHeader>
+							<CardTitle>{card.title}</CardTitle>
+							<CardDescription>{card.description}</CardDescription>
+						</CardHeader>
+						<CardContent>{card.component}</CardContent>
+					</Card>
+				))}
+			</div>
+		</>
 	)
 }
-
-Profile.layout = (page: ReactNode & PageProps) => (
-	<AuthenticatedLayout
-		user={page.props.auth.user}
-		title="Profile"
-	>
-		{page}
-	</AuthenticatedLayout>
-)
 
 export default Profile

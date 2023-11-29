@@ -1,4 +1,3 @@
-import { Head } from "@inertiajs/react"
 import { PropsWithChildren } from "react"
 
 import { HomeIcon, PlusCircleIcon } from "lucide-react"
@@ -11,10 +10,9 @@ import { User } from "@/types"
 
 interface Props extends PropsWithChildren {
 	user: User
-	title: string
 }
 
-const AuthenticatedLayout = ({ user, title, children }: Props) => {
+const AuthenticatedLayout = ({ user, children }: Props) => {
 	const links = [
 		{
 			title: "Home",
@@ -30,11 +28,10 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 
 	return (
 		<RootLayout className="flex h-screen antialiased">
-			<Head title={title} />
-
 			<Sidebar>
 				{links.map((item) => (
 					<Sidebar.Item
+						key={item.href}
 						title={item.title}
 						href={item.href}
 						icon={item.icon}
@@ -42,22 +39,22 @@ const AuthenticatedLayout = ({ user, title, children }: Props) => {
 				))}
 			</Sidebar>
 
-			<div className="flex flex-1">
-				<ScrollArea className="w-full overflow-hidden">
-					<MainNav
-						user={user}
-						className="absolute z-50 w-full bg-background/40 backdrop-blur-lg dark:bg-background/90"
-					>
-						{links.map((item) => (
-							<MainNav.Item
-								title={item.title}
-								href={item.href}
-								icon={item.icon}
-							/>
-						))}
-					</MainNav>
-					<div className="mt-14 lg:mt-16">{children}</div>
-				</ScrollArea>
+			<div className="flex-1 overflow-auto">
+				<MainNav
+					user={user}
+					className="sticky top-0 z-50 w-full bg-background/40 backdrop-blur-lg dark:bg-background/90"
+				>
+					{links.map((item) => (
+						<MainNav.Item
+							key={item.href}
+							title={item.title}
+							href={item.href}
+							icon={item.icon}
+						/>
+					))}
+				</MainNav>
+
+				<div className="px-2 md:container">{children}</div>
 			</div>
 		</RootLayout>
 	)
