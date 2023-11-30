@@ -11,4 +11,5 @@ export type PageProps<
 	auth: {
 		user: User
 	}
+	appName?: string
 }
