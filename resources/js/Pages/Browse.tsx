@@ -7,19 +7,19 @@ interface Props {
 	phpVersion: string
 }
 
-const Welcome = ({ laravelVersion, phpVersion }: Props) => {
+const Browse = ({ laravelVersion, phpVersion }: Props) => {
 	return (
 		<>
-			<Head title="Welcome" />
+			<Head title="Browse" />
 			<p>
 				Laravel version {laravelVersion} (PHP version {phpVersion}) Hello{" "}
 			</p>
 
-			<Link href={route("mybooks")}>
+			<Link href={route("uploaded")}>
 				<Button>Dashboard</Button>
 			</Link>
 		</>
 	)
 }
 
-export default Welcome
+export default Browse

@@ -1,6 +1,7 @@
+import { Link } from "@inertiajs/react"
 import { FC, ReactNode, cloneElement, useEffect, useState } from "react"
 
-import { BookIcon, LogOutIcon, SearchIcon, UserIcon } from "lucide-react"
+import { BookIcon, SearchIcon } from "lucide-react"
 
 import {
 	CommandDialog,
@@ -69,26 +70,21 @@ const SearchInput: FC<Props> = ({ navLinks }) => {
 						</CommandItem>
 					</CommandGroup>
 
-					<CommandGroup heading="Settings">
+					<CommandGroup heading="Navigation">
 						{navLinks.map((item) => (
-							<CommandItem key={item.href}>
-								<CustomCommandItem
-									icon={item.icon}
-									title={item.title}
-								/>
-							</CommandItem>
+							<Link
+								href={item.href}
+								key={item.href}
+								onClick={() => setOpen(false)}
+							>
+								<CommandItem>
+									<CustomCommandItem
+										icon={item.icon}
+										title={item.title}
+									/>
+								</CommandItem>
+							</Link>
 						))}
-					</CommandGroup>
-
-					<CommandGroup heading="Account">
-						<CommandItem>
-							<UserIcon className="mr-2 h-4 w-4" />
-							Profile
-						</CommandItem>
-						<CommandItem>
-							<LogOutIcon className="mr-2 h-4 w-4" />
-							Logout
-						</CommandItem>
 					</CommandGroup>
 				</CommandList>
 			</CommandDialog>
@@ -98,7 +94,7 @@ const SearchInput: FC<Props> = ({ navLinks }) => {
 
 const CustomCommandItem = ({ icon, title }: { icon: any; title: string }) => {
 	const CustomIcon = cloneElement(icon, {
-		className: "mr-2 h-4 w-4",
+		className: "mr-2 h-2 w-2",
 	})
 
 	return (
