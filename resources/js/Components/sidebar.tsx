@@ -23,7 +23,15 @@ import { PageProps } from "@/types"
 
 const SidebarContext = createContext({})
 
-const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
+interface Props extends HTMLAttributes<HTMLDivElement> {
+	navLinks: {
+		title: string
+		href: string
+		icon: ReactNode
+	}[]
+}
+
+const Sidebar = ({ navLinks }: Props) => {
 	const appName = usePage<PageProps>().props.appName
 	const [expanded, setExpanded] = useState(true)
 
@@ -48,7 +56,16 @@ const Sidebar = ({ children }: HTMLAttributes<HTMLDivElement>) => {
 			<Separator className="w-full" />
 
 			<SidebarContext.Provider value={expanded}>
-				<ul className="mt-2 flex-1 space-y-0.5">{children}</ul>
+				<ul className="mt-2 flex-1 space-y-0.5">
+					{navLinks.map((item) => (
+						<Sidebar.Item
+							key={item.href}
+							title={item.title}
+							href={item.href}
+							icon={item.icon}
+						/>
+					))}
+				</ul>
 			</SidebarContext.Provider>
 
 			<Separator className="w-full" />
