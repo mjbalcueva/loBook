@@ -18,15 +18,19 @@ use Inertia\Inertia;
 
 Route::middleware('auth', 'verified')->group(function () {
   Route::get('/', function () {
-    return Inertia::render('Welcome', [
+    return Inertia::render('Home', [
       'laravelVersion' => Application::VERSION,
       'phpVersion' => PHP_VERSION,
     ]);
   });
 
-  Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-  })->name('dashboard');
+  Route::get('/mybooks', function () {
+    return Inertia::render('MyBooks');
+  })->name('mybooks');
+
+  Route::get('/favorites', function () {
+    return Inertia::render('Favorites');
+  })->name('favorites');
 
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

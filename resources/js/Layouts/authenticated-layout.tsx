@@ -1,10 +1,9 @@
 import { PropsWithChildren } from "react"
 
-import { HomeIcon, PlusCircleIcon } from "lucide-react"
+import { BookHeartIcon, BookIcon, BookMarkedIcon, HomeIcon } from "lucide-react"
 
 import { MainNav } from "@/Components/main-nav"
 import { Sidebar } from "@/Components/sidebar"
-import { ScrollArea } from "@/Components/ui/scroll-area"
 import { RootLayout } from "@/Layouts/root-layout"
 import { User } from "@/types"
 
@@ -20,9 +19,14 @@ const AuthenticatedLayout = ({ user, children }: Props) => {
 			icon: <HomeIcon className="h-5 w-5" />,
 		},
 		{
-			title: "Add Book",
-			href: "/dashboard",
-			icon: <PlusCircleIcon className="h-5 w-5" />,
+			title: "My Books",
+			href: "/mybooks",
+			icon: <BookMarkedIcon className="h-5 w-5" />,
+		},
+		{
+			title: "Favorites",
+			href: "/favorites",
+			icon: <BookHeartIcon className="h-5 w-5" />,
 		},
 	]
 
