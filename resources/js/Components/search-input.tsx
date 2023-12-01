@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { FC, ReactNode, cloneElement, useEffect, useState } from "react"
 
 import { BookIcon, LogOutIcon, SearchIcon, UserIcon } from "lucide-react"
 
@@ -11,7 +11,15 @@ import {
 	CommandList,
 } from "@/Components/ui/command"
 
-const SearchInput = () => {
+interface Props {
+	navLinks: {
+		title: string
+		href: string
+		icon: ReactNode
+	}[]
+}
+
+const SearchInput: FC<Props> = ({ navLinks }) => {
 	const [open, setOpen] = useState(false)
 
 	useEffect(() => {
@@ -62,6 +70,17 @@ const SearchInput = () => {
 					</CommandGroup>
 
 					<CommandGroup heading="Settings">
+						{navLinks.map((item) => (
+							<CommandItem key={item.href}>
+								<CustomCommandItem
+									icon={item.icon}
+									title={item.title}
+								/>
+							</CommandItem>
+						))}
+					</CommandGroup>
+
+					<CommandGroup heading="Account">
 						<CommandItem>
 							<UserIcon className="mr-2 h-4 w-4" />
 							Profile
@@ -73,6 +92,19 @@ const SearchInput = () => {
 					</CommandGroup>
 				</CommandList>
 			</CommandDialog>
+		</>
+	)
+}
+
+const CustomCommandItem = ({ icon, title }: { icon: any; title: string }) => {
+	const CustomIcon = cloneElement(icon, {
+		className: "mr-2 h-4 w-4",
+	})
+
+	return (
+		<>
+			{CustomIcon}
+			{title}
 		</>
 	)
 }
