@@ -18,15 +18,15 @@ use Inertia\Inertia;
 
 Route::middleware('auth', 'verified')->group(function () {
   Route::get('/', function () {
-    return Inertia::render('Home', [
+    return Inertia::render('Browse', [
       'laravelVersion' => Application::VERSION,
       'phpVersion' => PHP_VERSION,
     ]);
   });
 
-  Route::get('/mybooks', function () {
-    return Inertia::render('MyBooks');
-  })->name('mybooks');
+  Route::get('/uploaded', function () {
+    return Inertia::render('Uploaded');
+  })->name('uploaded');
 
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');

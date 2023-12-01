@@ -1,6 +1,10 @@
 import { PropsWithChildren } from "react"
 
-import { BookHeartIcon, BookMarkedIcon, HomeIcon } from "lucide-react"
+import {
+	HardDriveUploadIcon,
+	HeartIcon,
+	LayoutDashboardIcon,
+} from "lucide-react"
 
 import { MainNav } from "@/Components/main-nav"
 import { Sidebar } from "@/Components/sidebar"
@@ -14,19 +18,19 @@ interface Props extends PropsWithChildren {
 const AuthenticatedLayout = ({ user, children }: Props) => {
 	const links = [
 		{
-			title: "Home",
+			title: "Browse",
 			href: "/",
-			icon: <HomeIcon className="h-5 w-5" />,
+			icon: <LayoutDashboardIcon className="h-5 w-5" />,
 		},
 		{
-			title: "My Books",
-			href: "/mybooks",
-			icon: <BookMarkedIcon className="h-5 w-5" />,
+			title: "Uploaded",
+			href: "/uploaded",
+			icon: <HardDriveUploadIcon className="h-5 w-5" />,
 		},
 		{
 			title: "Favorites",
 			href: "/favorites",
-			icon: <BookHeartIcon className="h-5 w-5" />,
+			icon: <HeartIcon className="h-5 w-5" />,
 		},
 	]
 
