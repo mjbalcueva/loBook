@@ -3,7 +3,7 @@ import { Head } from "@inertiajs/react"
 import { Separator } from "@/Components/ui/separator"
 import { AddForm } from "@/Components/uploads/add-form"
 
-const Add = () => {
+const AddBook = () => {
 	return (
 		<div className="space-y-6">
 			<Head title="Add book" />
@@ -23,4 +23,4 @@ const Add = () => {
 	)
 }
 
-export default Add
+export default AddBook
