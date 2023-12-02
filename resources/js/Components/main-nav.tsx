@@ -11,7 +11,6 @@ import {
 	Sheet,
 	SheetContent,
 	SheetHeader,
-	SheetTitle,
 	SheetTrigger,
 } from "@/Components/ui/sheet"
 import { UserNav } from "@/Components/user-nav"
@@ -20,9 +19,14 @@ import { PageProps, User } from "@/types"
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	user: User
+	navLinks: {
+		title: string
+		href: string
+		icon: ReactNode
+	}[]
 }
 
-const MainNav = ({ user, className, children }: Props) => {
+const MainNav = ({ user, navLinks, className }: Props) => {
 	const appName = usePage<PageProps>().props.appName
 
 	return (
@@ -58,12 +62,21 @@ const MainNav = ({ user, className, children }: Props) => {
 							</Button>
 						</SheetHeader>
 						<Separator className="my-2 w-full" />
-						<ul className="flex-1 space-y-2">{children}</ul>
+						<ul className="flex-1 space-y-2">
+							{navLinks.map((item) => (
+								<MainNav.Item
+									key={item.href}
+									title={item.title}
+									href={item.href}
+									icon={item.icon}
+								/>
+							))}
+						</ul>
 					</SheetContent>
 				</Sheet>
 			</div>
 			<div className="flex items-center space-x-2">
-				<SearchInput />
+				<SearchInput navLinks={navLinks} />
 				<UserNav user={user} />
 			</div>
 		</div>
