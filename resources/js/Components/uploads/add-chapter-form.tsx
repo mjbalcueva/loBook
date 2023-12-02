@@ -1,43 +1,50 @@
-import { useForm } from "@inertiajs/react"
-import { FC, FormEventHandler } from "react"
+import { router } from "@inertiajs/react"
+import { FormEventHandler } from "react"
 
 import { Editor } from "@/Components/editor"
 import { Form } from "@/Components/form-inertia"
+import { Label } from "@/Components/ui/label"
 import { useToast } from "@/Components/ui/use-toast"
 
-interface Props {
-	bookId: number
-}
-
-const AddChapterForm: FC<Props> = ({ bookId }) => {
+const AddChapterForm = () => {
 	const { toast } = useToast()
-
-	const { data, setData, post, processing, errors, reset } = useForm({
-		content: "",
-	})
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
-
-		console.log(data)
-
 		toast({
 			description: (
 				<pre className="w-[340px] rounded-md">
-					<code className="text-white">{JSON.stringify(data, null, 2)}</code>
+					{/* <code className="text-white">{JSON.stringify(data, null, 2)}</code> */}
 				</pre>
 			),
 		})
+
+		// router.visit(route("uploads.addbook"))
 	}
 
 	return (
 		<Form
-			onSubmit={onSubmit}
 			className="space-y-4"
+			onSubmit={onSubmit}
 		>
-			<Editor onChange={(e) => setData("content", e)} />
+			<Form.Input
+				label="Title"
+				placeholder="Title"
+				// value={data.title}
+				// onChange={(e) => setData({ ...data, title: e.target.value })}
+			/>
 
-			<Form.Action processing={processing}>Add book</Form.Action>
+			<div className="space-y-2">
+				<Label className="mb-1">Content</Label>
+				<div className="rounded-md border p-1">
+					<Editor onChange={() => {}} />
+				</div>
+			</div>
+
+			<Form.Action
+				processing={false}
+				className="mt-4"
+			/>
 		</Form>
 	)
 }

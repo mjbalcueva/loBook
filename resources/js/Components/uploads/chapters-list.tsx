@@ -18,7 +18,7 @@ import {
 
 interface Props {
 	chapters: {
-		id: number
+		id?: number
 		title: string
 		content: string
 	}[]
@@ -45,17 +45,17 @@ const ChaptersList: FC<Props> = ({ chapters }) => {
 							align="end"
 							className="text-muted-foreground"
 						>
-							<Link href={`/uploads/book/${chapter.id}/chapter`}>
+							<Link href={`/uploads/book/chapter/${chapter.id}`}>
 								<DropdownMenuItem>
 									<BookOpenTextIcon className="mr-2 h-4 w-4" /> Read
 								</DropdownMenuItem>
 							</Link>
-							<Link href={`/uploads/book/${chapter.id}/chapter`}>
+							<Link href={`/uploads/book/chapter/${chapter.id}`}>
 								<DropdownMenuItem>
 									<FileSignatureIcon className="mr-2 h-4 w-4" /> Edit
 								</DropdownMenuItem>
 							</Link>
-							<Link href={`/uploads/book/${chapter.id}/chapter/delete`}>
+							<Link href={`/uploads/book/chapter/${chapter.id}/delete`}>
 								<DropdownMenuItem>
 									<TrashIcon className="mr-2 h-4 w-4" /> Delete
 								</DropdownMenuItem>

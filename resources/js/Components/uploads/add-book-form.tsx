@@ -7,17 +7,26 @@ import { Label } from "@/Components/ui/label"
 import { useToast } from "@/Components/ui/use-toast"
 import { ChaptersList } from "@/Components/uploads/chapters-list"
 
+const chapters: {
+	id?: number
+	title: string
+	content: any
+}[] = []
+
 const AddBookForm = () => {
 	const { toast } = useToast()
 
-	const { data, setData, post, processing, errors, reset } = useForm({
-		cover: "",
-		title: "",
-		author: "",
-		description: "",
-		genres: "",
-		chapters: [],
-	})
+	const { data, setData, post, processing, errors, reset } = useForm(
+		"CreateBook",
+		{
+			cover: "",
+			title: "",
+			author: "",
+			description: "",
+			genres: "",
+			chapters: chapters,
+		},
+	)
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
@@ -90,6 +99,16 @@ const AddBookForm = () => {
 						className="h-8 px-2 text-sm font-normal text-muted-foreground"
 						variant={"secondary"}
 						type="button"
+						onClick={() => {
+							setData("chapters", [
+								...data.chapters,
+								{
+									id: data.chapters.length + 1,
+									title: `Chapter ${data.chapters.length + 1}`,
+									content: "",
+								},
+							])
+						}}
 					>
 						Add chapter
 					</Button>

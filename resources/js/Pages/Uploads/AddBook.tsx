@@ -6,7 +6,7 @@ import { AddBookForm } from "@/Components/uploads/add-book-form"
 
 const AddBook = () => {
 	return (
-		<div className="space-y-6">
+		<div className="mb-32 space-y-6">
 			<Head title="Add book" />
 			<div>
 				<h2 className="text-2xl font-medium tracking-tight">Add book</h2>
