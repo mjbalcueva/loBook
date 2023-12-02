@@ -1,7 +1,8 @@
-import { Head } from "@inertiajs/react"
+import { Head, Link } from "@inertiajs/react"
 
+import { Button } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
-import { AddForm } from "@/Components/uploads/add-form"
+import { AddBookForm } from "@/Components/uploads/add-book-form"
 
 const AddBook = () => {
 	return (
@@ -17,8 +18,11 @@ const AddBook = () => {
 				<Separator />
 			</div>
 			<div>
-				<AddForm />
+				<AddBookForm />
 			</div>
+			<Link href="/uploads/book/2/chapter">
+				<Button variant={"secondary"}>Chapters</Button>
+			</Link>
 		</div>
 	)
 }
