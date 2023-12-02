@@ -8,25 +8,23 @@ import { Chapters } from "@/Components/uploads/add-book-form"
 import { useToast } from "../ui/use-toast"
 
 interface Props {
-	data: {
-		data: any
-		setData: any
-		chapterCount: number
-	}
+	data: any
+	setData: any
+	targetChapter: number
 }
 
-const AddChapterForm: FC<Props> = ({ data }) => {
+const EditChapterSheetForm: FC<Props> = ({ data, setData, targetChapter }) => {
 	const { toast } = useToast()
 
-	const chapters = data.data.chapters as Chapters
-	const latestChapter = chapters.length - 1
+	const chapters = data.chapters as Chapters
+	targetChapter = targetChapter - 1
 
 	const onSave: FormEventHandler = (e) => {
 		toast({
 			description: (
 				<pre className="w-[340px] rounded-md">
 					<code className="text-white">
-						{JSON.stringify(chapters[latestChapter], null, 2)}
+						{JSON.stringify(chapters[targetChapter], null, 2)}
 					</code>
 				</pre>
 			),
@@ -39,15 +37,16 @@ const AddChapterForm: FC<Props> = ({ data }) => {
 				label="Chapter Title"
 				placeholder="Title"
 				className="sm:w-72"
-				value={chapters[latestChapter].title}
+				value={chapters[targetChapter].title}
 				onChange={(e) => {
-					data.setData("chapters", [
-						...chapters.slice(0, latestChapter),
-						{
-							...chapters[latestChapter],
-							title: e.target.value,
-						},
-					])
+					setData(
+						"chapters",
+						chapters.map((chapter, index) =>
+							index === targetChapter
+								? { ...chapter, title: e.target.value }
+								: chapter,
+						),
+					)
 				}}
 			/>
 
@@ -56,14 +55,14 @@ const AddChapterForm: FC<Props> = ({ data }) => {
 				<div className="rounded-md border p-1">
 					<Editor
 						onChange={(content) => {
-							data.setData("chapters", [
-								...chapters.slice(0, latestChapter),
-								{
-									...chapters[latestChapter],
-									content,
-								},
-							])
+							setData(
+								"chapters",
+								chapters.map((chapter, index) =>
+									index === targetChapter ? { ...chapter, content } : chapter,
+								),
+							)
 						}}
+						initialContent={chapters[targetChapter].content}
 					/>
 				</div>
 			</div>
@@ -80,4 +79,4 @@ const AddChapterForm: FC<Props> = ({ data }) => {
 	)
 }
 
-export { AddChapterForm }
+export { EditChapterSheetForm }

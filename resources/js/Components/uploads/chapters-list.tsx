@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 
 import {
 	FileSignatureIcon,
@@ -15,16 +15,32 @@ import {
 } from "@/Components/ui/dropdown-menu"
 import { Chapters } from "@/Components/uploads/add-book-form"
 
+import { EditChapterSheet } from "./edit-chapter-sheet"
+
 interface Props {
-	chapters: Chapters
+	data: any
 	setData: any
+	chapterCount: number
 }
 
-const ChaptersList: FC<Props> = ({ chapters, setData }) => {
+const ChaptersList: FC<Props> = ({ data, setData, chapterCount }) => {
+	const [open, setOpen] = useState(false)
+	const [targetChapter, setTargetChapter] = useState(0)
+
+	const chapters = data.chapters as Chapters
+
 	if (chapters?.length === 0) return <h2 className="m-4">Create a chapter</h2>
 
 	return (
 		<>
+			<EditChapterSheet
+				data={data}
+				setData={setData}
+				open={open}
+				setOpen={setOpen}
+				targetChapter={targetChapter}
+			/>
+
 			{chapters.map((chapter) => (
 				<div
 					key={chapter.id}
@@ -41,9 +57,15 @@ const ChaptersList: FC<Props> = ({ chapters, setData }) => {
 							align="end"
 							className="text-muted-foreground"
 						>
-							<DropdownMenuItem>
+							<DropdownMenuItem
+								onClick={() => {
+									setOpen(true)
+									setTargetChapter(chapter.id!)
+								}}
+							>
 								<FileSignatureIcon className="mr-2 h-4 w-4" /> Edit
 							</DropdownMenuItem>
+
 							<DropdownMenuItem
 								onClick={() => {
 									setData(

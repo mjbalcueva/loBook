@@ -1,7 +1,7 @@
 import { Head } from "@inertiajs/react"
 
 import { Separator } from "@/Components/ui/separator"
-import { AddChapterForm } from "@/Components/uploads/add-chapter-form"
+import { EditChapterSheetForm } from "@/Components/uploads/edit-chapter-sheet-form"
 
 const AddChapter = () => {
 	return (
@@ -17,7 +17,7 @@ const AddChapter = () => {
 				<Separator />
 			</div>
 			<div>
-				<AddChapterForm />
+				<EditChapterSheetForm />
 			</div>
 		</div>
 	)
