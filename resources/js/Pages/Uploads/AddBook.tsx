@@ -20,9 +20,6 @@ const AddBook = () => {
 			<div>
 				<AddBookForm />
 			</div>
-			<Link href="/uploads/book/2/chapter">
-				<Button variant={"secondary"}>Chapters</Button>
-			</Link>
 		</div>
 	)
 }

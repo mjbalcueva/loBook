@@ -2,10 +2,10 @@ import { useForm } from "@inertiajs/react"
 import { FormEventHandler } from "react"
 
 import { Form } from "@/Components/form-inertia"
+import { Button } from "@/Components/ui/button"
+import { Label } from "@/Components/ui/label"
 import { useToast } from "@/Components/ui/use-toast"
-
-import { Button } from "../ui/button"
-import { Label } from "../ui/label"
+import { ChaptersList } from "@/Components/uploads/chapters-list"
 
 const AddBookForm = () => {
 	const { toast } = useToast()
@@ -16,17 +16,7 @@ const AddBookForm = () => {
 		author: "",
 		description: "",
 		genres: "",
-		chapters: [
-			{
-				content: "a",
-			},
-			{
-				content: "s",
-			},
-			{
-				content: "d",
-			},
-		],
+		chapters: [],
 	})
 
 	const onSubmit: FormEventHandler = (e) => {
@@ -47,15 +37,7 @@ const AddBookForm = () => {
 			onSubmit={onSubmit}
 			className="space-y-4"
 		>
-			<Form.Image
-				label="Book Cover"
-				value={data.cover}
-				onChange={(e) => setData("cover", e.target.value)}
-				message={errors.cover}
-				className="file:rounded-sm file:bg-accent sm:w-72"
-			/>
-
-			<div className="flex flex-col gap-8 sm:flex-row">
+			<div className="flex flex-col flex-wrap gap-8 sm:flex-row">
 				<Form.Input
 					label="Book Title"
 					value={data.title}
@@ -72,6 +54,14 @@ const AddBookForm = () => {
 					placeholder="Author"
 					message={errors.author}
 					className="sm:w-72"
+				/>
+
+				<Form.Image
+					label="Book Cover"
+					value={data.cover}
+					onChange={(e) => setData("cover", e.target.value)}
+					message={errors.cover}
+					className="text-muted-foreground file:mr-2 file:rounded-sm file:bg-accent/80 file:text-muted-foreground sm:w-72"
 				/>
 			</div>
 
@@ -94,15 +84,19 @@ const AddBookForm = () => {
 			/>
 
 			<div className="space-y-2">
-				<Label>Chapters</Label>
-				<div className="rounded-md border px-3 py-2 text-sm text-muted-foreground">
-					<div>
-						<Button
-							variant={"secondary"}
-							className="w-full"
-						>
-							Add chapter
-						</Button>
+				<div className="mt-6 flex items-end justify-between">
+					<Label className="mb-1">Chapters</Label>
+					<Button
+						className="h-8 px-2 text-sm font-normal text-muted-foreground"
+						variant={"secondary"}
+						type="button"
+					>
+						Add chapter
+					</Button>
+				</div>
+				<div className="rounded-md border p-1 text-sm text-muted-foreground">
+					<div className="flex flex-col-reverse">
+						<ChaptersList chapters={data.chapters} />
 					</div>
 				</div>
 			</div>
@@ -111,7 +105,7 @@ const AddBookForm = () => {
 				processing={processing}
 				className=""
 			>
-				Add book
+				Create book
 			</Form.Action>
 		</Form>
 	)
