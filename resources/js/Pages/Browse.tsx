@@ -1,5 +1,6 @@
 import { Head, Link } from "@inertiajs/react"
 
+import { Editor } from "@/Components/editor"
 import { EmptyBooks } from "@/Components/empty-books"
 import { Button } from "@/Components/ui/button"
 

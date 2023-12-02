@@ -96,6 +96,27 @@ const FormTextarea = ({
 	)
 }
 
+const FormImage = ({
+	label,
+	message,
+	...props
+}: {
+	label: string
+	message?: string
+} & InputProps) => {
+	return (
+		<div className="space-y-2">
+			<Label htmlFor={label}>{label}</Label>
+			<Input
+				id={label}
+				type="file"
+				{...props}
+			/>
+			<FormMessage message={message} />
+		</div>
+	)
+}
+
 const FormCheckbox = ({
 	label,
 	checked,
@@ -164,5 +185,6 @@ Form.Input = FormInput
 Form.Textarea = FormTextarea
 Form.Checkbox = FormCheckbox
 Form.Action = FormAction
+Form.Image = FormImage
 
 export { Form, FormItem, FormMessage }
