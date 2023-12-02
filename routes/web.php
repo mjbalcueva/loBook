@@ -31,6 +31,7 @@ Route::middleware('auth', 'verified')->group(function () {
   Route::get('/uploads/add', function () {
     return Inertia::render('Uploads/AddBook');
   })->name('uploads.add');
+  
 
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');
