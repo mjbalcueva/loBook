@@ -15,7 +15,7 @@ const AddBookForm = () => {
 		title: "",
 		author: "",
 		description: "",
-		genres: "",
+		genre: "",
 	})
 
 	const onSubmit: FormEventHandler = (e) => {
