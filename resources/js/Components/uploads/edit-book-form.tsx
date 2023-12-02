@@ -7,7 +7,7 @@ import { useToast } from "@/Components/ui/use-toast"
 import { Button } from "../ui/button"
 import { Label } from "../ui/label"
 
-const AddBookForm = () => {
+const EditBookForm = () => {
 	const { toast } = useToast()
 
 	const { data, setData, post, processing, errors, reset } = useForm({
@@ -117,4 +117,4 @@ const AddBookForm = () => {
 	)
 }
 
-export { AddBookForm }
+export { EditBookForm }
