@@ -10,8 +10,9 @@ const AddForm = () => {
 	const { data, setData, post, processing, errors, reset } = useForm({
 		cover: "",
 		title: "",
+		author: "",
 		description: "",
-		genres: "",
+		genre: "",
 	})
 
 	const onSubmit: FormEventHandler = (e) => {
@@ -24,7 +25,7 @@ const AddForm = () => {
 				</pre>
 			),
 		})
-		// post(route("uploads.add"))
+		post(route("books.store"))
 	}
 
 	return (
@@ -60,10 +61,10 @@ const AddForm = () => {
 
 			<Form.Textarea
 				label="Genres"
-				value={data.genres}
-				onChange={(e) => setData("genres", e.target.value)}
+				value={data.genre}
+				onChange={(e) => setData("genre", e.target.value)}
 				placeholder="genre1, genre2, genre3"
-				message={errors.genres}
+				message={errors.genre}
 				className="resize-none"
 			/>
 

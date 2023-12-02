@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Books;
 
-class AddBook extends Controller
+class BooksController extends Controller
 {
-    /**
+        /**
      * Display a listing of the resource.
      */
     public function index()
@@ -26,8 +27,10 @@ class AddBook extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
+        Books::create($request->all());
         
+        return Inertia::render('Uploads')->with('success', 'Book added successfully');    
     }
-
 }
