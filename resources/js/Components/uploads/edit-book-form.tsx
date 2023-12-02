@@ -7,7 +7,7 @@ import { useToast } from "@/Components/ui/use-toast"
 import { Button } from "../ui/button"
 import { Label } from "../ui/label"
 
-const AddBookForm = () => {
+const EditBookForm = () => {
 	const { toast } = useToast()
 
 	const { data, setData, post, processing, errors, reset } = useForm({
@@ -16,6 +16,17 @@ const AddBookForm = () => {
 		author: "",
 		description: "",
 		genres: "",
+		chapters: [
+			{
+				content: "a",
+			},
+			{
+				content: "s",
+			},
+			{
+				content: "d",
+			},
+		],
 	})
 
 	const onSubmit: FormEventHandler = (e) => {
@@ -28,7 +39,7 @@ const AddBookForm = () => {
 				</pre>
 			),
 		})
-		post(route("books.store"))
+		// post(route("uploads.add"))
 	}
 
 	return (
@@ -75,10 +86,10 @@ const AddBookForm = () => {
 
 			<Form.Textarea
 				label="Genres"
-				value={data.genre}
-				onChange={(e) => setData("genre", e.target.value)}
+				value={data.genres}
+				onChange={(e) => setData("genres", e.target.value)}
 				placeholder="genre1, genre2, genre3"
-				message={errors.genre}
+				message={errors.genres}
 				className="resize-none"
 			/>
 
@@ -106,4 +117,4 @@ const AddBookForm = () => {
 	)
 }
 
-export { AddBookForm }
+export { EditBookForm }
