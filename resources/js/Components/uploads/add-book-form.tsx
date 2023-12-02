@@ -10,6 +10,7 @@ const AddBookForm = () => {
 	const { data, setData, post, processing, errors, reset } = useForm({
 		cover: "",
 		title: "",
+		author: "",
 		description: "",
 		genres: "",
 	})
@@ -40,14 +41,25 @@ const AddBookForm = () => {
 				className="file:rounded-sm file:bg-accent sm:w-72"
 			/>
 
-			<Form.Input
-				label="Book Title"
-				value={data.title}
-				onChange={(e) => setData("title", e.target.value)}
-				placeholder="Title"
-				message={errors.title}
-				className="sm:w-72"
-			/>
+			<div className="flex flex-col gap-8 sm:flex-row">
+				<Form.Input
+					label="Book Title"
+					value={data.title}
+					onChange={(e) => setData("title", e.target.value)}
+					placeholder="Title"
+					message={errors.title}
+					className="sm:w-72"
+				/>
+
+				<Form.Input
+					label="Book Author"
+					value={data.author}
+					onChange={(e) => setData("author", e.target.value)}
+					placeholder="Author"
+					message={errors.author}
+					className="sm:w-72"
+				/>
+			</div>
 
 			<Form.Textarea
 				label="Book Description"

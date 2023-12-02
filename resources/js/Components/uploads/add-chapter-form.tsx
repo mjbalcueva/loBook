@@ -1,20 +1,25 @@
 import { useForm } from "@inertiajs/react"
-import { FormEventHandler } from "react"
+import { FC, FormEventHandler } from "react"
 
+import { Editor } from "@/Components/editor"
 import { Form } from "@/Components/form-inertia"
 import { useToast } from "@/Components/ui/use-toast"
 
-const AddBookForm = () => {
+interface Props {
+	bookId: number
+}
+
+const AddChapterForm: FC<Props> = ({ bookId }) => {
 	const { toast } = useToast()
 
 	const { data, setData, post, processing, errors, reset } = useForm({
-		title: "",
-		description: "",
-		genres: "",
+		content: "",
 	})
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
+
+		console.log(data)
 
 		toast({
 			description: (
@@ -30,41 +35,11 @@ const AddBookForm = () => {
 			onSubmit={onSubmit}
 			className="space-y-4"
 		>
-			<Form.Input
-				label="Chapter Title"
-				value={data.title}
-				onChange={(e) => setData("title", e.target.value)}
-				placeholder="Title"
-				message={errors.title}
-				className="sm:w-72"
-			/>
+			<Editor onChange={(e) => setData("content", e)} />
 
-			<Form.Textarea
-				label="Book Description"
-				value={data.description}
-				onChange={(e) => setData("description", e.target.value)}
-				placeholder="Description"
-				message={errors.description}
-				className="min-h-[140px] resize-none"
-			/>
-
-			<Form.Textarea
-				label="Genres"
-				value={data.genres}
-				onChange={(e) => setData("genres", e.target.value)}
-				placeholder="genre1, genre2, genre3"
-				message={errors.genres}
-				className="resize-none"
-			/>
-
-			<Form.Action
-				processing={processing}
-				className=""
-			>
-				Add book
-			</Form.Action>
+			<Form.Action processing={processing}>Add book</Form.Action>
 		</Form>
 	)
 }
 
-export { AddBookForm }
+export { AddChapterForm }

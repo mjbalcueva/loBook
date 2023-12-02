@@ -28,10 +28,16 @@ Route::middleware('auth', 'verified')->group(function () {
     return Inertia::render('Uploads');
   })->name('uploads');
 
-  Route::get('/uploads/add', function () {
+  Route::get('/uploads/book', function () {
     return Inertia::render('Uploads/AddBook');
-  })->name('uploads.add');
-  
+  })->name('uploads.addbook');
+
+  Route::get('/uploads/book/{id}/chapter', function ($id) {
+    return Inertia::render('Uploads/AddChapter', [
+      'bookId' => $id
+    ]);
+  })->name('uploads.addchapter');
+
 
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');
