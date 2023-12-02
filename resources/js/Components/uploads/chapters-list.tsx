@@ -1,8 +1,6 @@
-import { Link } from "@inertiajs/react"
 import { FC } from "react"
 
 import {
-	BookOpenTextIcon,
 	FileSignatureIcon,
 	MoreHorizontalIcon,
 	ScrollTextIcon,
@@ -15,16 +13,14 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu"
+import { Chapters } from "@/Components/uploads/add-book-form"
 
 interface Props {
-	chapters: {
-		id?: number
-		title: string
-		content: string
-	}[]
+	chapters: Chapters
+	setData: any
 }
 
-const ChaptersList: FC<Props> = ({ chapters }) => {
+const ChaptersList: FC<Props> = ({ chapters, setData }) => {
 	if (chapters?.length === 0) return <h2 className="m-4">Create a chapter</h2>
 
 	return (
@@ -45,21 +41,19 @@ const ChaptersList: FC<Props> = ({ chapters }) => {
 							align="end"
 							className="text-muted-foreground"
 						>
-							<Link href={`/uploads/book/chapter/${chapter.id}`}>
-								<DropdownMenuItem>
-									<BookOpenTextIcon className="mr-2 h-4 w-4" /> Read
-								</DropdownMenuItem>
-							</Link>
-							<Link href={`/uploads/book/chapter/${chapter.id}`}>
-								<DropdownMenuItem>
-									<FileSignatureIcon className="mr-2 h-4 w-4" /> Edit
-								</DropdownMenuItem>
-							</Link>
-							<Link href={`/uploads/book/chapter/${chapter.id}/delete`}>
-								<DropdownMenuItem>
-									<TrashIcon className="mr-2 h-4 w-4" /> Delete
-								</DropdownMenuItem>
-							</Link>
+							<DropdownMenuItem>
+								<FileSignatureIcon className="mr-2 h-4 w-4" /> Edit
+							</DropdownMenuItem>
+							<DropdownMenuItem
+								onClick={() => {
+									setData(
+										"chapters",
+										chapters.filter((c) => c.id !== chapter.id),
+									)
+								}}
+							>
+								<TrashIcon className="mr-2 h-4 w-4" /> Delete
+							</DropdownMenuItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
 				</div>

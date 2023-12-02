@@ -1,32 +1,39 @@
 import { useForm } from "@inertiajs/react"
-import { FormEventHandler } from "react"
+import { FormEventHandler, useState } from "react"
 
 import { Form } from "@/Components/form-inertia"
 import { Button } from "@/Components/ui/button"
 import { Label } from "@/Components/ui/label"
+import {
+	Sheet,
+	SheetContent,
+	SheetDescription,
+	SheetTitle,
+	SheetTrigger,
+} from "@/Components/ui/sheet"
 import { useToast } from "@/Components/ui/use-toast"
 import { ChaptersList } from "@/Components/uploads/chapters-list"
 
-const chapters: {
+import { Separator } from "../ui/separator"
+import { AddChapterForm } from "./add-chapter-form"
+
+export type Chapters = {
 	id?: number
 	title: string
 	content: any
-}[] = []
+}[]
 
 const AddBookForm = () => {
 	const { toast } = useToast()
 
-	const { data, setData, post, processing, errors, reset } = useForm(
-		"CreateBook",
-		{
-			cover: "",
-			title: "",
-			author: "",
-			description: "",
-			genres: "",
-			chapters: chapters,
-		},
-	)
+	const { data, setData, post, processing, errors, reset } = useForm({
+		cover: "",
+		title: "",
+		author: "",
+		description: "",
+		genres: "",
+		chapters: [] as Chapters,
+	})
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
@@ -39,6 +46,20 @@ const AddBookForm = () => {
 			),
 		})
 		// post(route("uploads.add"))
+	}
+
+	const [chapterCount, setChapterCount] = useState(1)
+
+	const addChapter = () => {
+		setChapterCount(chapterCount + 1)
+		setData("chapters", [
+			...data.chapters,
+			{
+				id: chapterCount,
+				title: `Chapter ${chapterCount}`,
+				content: "",
+			},
+		])
 	}
 
 	return (
@@ -95,27 +116,36 @@ const AddBookForm = () => {
 			<div className="space-y-2">
 				<div className="mt-6 flex items-end justify-between">
 					<Label className="mb-1">Chapters</Label>
-					<Button
-						className="h-8 px-2 text-sm font-normal text-muted-foreground"
-						variant={"secondary"}
-						type="button"
-						onClick={() => {
-							setData("chapters", [
-								...data.chapters,
-								{
-									id: data.chapters.length + 1,
-									title: `Chapter ${data.chapters.length + 1}`,
-									content: "",
-								},
-							])
-						}}
-					>
-						Add chapter
-					</Button>
+					<Sheet>
+						<SheetTrigger>
+							<Button
+								className="h-8 px-2 text-sm font-normal text-muted-foreground"
+								variant={"secondary"}
+								type="button"
+								onClick={addChapter}
+							>
+								Add chapter
+							</Button>
+						</SheetTrigger>
+						<SheetContent
+							side={"right"}
+							className="sm:max-w-[75vw] "
+						>
+							<SheetTitle>Create a chapter</SheetTitle>
+							<SheetDescription>
+								Create a chapter for your book.
+							</SheetDescription>
+							<Separator className="my-4" />
+							<AddChapterForm data={{ data, setData, chapterCount }} />
+						</SheetContent>
+					</Sheet>
 				</div>
 				<div className="rounded-md border p-1 text-sm text-muted-foreground">
 					<div className="flex flex-col-reverse">
-						<ChaptersList chapters={data.chapters} />
+						<ChaptersList
+							chapters={data.chapters}
+							setData={setData}
+						/>
 					</div>
 				</div>
 			</div>
