@@ -2,6 +2,7 @@ import { Head } from "@inertiajs/react"
 
 import { PlusCircle } from "lucide-react"
 
+import { EmptyBooks } from "@/Components/empty-books"
 import { Button } from "@/Components/ui/button"
 
 const Uploads = () => {
@@ -17,11 +18,7 @@ const Uploads = () => {
 					</Button>
 				</div>
 			</div>
-			<div className="flex min-h-[50vh] items-center justify-center rounded-md border">
-				<p className="select-none text-muted-foreground">
-					Embark on your reading journey...
-				</p>
-			</div>
+			<EmptyBooks message="No books uploaded yet." />
 		</>
 	)
 }
