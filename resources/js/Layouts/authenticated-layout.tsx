@@ -23,8 +23,8 @@ const AuthenticatedLayout = ({ user, children }: Props) => {
 			icon: <LayoutDashboardIcon className="h-5 w-5" />,
 		},
 		{
-			title: "Uploaded",
-			href: "/uploaded",
+			title: "Uploads",
+			href: "/uploads",
 			icon: <HardDriveUploadIcon className="h-5 w-5" />,
 		},
 		{
@@ -41,7 +41,7 @@ const AuthenticatedLayout = ({ user, children }: Props) => {
 				<MainNav
 					user={user}
 					navLinks={links}
-					className="sticky top-0 z-50 w-full bg-background/40 backdrop-blur-lg dark:bg-background/90"
+					className="sticky top-0 z-50 w-full bg-background/40 backdrop-blur-lg dark:bg-background/80"
 				/>
 
 				<div className="px-2 md:container">{children}</div>
