@@ -19,8 +19,8 @@ const Browse = ({ laravelVersion, phpVersion }: Props) => {
 				Laravel version {laravelVersion} (PHP version {phpVersion}) Hello{" "}
 			</p>
 
-			<Link href={route("uploaded")}>
-				<Button>Dashboard</Button>
+			<Link href={route("uploads")}>
+				<Button>Uploads</Button>
 			</Link>
 		</>
 	)

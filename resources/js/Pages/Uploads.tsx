@@ -4,10 +4,10 @@ import { PlusCircle } from "lucide-react"
 
 import { Button } from "@/Components/ui/button"
 
-const Uploaded = () => {
+const Uploads = () => {
 	return (
 		<>
-			<Head title="Uploaded" />
+			<Head title="Uploads" />
 			<div className="my-4 flex items-center justify-between">
 				<h2 className="text-3xl font-bold tracking-tight">Add book</h2>
 				<div className="flex items-center space-x-2">
@@ -26,4 +26,4 @@ const Uploaded = () => {
 	)
 }
 
-export default Uploaded
+export default Uploads

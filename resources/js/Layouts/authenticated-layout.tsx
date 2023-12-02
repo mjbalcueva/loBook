@@ -23,8 +23,8 @@ const AuthenticatedLayout = ({ user, children }: Props) => {
 			icon: <LayoutDashboardIcon className="h-5 w-5" />,
 		},
 		{
-			title: "Uploaded",
-			href: "/uploaded",
+			title: "Uploads",
+			href: "/uploads",
 			icon: <HardDriveUploadIcon className="h-5 w-5" />,
 		},
 		{

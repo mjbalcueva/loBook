@@ -24,9 +24,9 @@ Route::middleware('auth', 'verified')->group(function () {
     ]);
   });
 
-  Route::get('/uploaded', function () {
-    return Inertia::render('Uploaded');
-  })->name('uploaded');
+  Route::get('/uploads', function () {
+    return Inertia::render('Uploads');
+  })->name('uploads');
 
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');
