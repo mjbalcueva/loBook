@@ -19,7 +19,7 @@ const EditChapterSheetForm: FC<Props> = ({ data, setData, targetChapter }) => {
 	const chapters = data.chapters as Chapters
 	targetChapter = targetChapter - 1
 
-	const onSave: FormEventHandler = (e) => {
+	const onSave: FormEventHandler = () => {
 		toast({
 			description: (
 				<pre className="w-[340px] rounded-md">

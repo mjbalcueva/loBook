@@ -20,10 +20,9 @@ import { EditChapterSheet } from "./edit-chapter-sheet"
 interface Props {
 	data: any
 	setData: any
-	chapterCount: number
 }
 
-const ChaptersList: FC<Props> = ({ data, setData, chapterCount }) => {
+const ListChapters: FC<Props> = ({ data, setData }) => {
 	const [open, setOpen] = useState(false)
 	const [targetChapter, setTargetChapter] = useState(0)
 
@@ -84,4 +83,4 @@ const ChaptersList: FC<Props> = ({ data, setData, chapterCount }) => {
 	)
 }
 
-export { ChaptersList }
+export { ListChapters }

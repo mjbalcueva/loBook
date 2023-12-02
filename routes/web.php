@@ -32,13 +32,6 @@ Route::middleware('auth', 'verified')->group(function () {
     return Inertia::render('Uploads/AddBook');
   })->name('uploads.addbook');
 
-  Route::get('/uploads/book/{id}/chapter', function ($id) {
-    return Inertia::render('Uploads/AddChapter', [
-      'bookId' => $id
-    ]);
-  })->name('uploads.addchapter');
-
-
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');
   })->name('favorites');

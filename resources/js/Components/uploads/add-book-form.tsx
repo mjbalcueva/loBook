@@ -5,7 +5,7 @@ import { Form } from "@/Components/form-inertia"
 import { Button } from "@/Components/ui/button"
 import { Label } from "@/Components/ui/label"
 import { useToast } from "@/Components/ui/use-toast"
-import { ChaptersList } from "@/Components/uploads/chapters-list"
+import { ListChapters } from "@/Components/uploads/list-chapters"
 
 export type Chapters = {
 	id: number
@@ -116,10 +116,9 @@ const AddBookForm = () => {
 					</div>
 					<div className="rounded-md border p-1 text-sm text-muted-foreground">
 						<div className="flex flex-col-reverse">
-							<ChaptersList
+							<ListChapters
 								data={data}
 								setData={setData}
-								chapterCount={chapterCount}
 							/>
 						</div>
 					</div>
