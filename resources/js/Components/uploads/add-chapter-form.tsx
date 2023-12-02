@@ -4,11 +4,10 @@ import { FormEventHandler } from "react"
 import { Form } from "@/Components/form-inertia"
 import { useToast } from "@/Components/ui/use-toast"
 
-const AddForm = () => {
+const AddBookForm = () => {
 	const { toast } = useToast()
 
 	const { data, setData, post, processing, errors, reset } = useForm({
-		cover: "",
 		title: "",
 		description: "",
 		genres: "",
@@ -24,7 +23,6 @@ const AddForm = () => {
 				</pre>
 			),
 		})
-		// post(route("uploads.add"))
 	}
 
 	return (
@@ -32,16 +30,8 @@ const AddForm = () => {
 			onSubmit={onSubmit}
 			className="space-y-4"
 		>
-			<Form.Image
-				label="Book Cover"
-				value={data.cover}
-				onChange={(e) => setData("cover", e.target.value)}
-				message={errors.cover}
-				className="file:rounded-sm file:bg-accent sm:w-72"
-			/>
-
 			<Form.Input
-				label="Book Title"
+				label="Chapter Title"
 				value={data.title}
 				onChange={(e) => setData("title", e.target.value)}
 				placeholder="Title"
@@ -77,4 +67,4 @@ const AddForm = () => {
 	)
 }
 
-export { AddForm }
+export { AddBookForm }
