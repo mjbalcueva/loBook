@@ -1,4 +1,4 @@
-import { Head } from "@inertiajs/react"
+import { Head, Link } from "@inertiajs/react"
 
 import { PlusCircle } from "lucide-react"
 
@@ -12,10 +12,12 @@ const Uploads = () => {
 			<div className="my-4 flex items-center justify-between">
 				<h2 className="text-3xl font-bold tracking-tight">Add book</h2>
 				<div className="flex items-center space-x-2">
-					<Button className="text-sm">
-						<PlusCircle className="mr-2 h-5 w-5" />
-						Upload book
-					</Button>
+					<Link href={route("uploads.add")}>
+						<Button className="text-sm">
+							<PlusCircle className="mr-2 h-5 w-5" />
+							Upload book
+						</Button>
+					</Link>
 				</div>
 			</div>
 			<EmptyBooks message="No books uploaded yet." />

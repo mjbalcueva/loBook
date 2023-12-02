@@ -28,6 +28,10 @@ Route::middleware('auth', 'verified')->group(function () {
     return Inertia::render('Uploads');
   })->name('uploads');
 
+  Route::get('/uploads/add', function () {
+    return Inertia::render('Uploads/Add');
+  })->name('uploads.add');
+
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');
   })->name('favorites');

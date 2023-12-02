@@ -8,6 +8,7 @@ import { Button, ButtonProps } from "@/Components/ui/button"
 import { Checkbox } from "@/Components/ui/checkbox"
 import { Input, InputProps } from "@/Components/ui/input"
 import { Label } from "@/Components/ui/label"
+import { Textarea, TextareaProps } from "@/Components/ui/textarea"
 import { cn } from "@/Lib/utils"
 
 const Form = ({ children, ...props }: HTMLAttributes<HTMLFormElement>) => {
@@ -71,6 +72,26 @@ const FormInput = ({
 			)}
 			<FormMessage message={message} />
 			{children}
+		</div>
+	)
+}
+
+const FormTextarea = ({
+	label,
+	message,
+	...props
+}: {
+	label: string
+	message?: string
+} & TextareaProps) => {
+	return (
+		<div className="space-y-2">
+			<Label htmlFor={label}>{label}</Label>
+			<Textarea
+				id={label}
+				{...props}
+			/>
+			<FormMessage message={message} />
 		</div>
 	)
 }
@@ -140,6 +161,7 @@ const FormAction = ({
 }
 
 Form.Input = FormInput
+Form.Textarea = FormTextarea
 Form.Checkbox = FormCheckbox
 Form.Action = FormAction
 
