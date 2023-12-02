@@ -44,6 +44,7 @@
 		"clsx": "^2.0.0",
 		"cmdk": "^0.2.0",
 		"lucide-react": "^0.292.0",
+		"million": "^2.6.4",
 		"tailwind-merge": "^2.0.0",
 		"tailwindcss-animate": "^1.0.7",
 		"ziggy-js": "^1.8.1",

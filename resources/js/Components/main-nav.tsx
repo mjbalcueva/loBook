@@ -1,8 +1,9 @@
-import { Link } from "@inertiajs/react"
+import { Link, usePage } from "@inertiajs/react"
 import { HTMLAttributes, PropsWithChildren, ReactNode } from "react"
 
 import { MenuIcon } from "lucide-react"
 
+import { Logo } from "@/Components/logo"
 import { SearchInput } from "@/Components/search-input"
 import { Button, buttonVariants } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
@@ -15,17 +16,19 @@ import {
 } from "@/Components/ui/sheet"
 import { UserNav } from "@/Components/user-nav"
 import { cn } from "@/Lib/utils"
-import { User } from "@/types"
+import { PageProps, User } from "@/types"
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	user: User
 }
 
 const MainNav = ({ user, className, children }: Props) => {
+	const appName = usePage<PageProps>().props.appName
+
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-between border-b px-2 py-2 lg:py-4",
+				"flex items-center justify-between border-b px-2 py-2 md:container lg:py-4",
 				className,
 			)}
 		>
@@ -45,7 +48,14 @@ const MainNav = ({ user, className, children }: Props) => {
 						className="flex flex-col"
 					>
 						<SheetHeader>
-							<SheetTitle className="text-start">loBook</SheetTitle>
+							<Button
+								variant={"none"}
+								size={"icon"}
+								className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
+							>
+								<Logo className="mr-3 h-8 w-8" />
+								{appName}
+							</Button>
 						</SheetHeader>
 						<Separator className="my-2 w-full" />
 						<ul className="flex-1 space-y-2">{children}</ul>
