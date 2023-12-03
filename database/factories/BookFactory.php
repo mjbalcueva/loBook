@@ -22,21 +22,21 @@ class BookFactory extends Factory
       'title' => $this->faker->sentence(),
       'author' => $this->faker->name(),
       'description' => $this->faker->paragraph(),
-      'genre' => $this->faker->word(),
+      'genres' => $this->faker->word(),
       'cover' => $this->faker->imageUrl(),
       'user_id' => User::factory(),
     ];
   }
 
-  /**
-   * Configure the model factory.
-   * 
-   * @return $this
-   */
-  public function configure(): static
-  {
-    return $this->afterCreating(function (Book $book) {
-      $book->chapters()->saveMany(ChapterFactory::new()->count(3)->make());
-    });
-  }
+  // /**
+  //  * Configure the model factory.
+  //  * 
+  //  * @return $this
+  //  */
+  // public function configure(): static
+  // {
+  //   return $this->afterCreating(function (Book $book) {
+  //     $book->chapters()->saveMany(ChapterFactory::new()->count(3)->make());
+  //   });
+  // }
 }

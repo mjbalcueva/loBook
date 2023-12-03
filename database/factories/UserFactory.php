@@ -40,15 +40,15 @@ class UserFactory extends Factory
     ]);
   }
 
-  /**
-   * Configure the model factory.
-   * 
-   * @return $this
-   */
-  public function configure(): static
-  {
-    return $this->afterCreating(function (User $user) {
-      $user->books()->saveMany(BookFactory::new()->count(3)->make());
-    });
-  }
+  // /**
+  //  * Configure the model factory.
+  //  * 
+  //  * @return $this
+  //  */
+  // public function configure(): static
+  // {
+  //   return $this->afterCreating(function (User $user) {
+  //     $user->books()->saveMany(BookFactory::new()->count(3)->make());
+  //   });
+  // }
 }
