@@ -10,7 +10,7 @@ import {
 
 import { Logo } from "@/Components/logo"
 import { SidebarToggle } from "@/Components/sidebar-toggle"
-import { Button, buttonVariants } from "@/Components/ui/button"
+import { buttonVariants } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
 import {
 	Tooltip,
