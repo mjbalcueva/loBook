@@ -32,7 +32,7 @@ Route::middleware('auth', 'verified')->group(function () {
 
   Route::get('/uploads/book', function () {
     return Inertia::render('Uploads/AddBook');
-  })->name('uploads.add'); 
+  })->name('uploads.addbook'); 
 
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');

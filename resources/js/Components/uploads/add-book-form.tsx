@@ -82,19 +82,6 @@ const AddBookForm = () => {
 				className="resize-none"
 			/>
 
-			<div className="space-y-2">
-				<Label>Chapters</Label>
-				<div className="rounded-md border px-3 py-2 text-sm text-muted-foreground">
-					<div>
-						<Button
-							variant={"secondary"}
-							className="w-full"
-						>
-							Add chapter
-						</Button>
-					</div>
-				</div>
-			</div>
 
 			<Form.Action
 				processing={processing}
