@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -15,8 +16,12 @@ class BookController extends Controller
   {
     $books = Book::with('chapters')->get();
 
-    return Inertia::render('Uploads', [
-      'books' => $books,
+    // return Inertia::render('Uploads', [
+    //   'books' => $books,
+    // ]);
+    return Inertia::render('Browse', [
+      'laravelVersion' => Application::VERSION,
+      'phpVersion' => PHP_VERSION,
     ]);
   }
 

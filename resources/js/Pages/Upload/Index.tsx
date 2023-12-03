@@ -22,7 +22,7 @@ const Index: FC<Props> = ({ books }) => {
 				<h2 className="text-3xl font-bold tracking-tight">Add book</h2>
 				<div className="flex items-center space-x-2">
 					<Link
-						href={route("uploads.addbook")}
+						href={route("uploads.create")}
 						className={cn(buttonVariants({ size: "sm" }), "text-sm")}
 					>
 						<PlusCircle className="mr-2 h-5 w-5" />

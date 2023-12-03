@@ -1,9 +1,9 @@
 import { Head } from "@inertiajs/react"
 
 import { Separator } from "@/Components/ui/separator"
-import { AddBookForm } from "@/Components/uploads/add-book-form"
+import { AddBookForm } from "@/Components/upload/add-book-form"
 
-const AddBook = () => {
+const Create = () => {
 	return (
 		<div className="mb-32 space-y-6">
 			<Head title="Add book" />
@@ -23,4 +23,4 @@ const AddBook = () => {
 	)
 }
 
-export default AddBook
+export default Create

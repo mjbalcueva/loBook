@@ -20,12 +20,12 @@ use Inertia\Inertia;
 */
 
 Route::middleware('auth', 'verified')->group(function () {
-  Route::get('/', function () {
-    return Inertia::render('Browse', [
-      'laravelVersion' => Application::VERSION,
-      'phpVersion' => PHP_VERSION,
-    ]);
-  });
+  // Route::get('/', function () {
+  //   return Inertia::render('Browse', [
+  //     'laravelVersion' => Application::VERSION,
+  //     'phpVersion' => PHP_VERSION,
+  //   ]);
+  // });
   /**
    *  "/"
    *  "/{book_id}"
@@ -46,8 +46,8 @@ Route::middleware('auth', 'verified')->group(function () {
    */
 
   Route::get('/', [BookController::class, 'index'])->name('books.index');
-  Route::get('/{book_id}', [BookController::class, 'show'])->name('books.show');
-  Route::get('/{book_id}/{chapter_id}', [ChapterController::class, 'show'])->name('chapters.show');
+  Route::get('/browse/{book_id}', [BookController::class, 'show'])->name('books.show');
+  Route::get('/browse/{book_id}/{chapter_id}', [ChapterController::class, 'show'])->name('chapters.show');
 
   Route::get('/uploads', [UploadController::class, 'index'])->name('uploads.index');
   Route::get('/uploads/books', [UploadController::class, 'create'])->name('uploads.create');
@@ -65,36 +65,6 @@ Route::middleware('auth', 'verified')->group(function () {
   // Route::get('/uploads/book', function () {
   //   return Inertia::render('Uploads/AddBook');
   // })->name('uploads.addbook');
-
-  // Route::resource('/', BookController::class)->names([
-  //   'index' => 'books.index',
-  //   'create' => 'books.create',
-  //   'store' => 'books.store',
-  //   'show' => 'books.show',
-  //   'edit' => 'books.edit',
-  //   'update' => 'books.update',
-  //   'destroy' => 'books.destroy',
-  // ]);
-
-  // Route::resource('/uploads', UploadController::class)->names([
-  //   'index' => 'uploads.index',
-  //   'create' => 'uploads.create',
-  //   'store' => 'uploads.store',
-  //   'show' => 'uploads.show',
-  //   'edit' => 'uploads.edit',
-  //   'update' => 'uploads.update',
-  //   'destroy' => 'uploads.destroy',
-  // ]);
-
-  // Route::resource('/uploads/{book_id}/chapters', ChapterController::class)->names([
-  //   'index' => 'chapters.index',
-  //   'create' => 'chapters.create',
-  //   'store' => 'chapters.store',
-  //   'show' => 'chapters.show',
-  //   'edit' => 'chapters.edit',
-  //   'update' => 'chapters.update',
-  //   'destroy' => 'chapters.destroy',
-  // ]);
 
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');

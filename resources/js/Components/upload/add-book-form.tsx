@@ -5,7 +5,7 @@ import { Form } from "@/Components/form-inertia"
 import { Button } from "@/Components/ui/button"
 import { Label } from "@/Components/ui/label"
 import { useToast } from "@/Components/ui/use-toast"
-import { ListChapters } from "@/Components/uploads/list-chapters"
+import { ListChapters } from "@/Components/upload/list-chapters"
 
 export type Chapters = {
 	id: number

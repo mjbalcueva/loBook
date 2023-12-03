@@ -15,7 +15,7 @@ class UploadController extends Controller
   {
     $books = Book::where('user_id', auth()->user()->id)->with('chapters')->paginate(10);
 
-    return Inertia::render('Uploads/Index', [
+    return Inertia::render('Upload/Index', [
       'books' => $books,
     ]);
   }
@@ -25,7 +25,7 @@ class UploadController extends Controller
    */
   public function create()
   {
-    //
+    return Inertia::render('Uploads/Create');
   }
 
   /**

@@ -13,7 +13,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu"
-import { Chapters } from "@/Components/uploads/add-book-form"
+import { Chapters } from "@/Components/upload/add-book-form"
 
 import { EditChapterSheet } from "./edit-chapter-sheet"
 
