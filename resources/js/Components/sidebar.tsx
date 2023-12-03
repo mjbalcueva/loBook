@@ -42,17 +42,17 @@ const Sidebar = ({ navLinks }: Props) => {
 				expanded ? "w-52" : "w-14",
 			)}
 		>
-			<Link href="/">
-				<Button
-					variant={"none"}
-					size={"icon"}
-					className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
-				>
-					<Logo className="mr-3 h-8 w-8" />
-					<span className={cn("transition", !expanded && "hidden")}>
-						{appName}
-					</span>
-				</Button>
+			<Link
+				href="/"
+				className={cn(
+					buttonVariants({ variant: "none", size: "icon" }),
+					"w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]",
+				)}
+			>
+				<Logo className="mr-3 h-8 w-8" />
+				<span className={cn("transition", !expanded && "hidden")}>
+					{appName}
+				</span>
 			</Link>
 
 			<Separator className="w-full" />

@@ -30,56 +30,53 @@ const MainNav = ({ user, navLinks, className }: Props) => {
 	const appName = usePage<PageProps>().props.appName
 
 	return (
-		<div
-			className={cn(
-				"flex items-center justify-between border-b px-2 py-2 md:container lg:py-[1.1rem]",
-				className,
-			)}
-		>
-			<div className="flex items-center lg:hidden">
-				<Sheet>
-					<SheetTrigger asChild>
-						<Button
-							variant={"ghost"}
-							size={"icon"}
-							className="hover:bg-accent/80"
+		<div className={cn("border-b px-2 py-2 md:px-0 lg:py-4", className)}>
+			<div className="flex w-full items-center md:container">
+				<div className="flex items-center lg:hidden">
+					<Sheet>
+						<SheetTrigger asChild>
+							<Button
+								variant={"ghost"}
+								size={"icon"}
+								className="hover:bg-accent/80"
+							>
+								<MenuIcon className="h-5 w-5" />
+							</Button>
+						</SheetTrigger>
+						<SheetContent
+							side="left"
+							className="flex flex-col"
 						>
-							<MenuIcon className="h-5 w-5" />
-						</Button>
-					</SheetTrigger>
-					<SheetContent
-						side="left"
-						className="flex flex-col"
-					>
-						<SheetHeader>
-							<Link href="/">
-								<Button
-									variant={"none"}
-									size={"icon"}
-									className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
-								>
-									<Logo className="mr-3 h-8 w-8" />
-									{appName}
-								</Button>
-							</Link>
-						</SheetHeader>
-						<Separator className="my-2 w-full" />
-						<ul className="flex-1 space-y-2">
-							{navLinks.map((item) => (
-								<MainNav.Item
-									key={item.href}
-									title={item.title}
-									href={item.href}
-									icon={item.icon}
-								/>
-							))}
-						</ul>
-					</SheetContent>
-				</Sheet>
-			</div>
-			<div className="flex w-full items-end justify-end space-x-2">
-				<SearchInput navLinks={navLinks} />
-				<UserNav user={user} />
+							<SheetHeader>
+								<Link href="/">
+									<Button
+										variant={"none"}
+										size={"icon"}
+										className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
+									>
+										<Logo className="mr-3 h-8 w-8" />
+										{appName}
+									</Button>
+								</Link>
+							</SheetHeader>
+							<Separator className="my-2 w-full" />
+							<ul className="flex-1 space-y-2">
+								{navLinks.map((item) => (
+									<MainNav.Item
+										key={item.href}
+										title={item.title}
+										href={item.href}
+										icon={item.icon}
+									/>
+								))}
+							</ul>
+						</SheetContent>
+					</Sheet>
+				</div>
+				<div className="flex w-full items-end justify-end space-x-2">
+					<SearchInput navLinks={navLinks} />
+					<UserNav user={user} />
+				</div>
 			</div>
 		</div>
 	)
