@@ -29,7 +29,7 @@ const Index: FC<Props> = ({ books }) => {
 						Upload book
 					</Link>
 					<Button
-						onClick={() =>
+						onClick={() => {
 							toast({
 								description: (
 									<pre className="w-[340px] rounded-md">
@@ -39,7 +39,8 @@ const Index: FC<Props> = ({ books }) => {
 									</pre>
 								),
 							})
-						}
+							console.log(books)
+						}}
 					>
 						Book
 					</Button>

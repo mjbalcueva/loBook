@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class UploadController extends Controller
 {
@@ -12,10 +13,9 @@ class UploadController extends Controller
    */
   public function index()
   {
-    // get all books owned by user
-    $books = Book::where('user_id', auth()->user()->id)->get();
+    $books = Book::where('user_id', auth()->user()->id)->with('chapters')->paginate(10);
 
-    return inertia('Uploads/Index', [
+    return Inertia::render('Uploads/Index', [
       'books' => $books,
     ]);
   }

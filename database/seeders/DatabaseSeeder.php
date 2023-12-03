@@ -16,18 +16,10 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    // \App\Models\User::factory(10)->create();
-
-    // \App\Models\User::factory()->create([
-    //     'name' => 'Test User',
-    //     'email' => 'test@example.com',
-    // ]);
-
-    User::factory()
-      ->has(Book::factory()
-        ->count(10)
-        ->has(Chapter::factory()
-          ->count(5)))
-      ->create();
+    User::factory(rand(5, 10))->has(
+      Book::factory(rand(0, 5))->has(
+        Chapter::factory(rand(0, 10))
+      )
+    )->create();
   }
 }
