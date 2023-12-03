@@ -13,7 +13,9 @@ class BooksController extends Controller
      */
     public function index()
     {
-        
+        $book = Books::orderBy('created_at')->get();
+
+        return Inertia::render('Uploads', compact('book'));
     }
 
     /**

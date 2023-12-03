@@ -41,7 +41,7 @@ const AddBookForm = () => {
 			description: (
 				<pre className="w-[340px] rounded-md">
 					<code className="text-white">{JSON.stringify(data, null, 2)}</code>
-					{chapterCount}
+					
 				</pre>
 			),
 		})
