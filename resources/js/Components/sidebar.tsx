@@ -10,7 +10,7 @@ import {
 
 import { Logo } from "@/Components/logo"
 import { SidebarToggle } from "@/Components/sidebar-toggle"
-import { Button, buttonVariants } from "@/Components/ui/button"
+import { buttonVariants } from "@/Components/ui/button"
 import { Separator } from "@/Components/ui/separator"
 import {
 	Tooltip,
@@ -42,16 +42,18 @@ const Sidebar = ({ navLinks }: Props) => {
 				expanded ? "w-52" : "w-14",
 			)}
 		>
-			<Button
-				variant={"none"}
-				size={"icon"}
-				className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
+			<Link
+				href="/"
+				className={cn(
+					buttonVariants({ variant: "none", size: "icon" }),
+					"w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]",
+				)}
 			>
 				<Logo className="mr-3 h-8 w-8" />
 				<span className={cn("transition", !expanded && "hidden")}>
 					{appName}
 				</span>
-			</Button>
+			</Link>
 
 			<Separator className="w-full" />
 
