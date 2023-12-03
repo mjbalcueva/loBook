@@ -48,18 +48,18 @@ const MainNav = ({ user, navLinks, className }: Props) => {
 							className="flex flex-col"
 						>
 							<SheetHeader>
-								<Link href="/">
-									<Button
-										variant={"none"}
-										size={"icon"}
-										className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
-									>
-										<Logo className="mr-3 h-8 w-8" />
-										{appName}
-									</Button>
+								<Link
+									href="/"
+									className={cn(
+										buttonVariants({ variant: "none", size: "icon" }),
+										"w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]",
+									)}
+								>
+									<Logo className="mr-3 h-8 w-8" />
+									{appName}
 								</Link>
 							</SheetHeader>
-							<Separator className="my-2 w-full" />
+							<Separator className="w-full" />
 							<ul className="flex-1 space-y-2">
 								{navLinks.map((item) => (
 									<MainNav.Item
@@ -73,7 +73,7 @@ const MainNav = ({ user, navLinks, className }: Props) => {
 						</SheetContent>
 					</Sheet>
 				</div>
-				<div className="flex w-full items-end justify-end space-x-2">
+				<div className="flex w-full items-end justify-end gap-2">
 					<SearchInput navLinks={navLinks} />
 					<UserNav user={user} />
 				</div>
