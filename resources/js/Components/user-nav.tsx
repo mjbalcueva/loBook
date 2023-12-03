@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react"
+import { router } from "@inertiajs/react"
 import { FC } from "react"
 
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
@@ -62,28 +62,40 @@ const UserNav: FC<Props> = ({ user }) => {
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
-					<Link href={route("profile.edit")}>
-						<DropdownMenuItem className="cursor-pointer">
-							<UserIcon className="mr-2 h-4 w-4" />
-							Profile
-							<DropdownMenuShortcut>P</DropdownMenuShortcut>
-						</DropdownMenuItem>
-					</Link>
+					<DropdownMenuItem
+						className="cursor-pointer"
+						onClick={() => {
+							router.get(route("profile.edit"))
+						}}
+					>
+						<UserIcon className="mr-2 h-4 w-4" />
+						Profile
+						<DropdownMenuShortcut>P</DropdownMenuShortcut>
+					</DropdownMenuItem>
 					<DropdownMenuSub>
-						<DropdownMenuSubTrigger>
-							<SunIcon className="mr-2 h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-							<MoonIcon className="absolute mr-2 h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+						<DropdownMenuSubTrigger className="group cursor-pointer">
+							<SunIcon className="mr-2 block h-4 w-4 transition-colors dark:hidden" />
+							<MoonIcon className="mr-2 hidden h-4 w-4 transition-colors dark:block" />
 							Toggle Theme
 						</DropdownMenuSubTrigger>
 						<DropdownMenuPortal>
 							<DropdownMenuSubContent sideOffset={4}>
-								<DropdownMenuItem onClick={() => setTheme("light")}>
+								<DropdownMenuItem
+									onClick={() => setTheme("light")}
+									className="cursor-pointer"
+								>
 									Light
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => setTheme("dark")}>
+								<DropdownMenuItem
+									onClick={() => setTheme("dark")}
+									className="cursor-pointer"
+								>
 									Dark
 								</DropdownMenuItem>
-								<DropdownMenuItem onClick={() => setTheme("system")}>
+								<DropdownMenuItem
+									onClick={() => setTheme("system")}
+									className="cursor-pointer"
+								>
 									System
 								</DropdownMenuItem>
 							</DropdownMenuSubContent>
@@ -91,17 +103,16 @@ const UserNav: FC<Props> = ({ user }) => {
 					</DropdownMenuSub>
 				</DropdownMenuGroup>
 				<DropdownMenuSeparator />
-				<Link
-					href={route("logout")}
-					method="post"
-					as="button"
+				<DropdownMenuItem
+					className="cursor-pointer"
+					onClick={() => {
+						router.post(route("logout"))
+					}}
 				>
-					<DropdownMenuItem className="cursor-pointer">
-						<LogOutIcon className="mr-2 h-4 w-4" />
-						Log out
-						<DropdownMenuShortcut>L</DropdownMenuShortcut>
-					</DropdownMenuItem>
-				</Link>
+					<LogOutIcon className="mr-2 h-4 w-4" />
+					Log out
+					<DropdownMenuShortcut>L</DropdownMenuShortcut>
+				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)
