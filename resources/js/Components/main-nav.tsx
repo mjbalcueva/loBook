@@ -52,14 +52,16 @@ const MainNav = ({ user, navLinks, className }: Props) => {
 						className="flex flex-col"
 					>
 						<SheetHeader>
-							<Button
-								variant={"none"}
-								size={"icon"}
-								className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
-							>
-								<Logo className="mr-3 h-8 w-8" />
-								{appName}
-							</Button>
+							<Link href="/">
+								<Button
+									variant={"none"}
+									size={"icon"}
+									className="w-full justify-start pl-0.5 font-bold uppercase tracking-[0.2rem]"
+								>
+									<Logo className="mr-3 h-8 w-8" />
+									{appName}
+								</Button>
+							</Link>
 						</SheetHeader>
 						<Separator className="my-2 w-full" />
 						<ul className="flex-1 space-y-2">
