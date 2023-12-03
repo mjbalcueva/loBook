@@ -1,12 +1,20 @@
 import { Head, Link } from "@inertiajs/react"
+import { FC } from "react"
 
 import { PlusCircle } from "lucide-react"
 
 import { EmptyBooks } from "@/Components/empty-books"
-import { buttonVariants } from "@/Components/ui/button"
+import { Button, buttonVariants } from "@/Components/ui/button"
+import { useToast } from "@/Components/ui/use-toast"
 import { cn } from "@/Lib/utils"
 
-const Uploads = () => {
+interface Props {
+	books: any[]
+}
+
+const Index: FC<Props> = ({ books }) => {
+	const { toast } = useToast()
+
 	return (
 		<>
 			<Head title="Uploads" />
@@ -20,6 +28,21 @@ const Uploads = () => {
 						<PlusCircle className="mr-2 h-5 w-5" />
 						Upload book
 					</Link>
+					<Button
+						onClick={() =>
+							toast({
+								description: (
+									<pre className="w-[340px] rounded-md">
+										<code className="text-white">
+											{JSON.stringify(books, null, 2)}
+										</code>
+									</pre>
+								),
+							})
+						}
+					>
+						Book
+					</Button>
 				</div>
 			</div>
 			<EmptyBooks message="No books uploaded yet." />
@@ -27,4 +50,4 @@ const Uploads = () => {
 	)
 }
 
-export default Uploads
+export default Index

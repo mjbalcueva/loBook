@@ -13,3 +13,28 @@ export type PageProps<
 	}
 	appName?: string
 }
+
+export interface Chapter {
+	id: number
+	title: string
+	content: string
+	created_at: string
+	updated_at: string
+}
+
+export interface Chapters {
+	chapters: Chapter[]
+}
+
+export interface Book {
+	title: string
+	author: string
+	cover: string
+	description: string
+	genres: string
+	chapters: Chapter[]
+}
+
+export interface Books {
+	books: Book[]
+}

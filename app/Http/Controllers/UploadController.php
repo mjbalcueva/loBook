@@ -12,7 +12,12 @@ class UploadController extends Controller
    */
   public function index()
   {
-    //
+    // get all books owned by user
+    $books = Book::where('user_id', auth()->user()->id)->get();
+
+    return inertia('Uploads/Index', [
+      'books' => $books,
+    ]);
   }
 
   /**
