@@ -33,7 +33,7 @@ const EditChapterSheet: FC<Props> = ({
 		>
 			<SheetContent
 				side={"right"}
-				className="sm:max-w-[75vw]"
+				className="overflow-auto sm:max-w-[75vw]"
 			>
 				<SheetTitle>Create a chapter</SheetTitle>
 				<SheetDescription>Create a chapter for your book.</SheetDescription>
