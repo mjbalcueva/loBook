@@ -2,10 +2,9 @@ import { useForm } from "@inertiajs/react"
 import { FormEventHandler } from "react"
 
 import { Form } from "@/Components/form-inertia"
+import { Button } from "@/Components/ui/button"
+import { Label } from "@/Components/ui/label"
 import { useToast } from "@/Components/ui/use-toast"
-
-import { Button } from "../ui/button"
-import { Label } from "../ui/label"
 
 const EditBookForm = () => {
 	const { toast } = useToast()

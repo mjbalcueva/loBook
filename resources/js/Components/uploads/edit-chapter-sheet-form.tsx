@@ -3,9 +3,8 @@ import { FC, FormEventHandler } from "react"
 import { Editor } from "@/Components/editor"
 import { Form } from "@/Components/form-inertia"
 import { Label } from "@/Components/ui/label"
+import { useToast } from "@/Components/ui/use-toast"
 import { Chapters } from "@/Components/uploads/add-book-form"
-
-import { useToast } from "../ui/use-toast"
 
 interface Props {
 	data: any
