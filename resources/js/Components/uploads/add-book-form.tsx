@@ -16,9 +16,9 @@ export type Chapters = {
 const AddBookForm = () => {
 	const { toast } = useToast()
 	const { data, setData, post, processing, errors, reset } = useForm({
-		cover: "",
 		title: "",
 		author: "",
+		cover: "",
 		description: "",
 		genres: "",
 		chapters: [] as Chapters,
