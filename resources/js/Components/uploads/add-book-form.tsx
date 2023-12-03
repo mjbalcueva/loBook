@@ -20,7 +20,7 @@ const AddBookForm = () => {
 		title: "",
 		author: "",
 		description: "",
-		genres: "",
+		genre: "",
 		chapters: [
 			{
 				content: "a",
@@ -93,10 +93,10 @@ const AddBookForm = () => {
 
 			<Form.Textarea
 				label="Genres"
-				value={data.genres}
-				onChange={(e) => setData("genres", e.target.value)}
+				value={data.genre}
+				onChange={(e) => setData("genre", e.target.value)}
 				placeholder="genre1, genre2, genre3"
-				message={errors.genres}
+				message={errors.genre}
 				className="resize-none"
 			/>
 
