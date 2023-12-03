@@ -32,17 +32,17 @@ const MainNav = ({ user, navLinks, className }: Props) => {
 	return (
 		<div
 			className={cn(
-				"flex items-center justify-between border-b px-2 py-2 md:container lg:py-4",
+				"flex items-center justify-between border-b px-2 py-2 md:container lg:py-[1.1rem]",
 				className,
 			)}
 		>
-			<div className="flex items-center">
+			<div className="flex items-center lg:hidden">
 				<Sheet>
 					<SheetTrigger asChild>
 						<Button
 							variant={"ghost"}
 							size={"icon"}
-							className="hover:bg-accent/80 lg:hidden"
+							className="hover:bg-accent/80"
 						>
 							<MenuIcon className="h-5 w-5" />
 						</Button>
@@ -77,7 +77,7 @@ const MainNav = ({ user, navLinks, className }: Props) => {
 					</SheetContent>
 				</Sheet>
 			</div>
-			<div className="flex items-center space-x-2">
+			<div className="flex w-full items-end justify-end space-x-2">
 				<SearchInput navLinks={navLinks} />
 				<UserNav user={user} />
 			</div>
