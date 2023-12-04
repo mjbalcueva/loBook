@@ -16,7 +16,7 @@ class BookSeeder extends Seeder
   {
     // create 20 books for user with id 11
     Book::factory()->count(20)->create([
-      'user_id' => 11,
+      'user_id' => 1,
     ]);
   }
 }
