@@ -15,7 +15,7 @@ class BrowseController extends Controller
   public function index()
   {
     $books = Book::with('chapters')->paginate(10);
-    dd($books);
+    // dd($books);
 
     return Inertia::render('Browse/Index', [
       'laravelVersion' => Application::VERSION,
@@ -31,6 +31,6 @@ class BrowseController extends Controller
   {
     $request = $request->route('book_id');
     $books = Book::with('chapters')->where('id', $request)->first();
-    dd($books);
+    // dd($books);
   }
 }

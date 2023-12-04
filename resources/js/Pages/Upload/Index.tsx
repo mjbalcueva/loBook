@@ -1,10 +1,17 @@
 import { Head, Link } from "@inertiajs/react"
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 
-import { PlusCircle } from "lucide-react"
+import { format } from "date-fns"
+import { PlusCircle, ScrollTextIcon } from "lucide-react"
 
 import { EmptyBooks } from "@/Components/empty-books"
 import { buttonVariants } from "@/Components/ui/button"
+import {
+	HoverCard,
+	HoverCardContent,
+	HoverCardTrigger,
+} from "@/Components/ui/hover-card"
+import { Separator } from "@/Components/ui/separator"
 import { cn } from "@/Lib/utils"
 import { Book, Paginate } from "@/types"
 
@@ -33,32 +40,107 @@ const Index: FC<Props> = ({ bookData }) => {
 			{bookData.data.length === 0 ? (
 				<EmptyBooks message="No books uploaded yet." />
 			) : (
-				<div className="grid grid-cols-1 gap-x-2 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
+				<div className="grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
 					{bookData.data.map((book) => (
-						<div
+						<MiniCardTrigger
+							book={book}
 							key={book.id}
-							className="flex"
 						>
-							<div className="overflow-hidden rounded-md">
+							<div className="overflow-hidden rounded-md border">
 								<img
 									src={book.cover}
 									alt={book.title}
-									className="aspect-[3/4] w-36 object-cover transition-all hover:scale-125 sm:w-40"
+									className="aspect-[3/4] w-36 select-none object-cover"
 								/>
 							</div>
-							<div className="flex-1 space-y-2 px-4 py-2">
-								<h3 className="line-clamp-1 font-medium leading-none">
-									{book.title}
-								</h3>
-								<p className="line-clamp-2 text-sm text-muted-foreground">
-									{book.description}
-								</p>
+							<div className="flex-1 space-y-2 py-2 pl-2">
+								<h2>
+									<span className="line-clamp-1 font-bold leading-none">
+										{book.title}
+									</span>
+									<span className="mt-1 line-clamp-1 text-sm text-muted-foreground">
+										By: {book.author}
+									</span>
+								</h2>
+								<div className="flex flex-col space-y-1 text-sm tracking-wide">
+									{book.chapters.slice(0, 5).map((chapter) => (
+										<Link
+											key={chapter.id}
+											href={route("chapters.edit", [book.id, chapter.id])}
+											className="flex items-center text-muted-foreground hover:text-foreground"
+										>
+											<ScrollTextIcon className="ml-2 mr-1 h-4 w-4" />
+											<span className="line-clamp-1 flex-1">
+												{chapter.title}
+											</span>
+										</Link>
+									))}
+								</div>
 							</div>
-						</div>
+						</MiniCardTrigger>
 					))}
 				</div>
 			)}
 		</>
+	)
+}
+
+const MiniCardTrigger: FC<{ book: Book; children: ReactNode }> = ({
+	book,
+	children,
+}) => {
+	const formatDate = (date: string) =>
+		format(new Date(date), "MMM d, yyyy - HH:mm")
+	return (
+		<HoverCard
+			openDelay={1000}
+			closeDelay={0}
+		>
+			<HoverCardTrigger className="flex">{children}</HoverCardTrigger>
+			<HoverCardContent
+				className="w-80 space-y-2 text-sm font-light shadow"
+				sideOffset={0}
+				side="right"
+			>
+				<h1 className="text-base font-medium leading-5 tracking-wide">
+					{book.title}
+				</h1>
+				<div className="flex space-x-2 tracking-wide">
+					<img
+						src={book.cover}
+						alt={book.title}
+						className="aspect-[3/4] w-24 select-none rounded-sm object-cover"
+					/>
+					<div className="space-y-0.5 pt-1">
+						<div>
+							<span className="mr-1 text-sm font-medium text-muted-foreground">
+								Author:
+							</span>
+							{book.author}
+						</div>
+						<div>
+							<span className="mr-1 text-sm font-medium text-muted-foreground">
+								Genres:
+							</span>
+							{book.genres}
+						</div>
+						<div>
+							<span className="mr-1 text-sm font-medium text-muted-foreground">
+								Updated:
+							</span>
+							{formatDate(book.updated_at)}
+						</div>
+					</div>
+				</div>
+				<Separator />
+				<p className="tracking-wide">
+					<span className="mr-1 text-sm font-medium text-muted-foreground">
+						Description:
+					</span>
+					{book.description}
+				</p>
+			</HoverCardContent>
+		</HoverCard>
 	)
 }
 
