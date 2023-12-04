@@ -52,17 +52,6 @@ class UploadController extends Controller
   }
 
   /**
-   * Display the specified resource.
-   */
-  public function show(string $id)
-  {
-    $book = Book::findOrFail($id);
-
-    dd($book);
-    return view('upload.show', compact('book'));
-  }
-
-  /**
    * Show the form for editing the specified resource.
    */
   public function edit(string $id)
