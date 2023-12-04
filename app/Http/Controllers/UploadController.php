@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Chapter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -34,13 +35,20 @@ class UploadController extends Controller
    */
   public function store(Request $request)
   {
-    
+
     $requestBook = $request->all();
     $requestBook['user_id'] = Auth::user()->id;
-    Book::create($requestBook);
-    
+
+    $book = Book::create($requestBook);
+
+    if (isset($requestBook['chapters'])) {
+      foreach ($requestBook['chapters'] as $chapter) {
+        $chapter['user_id'] = Auth::user()->id;
+        $book->chapters()->create($chapter);
+      }
+    }
+
     return redirect()->route('uploads.index')->with('success', 'Book created successfully.');
-    
   }
 
   /**
