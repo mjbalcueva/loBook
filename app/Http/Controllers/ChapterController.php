@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Chapter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ChapterController extends Controller
 {
@@ -28,7 +29,11 @@ class ChapterController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    $requestChapter = $request->all();
+    $requestChapter['book_id'] = Auth::book()->id;
+    Chapter::create($requestChapter);
+    
+    return redirect();
   }
 
   /**
