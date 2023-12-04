@@ -19,7 +19,7 @@ class BrowseController extends Controller
     // return Inertia::render('Uploads', [
     //   'books' => $books,
     // ]);
-    return Inertia::render('Browse', [
+    return Inertia::render('Browse/Index', [
       'laravelVersion' => Application::VERSION,
       'phpVersion' => PHP_VERSION,
     ]);
