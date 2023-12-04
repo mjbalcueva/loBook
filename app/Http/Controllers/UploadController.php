@@ -54,34 +54,44 @@ class UploadController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Request $request, Book $book)
+  public function show(string $id)
   {
-    $request = $request->route('book_id');
-    $books = Book::with('chapters')->where('id', $request)->first();
-    //dd($books);
+    $book = Book::findOrFail($id);
+
+    dd($book);
+    return view('upload.show', compact('book'));
   }
 
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(Book $book)
+  public function edit(string $id)
   {
-    //
+    $book = Book::findOrFail($id);
+
+    dd($book);
+    return view('upload.edit', compact('book'));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Book $book)
+  public function update(Request $request, string $id)
   {
-    //
+    $book = Book::findOrFail($id);
+    $book->update($request->all());
+
+    return redirect()->route('upload.index')->with('success', 'Book updated successfully');
   }
 
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Book $book)
+  public function destroy(string $id)
   {
-    //
+    $book = Book::findOrFail($id);
+    $book->delete();
+
+    return redirect()->route('upload.index')->with('success', 'Book deleted successfully');
   }
 }
