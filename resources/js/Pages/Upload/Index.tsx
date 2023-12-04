@@ -19,7 +19,7 @@ const Index: FC<Props> = ({ bookData }) => {
 		<>
 			<Head title="Uploads" />
 			<div className="my-4 flex items-center justify-between">
-				<h2 className="text-3xl font-bold tracking-tight">Add book</h2>
+				<h2 className="text-3xl font-bold tracking-tight">Uploaded Books</h2>
 				<div className="flex items-center space-x-2">
 					<Link
 						href={route("uploads.create")}
@@ -33,7 +33,7 @@ const Index: FC<Props> = ({ bookData }) => {
 			{bookData.data.length === 0 ? (
 				<EmptyBooks message="No books uploaded yet." />
 			) : (
-				<div className="flex flex-col space-y-2">
+				<div className="flex flex-wrap gap-2">
 					{bookData.data.map((book) => (
 						<div
 							key={book.id}
@@ -42,8 +42,9 @@ const Index: FC<Props> = ({ bookData }) => {
 							<img
 								src={book.cover}
 								alt={book.title}
-								className="h-60 w-40 rounded-md border object-cover"
+								className="h-44 w-36 rounded-md border object-cover"
 							/>
+							<h1>{book.title}</h1>
 						</div>
 					))}
 				</div>
