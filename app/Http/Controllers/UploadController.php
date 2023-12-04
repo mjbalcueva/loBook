@@ -50,7 +50,7 @@ class UploadController extends Controller
   {
     $request = $request->route('book_id');
     $books = Book::with('chapters')->where('id', $request)->first();
-    dd($books);
+    //dd($books);
   }
 
   /**
