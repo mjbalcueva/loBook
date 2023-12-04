@@ -40,41 +40,44 @@ const Index: FC<Props> = ({ bookData }) => {
 			{bookData.data.length === 0 ? (
 				<EmptyBooks message="No books uploaded yet." />
 			) : (
-				<div className="grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
+				<div className="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2 xl:grid-cols-3">
 					{bookData.data.map((book) => (
 						<MiniCardTrigger
 							book={book}
 							key={book.id}
 						>
-							<div className="overflow-hidden rounded-md border">
+							<div className="overflow-hidden rounded-l-sm">
 								<img
 									src={book.cover}
 									alt={book.title}
-									className="aspect-[3/4] w-36 select-none object-cover"
+									className="aspect-[3/4] w-36 cursor-pointer select-none object-cover transition-all hover:scale-125"
 								/>
 							</div>
-							<div className="flex-1 space-y-2 py-2 pl-2">
-								<h2>
-									<span className="line-clamp-1 font-bold leading-none">
+							<div className="flex-1 space-y-2">
+								<h2 className="rounded-tr-sm border-b bg-accent/80 px-2 pb-1 pt-2">
+									<span className="line-clamp-1 text-sm font-bold leading-none tracking-wide">
 										{book.title}
 									</span>
 									<span className="mt-1 line-clamp-1 text-sm text-muted-foreground">
-										By: {book.author}
+										{book.author}
 									</span>
 								</h2>
-								<div className="flex flex-col space-y-1 text-sm tracking-wide">
-									{book.chapters.slice(0, 5).map((chapter) => (
-										<Link
-											key={chapter.id}
-											href={route("chapters.edit", [book.id, chapter.id])}
-											className="flex items-center text-muted-foreground hover:text-foreground"
-										>
-											<ScrollTextIcon className="ml-2 mr-1 h-4 w-4" />
-											<span className="line-clamp-1 flex-1">
-												{chapter.title}
-											</span>
-										</Link>
-									))}
+								<div className="flex flex-col space-y-1 px-2 text-sm tracking-wide">
+									{book.chapters
+										.reverse()
+										.slice(0, 5)
+										.map((chapter) => (
+											<Link
+												key={chapter.id}
+												href={route("chapters.edit", [book.id, chapter.id])}
+												className="flex items-center text-muted-foreground hover:text-foreground"
+											>
+												<ScrollTextIcon className="ml-2 mr-1 h-4 w-4" />
+												<span className="line-clamp-1 flex-1">
+													{chapter.title}
+												</span>
+											</Link>
+										))}
 								</div>
 							</div>
 						</MiniCardTrigger>
@@ -96,7 +99,9 @@ const MiniCardTrigger: FC<{ book: Book; children: ReactNode }> = ({
 			openDelay={1000}
 			closeDelay={0}
 		>
-			<HoverCardTrigger className="flex">{children}</HoverCardTrigger>
+			<HoverCardTrigger className="flex rounded-md border">
+				{children}
+			</HoverCardTrigger>
 			<HoverCardContent
 				className="w-80 space-y-2 text-sm font-light shadow"
 				sideOffset={0}
