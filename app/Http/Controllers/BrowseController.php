@@ -14,12 +14,10 @@ class BrowseController extends Controller
    */
   public function index()
   {
-    $books = Book::with('chapters')->paginate(10);
-    // dd($books);
+    $bookData = Book::with('chapters')->paginate(10);
 
     return Inertia::render('Browse/Index', [
-      'laravelVersion' => Application::VERSION,
-      'phpVersion' => PHP_VERSION,
+      'bookData' => $bookData,
     ]);
   }
 

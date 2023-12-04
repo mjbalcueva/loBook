@@ -1,14 +1,16 @@
-import { Head, Link } from "@inertiajs/react"
+import { Head } from "@inertiajs/react"
+import { FC } from "react"
 
-import { EmptyBooks } from "@/Components/empty-books"
-import { Button } from "@/Components/ui/button"
+import { BookList } from "@/Components/books/book-list"
+import { Book, Paginate } from "@/types"
 
 interface Props {
-	laravelVersion: string
-	phpVersion: string
+	bookData: Paginate & {
+		data: Book[] | []
+	}
 }
 
-const Browse = ({ laravelVersion, phpVersion }: Props) => {
+const Browse: FC<Props> = ({ bookData }) => {
 	return (
 		<>
 			<Head title="Browse" />
@@ -16,15 +18,7 @@ const Browse = ({ laravelVersion, phpVersion }: Props) => {
 				<h2 className="text-3xl font-bold tracking-tight">Browse</h2>
 			</div>
 
-			<p>
-				Laravel version {laravelVersion} (PHP version {phpVersion}) Hello{" "}
-			</p>
-
-			<Link href={route("uploads.index")}>
-				<Button>Uploads</Button>
-			</Link>
-
-			<EmptyBooks message="Embark on your reading journey..." />
+			<BookList bookData={bookData} />
 		</>
 	)
 }
