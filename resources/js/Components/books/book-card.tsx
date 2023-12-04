@@ -59,10 +59,12 @@ const BookCardActions: FC<Props> = ({ book }) => {
 	return (
 		<div className="flex gap-4 py-1 text-sm text-muted-foreground">
 			<span className="flex items-center">
-				<HeartIcon className="mr-1 h-4 w-4" /> {book.chapters.length}
+				<HeartIcon className="mr-1 h-4 w-4" />{" "}
+				{book.chapters ? book.chapters.length : 0}
 			</span>
 			<span className="flex items-center">
-				<ListIcon className="mr-1 h-4 w-4" /> {book.chapters.length}
+				<ListIcon className="mr-1 h-4 w-4" />{" "}
+				{book.chapters ? book.chapters.length : 0}
 			</span>
 		</div>
 	)

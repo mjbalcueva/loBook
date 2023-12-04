@@ -33,7 +33,7 @@ export interface Book {
 	genres: string
 	created_at: string
 	updated_at: string
-	chapters: Chapter[]
+	chapters?: Chapter[]
 }
 
 interface Link {

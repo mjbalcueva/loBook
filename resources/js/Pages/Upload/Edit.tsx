@@ -1,17 +1,15 @@
 import { Head } from "@inertiajs/react"
 import { FC } from "react"
 
-import { Button } from "@/Components/ui/button"
+import { BookForm } from "@/Components/books/book-form"
 import { Separator } from "@/Components/ui/separator"
-import { useToast } from "@/Components/ui/use-toast"
-import { AddBookForm } from "@/Components/upload/add-book-form"
+import { Book } from "@/types"
 
 interface Props {
-	book: any
+	bookData: Book
 }
 
-const Edit: FC<Props> = ({ book }) => {
-	const { toast } = useToast()
+const Edit: FC<Props> = ({ bookData }) => {
 	return (
 		<div className="mb-32 space-y-6">
 			<Head title="Add book" />
@@ -20,23 +18,10 @@ const Edit: FC<Props> = ({ book }) => {
 				<p className="text-sm text-muted-foreground">Edit a book's content</p>
 			</div>
 			<div>
-				<Button
-					onClick={() =>
-						toast({
-							description: (
-								<pre>
-									<code>{JSON.stringify(book, null, 2)}</code>
-								</pre>
-							),
-						})
-					}
-				>
-					Button
-				</Button>
 				<Separator />
 			</div>
 			<div>
-				<AddBookForm />
+				<BookForm book={bookData} />
 			</div>
 		</div>
 	)
