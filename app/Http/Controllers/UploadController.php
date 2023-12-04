@@ -54,9 +54,11 @@ class UploadController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Book $book)
+  public function show(Request $request, Book $book)
   {
-    //
+    $request = $request->route('book_id');
+    $books = Book::with('chapters')->where('id', $request)->first();
+    //dd($books);
   }
 
   /**
