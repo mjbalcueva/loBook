@@ -13,10 +13,10 @@ class UploadController extends Controller
    */
   public function index()
   {
-    $books = Book::where('user_id', auth()->user()->id)->with('chapters')->paginate(10);
+    $bookData = Book::where('user_id', auth()->user()->id)->with('chapters')->paginate(10);
 
     return Inertia::render('Upload/Index', [
-      'books' => $books,
+      'bookData' => $bookData,
     ]);
   }
 

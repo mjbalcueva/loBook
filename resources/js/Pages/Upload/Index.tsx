@@ -4,17 +4,17 @@ import { FC } from "react"
 import { PlusCircle } from "lucide-react"
 
 import { EmptyBooks } from "@/Components/empty-books"
-import { Button, buttonVariants } from "@/Components/ui/button"
-import { useToast } from "@/Components/ui/use-toast"
+import { buttonVariants } from "@/Components/ui/button"
 import { cn } from "@/Lib/utils"
+import { Book, Paginate } from "@/types"
 
 interface Props {
-	books: any[]
+	bookData: Paginate & {
+		data: Book[] | []
+	}
 }
 
-const Index: FC<Props> = ({ books }) => {
-	const { toast } = useToast()
-
+const Index: FC<Props> = ({ bookData }) => {
 	return (
 		<>
 			<Head title="Uploads" />
@@ -28,25 +28,19 @@ const Index: FC<Props> = ({ books }) => {
 						<PlusCircle className="mr-2 h-5 w-5" />
 						Upload book
 					</Link>
-					<Button
-						onClick={() => {
-							toast({
-								description: (
-									<pre className="w-[340px] rounded-md">
-										<code className="text-white">
-											{JSON.stringify(books, null, 2)}
-										</code>
-									</pre>
-								),
-							})
-							console.log(books)
-						}}
-					>
-						Book
-					</Button>
 				</div>
 			</div>
-			<EmptyBooks message="No books uploaded yet." />
+			{bookData.data.length === 0 ? (
+				<EmptyBooks message="No books uploaded yet." />
+			) : (
+				<>
+					{bookData.data.map((book) => (
+						<div key={book.id}>
+							<h1>{book.title}</h1>
+						</div>
+					))}
+				</>
+			)}
 		</>
 	)
 }
