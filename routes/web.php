@@ -40,8 +40,8 @@ use Inertia\Inertia;
 
 Route::middleware('auth', 'verified')->group(function () {
   Route::get('/', [BrowseController::class, 'index'])->name('browse.index');
-  Route::get('/browse/{book_id}', [BrowseController::class, 'show'])->name('browse.show');
-  Route::get('/browse/{book_id}/{chapter_id}', [ChapterController::class, 'show'])->name('chapters.show');
+  Route::get('/browse/{book}', [BrowseController::class, 'show'])->name('browse.show');
+  Route::get('/browse/{book}/{chapter}', [ChapterController::class, 'show'])->name('chapters.show');
 
   Route::get('/uploads', [UploadController::class, 'index'])->name('uploads.index');
   Route::get('/uploads/book', [UploadController::class, 'create'])->name('uploads.create');
@@ -50,11 +50,11 @@ Route::middleware('auth', 'verified')->group(function () {
   Route::patch('/uploads/{book_id}', [UploadController::class, 'update'])->name('uploads.update');
   Route::delete('/uploads/{book_id}', [UploadController::class, 'destroy'])->name('uploads.destroy');
 
-  Route::get('/uploads/{book_id}/chapters', [ChapterController::class, 'create'])->name('chapters.create');
-  Route::post('/uploads/{book_id}/chapters', [ChapterController::class, 'store'])->name('chapters.store');
-  Route::get('/uploads/{book_id}/{chapter_id}', [ChapterController::class, 'edit'])->name('chapters.edit');
-  Route::patch('/uploads/{book_id}/{chapter_id}', [ChapterController::class, 'update'])->name('chapters.update');
-  Route::delete('/uploads/{book_id}/{chapter_id}', [ChapterController::class, 'destroy'])->name('chapters.destroy');
+  Route::get('/uploads/{book}/chapters', [ChapterController::class, 'create'])->name('chapters.create');
+  Route::post('/uploads/{book}/chapters', [ChapterController::class, 'store'])->name('chapters.store');
+  Route::get('/uploads/{book}/{chapter}', [ChapterController::class, 'edit'])->name('chapters.edit');
+  Route::patch('/uploads/{book}/{chapter}', [ChapterController::class, 'update'])->name('chapters.update');
+  Route::delete('/uploads/{book}/{chapter}', [ChapterController::class, 'destroy'])->name('chapters.destroy');
 
   Route::get('/favorites', function () {
     return Inertia::render('Favorites');

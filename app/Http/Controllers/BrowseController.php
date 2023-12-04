@@ -25,10 +25,11 @@ class BrowseController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Request $request, Book $book)
+  public function show(Book $book)
   {
-    $request = $request->route('book_id');
-    $books = Book::with('chapters')->where('id', $request)->first();
-    // dd($books);
+    // Route::get('/browse/{book_id}', [BrowseController::class, 'show'])->name('browse.show');
+    // display the book and its chapters that matches the book_id in the route
+
+    dd($book);
   }
 }
