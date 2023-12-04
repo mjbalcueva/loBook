@@ -1,9 +1,8 @@
 import { FC } from "react"
 
+import { BookCard } from "@/Components/books/book-card"
+import { EmptyState } from "@/Components/empty-state"
 import { Book, Paginate } from "@/types"
-
-import { EmptyState } from "../empty-state"
-import { BookCard } from "./book-card"
 
 interface Props {
 	bookData: Paginate & {
