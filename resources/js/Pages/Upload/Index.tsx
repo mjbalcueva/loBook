@@ -42,7 +42,7 @@ const Index: FC<Props> = ({ bookData }) => {
 							<img
 								src={book.cover}
 								alt={book.title}
-								className="w-40 rounded-md border object-cover"
+								className="h-60 w-40 rounded-md border object-cover"
 							/>
 						</div>
 					))}

@@ -39,8 +39,8 @@ use Inertia\Inertia;
  */
 
 Route::middleware('auth', 'verified')->group(function () {
-  Route::get('/', [BrowseController::class, 'index'])->name('books.index');
-  Route::get('/browse/{book_id}', [BrowseController::class, 'show'])->name('books.show');
+  Route::get('/', [BrowseController::class, 'index'])->name('browse.index');
+  Route::get('/browse/{book_id}', [BrowseController::class, 'show'])->name('browse.show');
   Route::get('/browse/{book_id}/{chapter_id}', [ChapterController::class, 'show'])->name('chapters.show');
 
   Route::get('/uploads', [UploadController::class, 'index'])->name('uploads.index');
