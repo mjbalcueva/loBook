@@ -22,6 +22,7 @@ class Book extends Model
     'cover',
     'description',
     'genres',
+    'user_id'
   ];
 
   // relationship to user
@@ -35,4 +36,6 @@ class Book extends Model
   {
     return $this->hasMany(Chapter::class, 'book_id');
   }
+
+
 }

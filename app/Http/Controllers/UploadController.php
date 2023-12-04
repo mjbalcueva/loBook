@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class UploadController extends Controller
@@ -33,7 +34,13 @@ class UploadController extends Controller
    */
   public function store(Request $request)
   {
-    //
+    
+    $requestBook = $request->all();
+    $requestBook['user_id'] = Auth::user()->id;
+    Book::create($requestBook);
+    
+    return redirect()->route('uploads.index')->with('success', 'Book created successfully.');
+    
   }
 
   /**

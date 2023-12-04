@@ -37,7 +37,7 @@ const AddBookForm = () => {
 				</pre>
 			),
 		})
-		// post(route("uploads.add"))
+		post(route("uploads.create"))
 	}
 
 	return (
