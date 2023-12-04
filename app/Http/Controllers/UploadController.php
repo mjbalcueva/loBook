@@ -25,7 +25,7 @@ class UploadController extends Controller
    */
   public function create()
   {
-    return Inertia::render('Uploads/Create');
+    return Inertia::render('Upload/Create');
   }
 
   /**
