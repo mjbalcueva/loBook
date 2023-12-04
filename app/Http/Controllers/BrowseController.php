@@ -16,9 +16,6 @@ class BrowseController extends Controller
   {
     $books = Book::with('chapters')->get();
 
-    // return Inertia::render('Uploads', [
-    //   'books' => $books,
-    // ]);
     return Inertia::render('Browse/Index', [
       'laravelVersion' => Application::VERSION,
       'phpVersion' => PHP_VERSION,
