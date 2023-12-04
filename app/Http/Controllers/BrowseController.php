@@ -7,7 +7,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class BookController extends Controller
+class BrowseController extends Controller
 {
   /**
    * Display a listing of the resource.

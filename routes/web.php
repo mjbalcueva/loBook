@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\BookController;
+use App\Http\Controllers\BrowseController;
 use App\Http\Controllers\ChapterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UploadController;
@@ -39,8 +39,8 @@ use Inertia\Inertia;
  */
 
 Route::middleware('auth', 'verified')->group(function () {
-  Route::get('/', [BookController::class, 'index'])->name('books.index');
-  Route::get('/browse/{book_id}', [BookController::class, 'show'])->name('books.show');
+  Route::get('/', [BrowseController::class, 'index'])->name('books.index');
+  Route::get('/browse/{book_id}', [BrowseController::class, 'show'])->name('books.show');
   Route::get('/browse/{book_id}/{chapter_id}', [ChapterController::class, 'show'])->name('chapters.show');
 
   Route::get('/uploads', [UploadController::class, 'index'])->name('uploads.index');

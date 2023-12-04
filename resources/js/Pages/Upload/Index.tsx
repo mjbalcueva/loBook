@@ -33,13 +33,20 @@ const Index: FC<Props> = ({ bookData }) => {
 			{bookData.data.length === 0 ? (
 				<EmptyBooks message="No books uploaded yet." />
 			) : (
-				<>
+				<div className="flex flex-col space-y-2">
 					{bookData.data.map((book) => (
-						<div key={book.id}>
-							<h1>{book.title}</h1>
+						<div
+							key={book.id}
+							className="border"
+						>
+							<img
+								src={book.cover}
+								alt={book.title}
+								className="w-40 rounded-md border object-cover"
+							/>
 						</div>
 					))}
-				</>
+				</div>
 			)}
 		</>
 	)
