@@ -18,7 +18,7 @@ return new class extends Migration
       $table->string('author');
       $table->string('cover')->nullable();
       $table->string('description');
-      $table->integer('genres');
+      $table->string('genres');
       $table->timestamps();
     });
   }
