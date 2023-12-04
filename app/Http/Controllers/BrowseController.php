@@ -14,7 +14,8 @@ class BrowseController extends Controller
    */
   public function index()
   {
-    $books = Book::with('chapters')->get();
+    $books = Book::with('chapters')->paginate(10);
+    dd($books);
 
     return Inertia::render('Browse/Index', [
       'laravelVersion' => Application::VERSION,
@@ -22,51 +23,14 @@ class BrowseController extends Controller
     ]);
   }
 
-  /**
-   * Show the form for creating a new resource.
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   */
-  public function store(Request $request)
-  {
-    //
-  }
 
   /**
    * Display the specified resource.
    */
-  public function show(Book $book)
+  public function show(Request $request, Book $book)
   {
-    //
-  }
-
-  /**
-   * Show the form for editing the specified resource.
-   */
-  public function edit(Book $book)
-  {
-    //
-  }
-
-  /**
-   * Update the specified resource in storage.
-   */
-  public function update(Request $request, Book $book)
-  {
-    //
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   */
-  public function destroy(Book $book)
-  {
-    //
+    $request = $request->route('book_id');
+    $books = Book::with('chapters')->where('id', $request)->first();
+    dd($books);
   }
 }
