@@ -69,8 +69,12 @@ class UploadController extends Controller
   {
     $book = Book::findOrFail($id);
 
-    dd($book);
-    return view('upload.edit', compact('book'));
+    return Inertia::render('Upload/Edit', [
+      'book' => $book,
+    ]);
+
+    // dd($book);
+    // return view('upload.edit', compact('book'));
   }
 
   /**
