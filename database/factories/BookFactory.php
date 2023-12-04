@@ -22,21 +22,9 @@ class BookFactory extends Factory
       'title' => $this->faker->sentence(),
       'author' => $this->faker->name(),
       'description' => $this->faker->paragraph(),
-      'genres' => $this->faker->word(),
+      'genres' => implode(', ', $this->faker->randomElements(['fiction', 'non-fiction', 'biography', 'memoir', 'essay', 'thriller', 'horror', 'romance', 'mystery', 'self-help', 'historical fiction', 'science fiction', 'fantasy', 'cookbook', 'poetry', 'comic book', 'graphic novel', 'short story', 'young adult', 'children', 'other'], $this->faker->numberBetween(1, 5))),
       'cover' => $this->faker->imageUrl(),
       'user_id' => User::factory(),
     ];
   }
-
-  // /**
-  //  * Configure the model factory.
-  //  * 
-  //  * @return $this
-  //  */
-  // public function configure(): static
-  // {
-  //   return $this->afterCreating(function (Book $book) {
-  //     $book->chapters()->saveMany(ChapterFactory::new()->count(3)->make());
-  //   });
-  // }
 }

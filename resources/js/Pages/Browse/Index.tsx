@@ -1,6 +1,6 @@
 import { Head, Link } from "@inertiajs/react"
 
-import { EmptyBooks } from "@/Components/empty-books"
+import { EmptyState } from "@/Components/empty-state"
 import { Button } from "@/Components/ui/button"
 
 interface Props {
@@ -24,7 +24,7 @@ const Browse = ({ laravelVersion, phpVersion }: Props) => {
 				<Button>Uploads</Button>
 			</Link>
 
-			<EmptyBooks message="Embark on your reading journey..." />
+			<EmptyState message="Embark on your reading journey..." />
 		</>
 	)
 }
