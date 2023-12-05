@@ -5,6 +5,7 @@ import { HeartIcon } from "lucide-react"
 import { EmptyState } from "@/Components/empty-state"
 import { Badge } from "@/Components/ui/badge"
 import { Button } from "@/Components/ui/button"
+import { cn } from "@/Lib/utils"
 import { Book, Chapter } from "@/types"
 
 interface Props {
@@ -78,12 +79,15 @@ const BookHeader = ({ book }: { book: Book }) => {
 const BookActions = ({ book }: { book: Book }) => {
 	return (
 		<div className="flex items-center gap-x-2">
-			<Button className="h-12 px-10 text-lg">Read First</Button>
+			<Button className="lg:h-11 lg:px-9 lg:text-base xl:h-12 xl:px-10">
+				Read First
+			</Button>
 			<Button
-				className="h-12 w-12"
+				className={cn("lg:h-11 lg:w-11 xl:h-12 xl:w-12")}
+				size={"icon"}
 				variant={"secondary"}
 			>
-				<HeartIcon className="h-16 w-16" />
+				<HeartIcon className="h-4 w-4 lg:h-5 lg:w-5" />
 			</Button>
 		</div>
 	)
