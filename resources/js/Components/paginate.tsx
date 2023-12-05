@@ -33,11 +33,10 @@ const Paginate: FC<Props> = ({ bookData, className, ...props }) => {
 				label={<ChevronLeftIcon className="h-5 w-5" />}
 			/>
 
-			{links.slice(1, -1).map((link, i) => (
-				<>
+			{links.slice(1, -1).map((link, key) => (
+				<div key={key}>
 					{link.label === "..." ? (
 						<PageLink
-							key={i}
 							href={link.url || ""}
 							variant={link.active ? "default" : "outline"}
 							label={<MoreHorizontalIcon className="h-5 w-5" />}
@@ -45,13 +44,12 @@ const Paginate: FC<Props> = ({ bookData, className, ...props }) => {
 						/>
 					) : (
 						<PageLink
-							key={i}
 							href={link.url || ""}
 							variant={link.active ? "default" : "outline"}
 							label={link.label}
 						/>
 					)}
-				</>
+				</div>
 			))}
 
 			<PageLink
