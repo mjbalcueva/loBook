@@ -27,11 +27,6 @@ const AuthenticatedLayout = ({ user, children }: Props) => {
 			href: "/uploads",
 			icon: <HardDriveUploadIcon className="h-5 w-5" />,
 		},
-		{
-			title: "Favorites",
-			href: "/favorites",
-			icon: <HeartIcon className="h-5 w-5" />,
-		},
 	]
 
 	return (
