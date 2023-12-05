@@ -20,6 +20,7 @@ const BookList: FC<Props> = ({ bookData, link }) => {
 				<div className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
 					{bookData.data.map((book) => (
 						<BookCard
+							key={book.id}
 							book={book}
 							link={link}
 						/>
