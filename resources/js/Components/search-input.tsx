@@ -74,12 +74,12 @@ const SearchInput: FC<Props> = ({ navLinks }) => {
 				open={open}
 				onOpenChange={setOpen}
 			>
-				<CommandInput placeholder="Search all channels and members" />
+				<CommandInput placeholder="Looking for a book?" />
 				<CommandList>
 					<CommandEmpty>No Results found</CommandEmpty>
 
 					<CommandGroup heading="Your Books">
-						{userBooks?.slice(0, 2).map((book) => (
+						{userBooks?.slice(0, 3).map((book) => (
 							<Link
 								href={`/browse/${book.id}`}
 								key={book.id}
@@ -96,7 +96,7 @@ const SearchInput: FC<Props> = ({ navLinks }) => {
 					</CommandGroup>
 
 					<CommandGroup heading="Books">
-						{allBooks.slice(0, 2).map((book) => (
+						{allBooks.slice(0, 3).map((book) => (
 							<Link
 								href={`/browse/${book.id}`}
 								key={book.id}
