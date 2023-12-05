@@ -33,8 +33,6 @@ const SearchInput: FC<Props> = ({ navLinks }) => {
 	const user = usePage<PageProps>().props.auth?.user
 	const books = usePage<PageProps>().props.books
 
-	// const allBooks = books?.filter((book) => book.user_id !== user?.id)
-	// const userBooks = books?.filter((book) => book.user_id === user?.id)
 	const allBooks = useMemo(
 		() => books?.filter((book) => book.user_id !== user?.id),
 		[books, user],
