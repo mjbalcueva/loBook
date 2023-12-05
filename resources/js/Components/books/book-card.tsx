@@ -14,14 +14,16 @@ import { Book } from "@/types"
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	book: Book
+	link?: string
 }
 
-const BookCard: FC<Props> = ({ book }) => {
+const BookCard: FC<Props> = ({ book, link }) => {
 	return (
 		<div className="flex">
 			<BookCardHover
 				book={book}
 				side="right"
+				link={link}
 			>
 				<img
 					src={book.cover}
@@ -30,7 +32,10 @@ const BookCard: FC<Props> = ({ book }) => {
 				/>
 			</BookCardHover>
 			<div className="flex flex-1 flex-col space-y-1 px-2">
-				<BookCardTitle book={book} />
+				<BookCardTitle
+					book={book}
+					link={link}
+				/>
 				<BookCardActions book={book} />
 				<BookCardContent book={book} />
 				<BookCardFooter book={book} />
@@ -39,12 +44,13 @@ const BookCard: FC<Props> = ({ book }) => {
 	)
 }
 
-const BookCardTitle: FC<Props> = ({ book }) => {
+const BookCardTitle: FC<Props> = ({ book, link }) => {
 	return (
 		<div>
 			<BookCardHover
 				book={book}
 				className="line-clamp-1 font-medium underline-offset-2 hover:underline"
+				link={link}
 			>
 				{book.title}
 			</BookCardHover>
@@ -109,14 +115,14 @@ const BookCardHover: FC<
 	Props & {
 		side?: "right" | "top" | "bottom" | "left" | undefined
 	}
-> = ({ book, side, className, children }) => {
+> = ({ book, link, side, className, children }) => {
 	const date = (date: string) => format(new Date(date), "MMM d, yyyy - hh:mm a")
 	const tags = book.genres.split(",").map((genre) => genre.trim())
 	return (
 		<HoverCard>
 			<HoverCardTrigger asChild>
 				<Link
-					href={route("uploads.edit", [book.id])}
+					href={route(link ?? "", [book.id])}
 					className={className}
 				>
 					{children}

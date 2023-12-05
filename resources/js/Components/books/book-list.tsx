@@ -8,9 +8,10 @@ interface Props {
 	bookData: Paginate & {
 		data: Book[] | []
 	}
+	link?: string
 }
 
-const BookList: FC<Props> = ({ bookData }) => {
+const BookList: FC<Props> = ({ bookData, link }) => {
 	return (
 		<>
 			{bookData.data.length === 0 ? (
@@ -18,7 +19,10 @@ const BookList: FC<Props> = ({ bookData }) => {
 			) : (
 				<div className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
 					{bookData.data.map((book) => (
-						<BookCard book={book} />
+						<BookCard
+							book={book}
+							link={link}
+						/>
 					))}
 				</div>
 			)}

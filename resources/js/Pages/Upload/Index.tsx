@@ -31,7 +31,10 @@ const Index: FC<Props> = ({ bookData }) => {
 				</div>
 			</div>
 
-			<BookList bookData={bookData} />
+			<BookList
+				bookData={bookData}
+				link="uploads.edit"
+			/>
 		</>
 	)
 }
