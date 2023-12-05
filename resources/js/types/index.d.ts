@@ -33,7 +33,7 @@ export interface Book {
 	genres: string
 	created_at: string
 	updated_at: string
-	chapters: Chapter[]
+	chapters?: Chapter[]
 }
 
 interface Link {
@@ -42,7 +42,7 @@ interface Link {
 	active: boolean
 }
 
-export interface Paginate {
+export interface Page {
 	current_page: number
 	first_page_url: string
 	from: number | null

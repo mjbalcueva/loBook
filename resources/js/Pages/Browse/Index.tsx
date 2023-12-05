@@ -2,10 +2,11 @@ import { Head } from "@inertiajs/react"
 import { FC } from "react"
 
 import { BookList } from "@/Components/books/book-list"
-import { Book, Paginate } from "@/types"
+import { Paginate } from "@/Components/paginate"
+import { Book, Page } from "@/types"
 
 interface Props {
-	bookData: Paginate & {
+	bookData: Page & {
 		data: Book[] | []
 	}
 }
@@ -18,7 +19,15 @@ const Browse: FC<Props> = ({ bookData }) => {
 				<h2 className="text-3xl font-bold tracking-tight">Browse</h2>
 			</div>
 
-			<BookList bookData={bookData} />
+			<BookList
+				bookData={bookData}
+				link="browse.show"
+			/>
+
+			<Paginate
+				bookData={bookData}
+				className=" mt-4"
+			/>
 		</>
 	)
 }

@@ -54,23 +54,21 @@ class UploadController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Book $book)
   {
-    $book = Book::findOrFail($id);
-
-    dd($book);
-    return view('upload.edit', compact('book'));
+    return Inertia::render('Upload/Edit', [
+      'bookData' => $book->load('chapters'),
+    ]);
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(Request $request, Book $book)
   {
-    $book = Book::findOrFail($id);
     $book->update($request->all());
 
-    return redirect()->route('upload.index')->with('success', 'Book updated successfully');
+    return redirect()->route('uploads.index')->with('success', 'Book updated successfully');
   }
 
   /**

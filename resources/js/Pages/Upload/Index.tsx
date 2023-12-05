@@ -6,10 +6,10 @@ import { PlusCircle } from "lucide-react"
 import { BookList } from "@/Components/books/book-list"
 import { buttonVariants } from "@/Components/ui/button"
 import { cn } from "@/Lib/utils"
-import { Book, Paginate } from "@/types"
+import { Book, Page } from "@/types"
 
 interface Props {
-	bookData: Paginate & {
+	bookData: Page & {
 		data: Book[] | []
 	}
 }
@@ -31,7 +31,10 @@ const Index: FC<Props> = ({ bookData }) => {
 				</div>
 			</div>
 
-			<BookList bookData={bookData} />
+			<BookList
+				bookData={bookData}
+				link="uploads.edit"
+			/>
 		</>
 	)
 }

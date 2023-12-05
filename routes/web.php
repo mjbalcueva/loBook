@@ -46,19 +46,15 @@ Route::middleware('auth', 'verified')->group(function () {
   Route::get('/uploads', [UploadController::class, 'index'])->name('uploads.index');
   Route::get('/uploads/book', [UploadController::class, 'create'])->name('uploads.create');
   Route::post('/uploads/book', [UploadController::class, 'store'])->name('uploads.store');
-  Route::get('/uploads/{book_id}', [UploadController::class, 'edit'])->name('uploads.edit');
-  Route::patch('/uploads/{book_id}', [UploadController::class, 'update'])->name('uploads.update');
-  Route::delete('/uploads/{book_id}', [UploadController::class, 'destroy'])->name('uploads.destroy');
+  Route::get('/uploads/{book}', [UploadController::class, 'edit'])->name('uploads.edit');
+  Route::patch('/uploads/{book}', [UploadController::class, 'update'])->name('uploads.update');
+  Route::delete('/uploads/{book}', [UploadController::class, 'destroy'])->name('uploads.destroy');
 
   Route::get('/uploads/{book}/chapters', [ChapterController::class, 'create'])->name('chapters.create');
   Route::post('/uploads/{book}/chapters', [ChapterController::class, 'store'])->name('chapters.store');
   Route::get('/uploads/{book}/{chapter}', [ChapterController::class, 'edit'])->name('chapters.edit');
   Route::patch('/uploads/{book}/{chapter}', [ChapterController::class, 'update'])->name('chapters.update');
   Route::delete('/uploads/{book}/{chapter}', [ChapterController::class, 'destroy'])->name('chapters.destroy');
-
-  Route::get('/favorites', function () {
-    return Inertia::render('Favorites');
-  })->name('favorites');
 
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

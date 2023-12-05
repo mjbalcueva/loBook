@@ -1,17 +1,17 @@
 import { FC } from "react"
 
-import { Book, Paginate } from "@/types"
-
-import { EmptyState } from "../empty-state"
-import { BookCard } from "./book-card"
+import { BookCard } from "@/Components/books/book-card"
+import { EmptyState } from "@/Components/empty-state"
+import { Book, Page } from "@/types"
 
 interface Props {
-	bookData: Paginate & {
+	bookData: Page & {
 		data: Book[] | []
 	}
+	link?: string
 }
 
-const BookList: FC<Props> = ({ bookData }) => {
+const BookList: FC<Props> = ({ bookData, link }) => {
 	return (
 		<>
 			{bookData.data.length === 0 ? (
@@ -19,7 +19,11 @@ const BookList: FC<Props> = ({ bookData }) => {
 			) : (
 				<div className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2">
 					{bookData.data.map((book) => (
-						<BookCard book={book} />
+						<BookCard
+							key={book.id}
+							book={book}
+							link={link}
+						/>
 					))}
 				</div>
 			)}
