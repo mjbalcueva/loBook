@@ -9,7 +9,7 @@ import {
 	MoreHorizontalIcon,
 } from "lucide-react"
 
-import { buttonVariants } from "@/Components/ui/button"
+import { ButtonProps, buttonVariants } from "@/Components/ui/button"
 import { cn } from "@/Lib/utils"
 import { Page } from "@/types"
 
@@ -27,10 +27,12 @@ const Paginate: FC<Props> = ({ bookData, className, ...props }) => {
 			<PageLink
 				href={first_page_url}
 				label={<ChevronsLeftIcon className="h-5 w-5" />}
+				variant={"outline"}
 			/>
 			<PageLink
 				href={prev_page_url || ""}
 				label={<ChevronLeftIcon className="h-5 w-5" />}
+				variant={"outline"}
 			/>
 
 			{links.slice(1, -1).map((link, key) => (
@@ -38,9 +40,9 @@ const Paginate: FC<Props> = ({ bookData, className, ...props }) => {
 					{link.label === "..." ? (
 						<PageLink
 							href={link.url || ""}
-							variant={link.active ? "default" : "outline"}
 							label={<MoreHorizontalIcon className="h-5 w-5" />}
-							className="border-none"
+							variant={"outline"}
+							className="cursor-default border-none hover:bg-transparent"
 						/>
 					) : (
 						<PageLink
@@ -55,10 +57,12 @@ const Paginate: FC<Props> = ({ bookData, className, ...props }) => {
 			<PageLink
 				href={next_page_url || ""}
 				label={<ChevronRightIcon className="h-5 w-5" />}
+				variant={"outline"}
 			/>
 			<PageLink
 				href={last_page_url}
 				label={<ChevronsRightIcon className="h-5 w-5" />}
+				variant={"outline"}
 			/>
 		</div>
 	)
@@ -66,23 +70,24 @@ const Paginate: FC<Props> = ({ bookData, className, ...props }) => {
 interface PageLinkProps {
 	href: string
 	label: ReactNode
-	className?: string
 	variant?: "default" | "outline" | "link"
+	className?: string
 }
 
-const PageLink: FC<PageLinkProps> = ({ href, label, className, variant }) => {
+const PageLink: FC<PageLinkProps> = ({ href, label, variant, className }) => {
 	return (
 		<Link
 			href={href}
 			className={cn(
 				buttonVariants({
-					variant: variant || "outline",
+					variant: variant,
 					size: "icon",
 					className: "mx-0.5",
 				}),
 				"select-none",
 				className,
 			)}
+			as="button"
 		>
 			{label}
 		</Link>
