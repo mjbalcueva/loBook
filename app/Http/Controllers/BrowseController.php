@@ -26,7 +26,7 @@ class BrowseController extends Controller
   public function show(Book $book)
   {
     return Inertia::render('Browse/Show', [
-      'bookData' => $book->load('chapters')->toArray(),
+      'book' => $book->load('chapters'),
     ]);
   }
 }

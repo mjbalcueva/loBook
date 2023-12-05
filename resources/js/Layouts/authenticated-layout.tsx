@@ -82,7 +82,9 @@ const AuthenticatedLayout = ({ user, children }: Props) => {
 						/>
 					</div>
 
-					<div className="px-2 pb-14 md:container">{children}</div>
+					<div className="overflow-clip">
+						<div className="px-2 pb-14 md:container">{children}</div>
+					</div>
 				</Context.Provider>
 			</div>
 		</RootLayout>
