@@ -38,8 +38,8 @@ class UploadController extends Controller
     $requestBook = $request->validate([
       'title' => 'required',
       'description' => 'required',
-      'cover' => 'image|jpeg,png,jpg,gif,svg|max:2048',
       'author' => 'required',
+      //'cover' => 'image|jpeg,png,jpg,gif,svg|max:2048',
     ]);
     $requestBook = $request->all();
     $requestBook['user_id'] = Auth::user()->id;
@@ -74,8 +74,8 @@ class UploadController extends Controller
     $requestBook = $request->validate([
       'title' => 'required',
       'description' => 'required',
-      'cover' => 'image|jpeg,png,jpg,gif,svg|max:2048',
       'author' => 'required',
+      //'cover' => 'image|jpeg,png,jpg,gif,svg|max:2048',
     ]);
     $book->update($request->all());
 
