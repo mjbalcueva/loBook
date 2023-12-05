@@ -2,10 +2,10 @@ import { FC } from "react"
 
 import { BookCard } from "@/Components/books/book-card"
 import { EmptyState } from "@/Components/empty-state"
-import { Book, Paginate } from "@/types"
+import { Book, Page } from "@/types"
 
 interface Props {
-	bookData: Paginate & {
+	bookData: Page & {
 		data: Book[] | []
 	}
 	link?: string
