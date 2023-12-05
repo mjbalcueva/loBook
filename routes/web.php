@@ -56,10 +56,6 @@ Route::middleware('auth', 'verified')->group(function () {
   Route::patch('/uploads/{book}/{chapter}', [ChapterController::class, 'update'])->name('chapters.update');
   Route::delete('/uploads/{book}/{chapter}', [ChapterController::class, 'destroy'])->name('chapters.destroy');
 
-  Route::get('/favorites', function () {
-    return Inertia::render('Favorites');
-  })->name('favorites');
-
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
   Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
