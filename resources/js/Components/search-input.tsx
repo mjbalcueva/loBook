@@ -1,7 +1,15 @@
-import { Link } from "@inertiajs/react"
-import { FC, ReactNode, cloneElement, useEffect, useState } from "react"
+import { Link, usePage } from "@inertiajs/react"
+import {
+	FC,
+	ReactNode,
+	cloneElement,
+	useEffect,
+	useMemo,
+	useState,
+} from "react"
 
 import { BookIcon, SearchIcon } from "lucide-react"
+import { For } from "million/react"
 
 import {
 	CommandDialog,
@@ -11,6 +19,7 @@ import {
 	CommandItem,
 	CommandList,
 } from "@/Components/ui/command"
+import { PageProps } from "@/types"
 
 interface Props {
 	navLinks: {
@@ -21,6 +30,20 @@ interface Props {
 }
 
 const SearchInput: FC<Props> = ({ navLinks }) => {
+	const user = usePage<PageProps>().props.auth?.user
+	const books = usePage<PageProps>().props.books
+
+	// const allBooks = books?.filter((book) => book.user_id !== user?.id)
+	// const userBooks = books?.filter((book) => book.user_id === user?.id)
+	const allBooks = useMemo(
+		() => books?.filter((book) => book.user_id !== user?.id),
+		[books, user],
+	)
+	const userBooks = useMemo(
+		() => books?.filter((book) => book.user_id === user?.id),
+		[books, user],
+	)
+
 	const [open, setOpen] = useState(false)
 
 	useEffect(() => {
@@ -55,19 +78,38 @@ const SearchInput: FC<Props> = ({ navLinks }) => {
 				<CommandList>
 					<CommandEmpty>No Results found</CommandEmpty>
 
+					<CommandGroup heading="Your Books">
+						{userBooks?.slice(0, 2).map((book) => (
+							<Link
+								href={`/browse/${book.id}`}
+								key={book.id}
+								onClick={() => setOpen(false)}
+							>
+								<CommandItem>
+									<CustomCommandItem
+										icon={<BookIcon className="mr-2 h-4 w-4" />}
+										title={book.title}
+									/>
+								</CommandItem>
+							</Link>
+						))}
+					</CommandGroup>
+
 					<CommandGroup heading="Books">
-						<CommandItem>
-							<BookIcon className="mr-2 h-4 w-4" />
-							Book 1
-						</CommandItem>
-						<CommandItem>
-							<BookIcon className="mr-2 h-4 w-4" />
-							Book 2
-						</CommandItem>
-						<CommandItem>
-							<BookIcon className="mr-2 h-4 w-4" />
-							Book 3
-						</CommandItem>
+						{allBooks.slice(0, 2).map((book) => (
+							<Link
+								href={`/browse/${book.id}`}
+								key={book.id}
+								onClick={() => setOpen(false)}
+							>
+								<CommandItem>
+									<CustomCommandItem
+										icon={<BookIcon className="mr-2 h-4 w-4" />}
+										title={book.title}
+									/>
+								</CommandItem>
+							</Link>
+						))}
 					</CommandGroup>
 
 					<CommandGroup heading="Navigation">

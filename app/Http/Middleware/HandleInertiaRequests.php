@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -36,6 +37,7 @@ class HandleInertiaRequests extends Middleware
       'auth' => [
         'user' => $request->user(),
       ],
+      'books' => Book::get(),
       'ziggy' => fn () => [
         ...(new Ziggy)->toArray(),
         'location' => $request->url(),

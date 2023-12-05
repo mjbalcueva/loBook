@@ -15,7 +15,7 @@ class BrowseController extends Controller
   public function index()
   {
     return Inertia::render('Browse/Index', [
-      'bookData' => Book::with('chapters')->paginate(8),
+      'bookData' => Book::latest()->with('chapters')->paginate(8),
     ]);
   }
 
