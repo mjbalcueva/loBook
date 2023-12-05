@@ -18,7 +18,7 @@ interface Props {
 }
 
 const BookForm: FC<Props> = ({ book }) => {
-	const { data, setData, patch, processing, errors, reset } = useForm({
+	const { data, setData, patch, processing, errors } = useForm({
 		title: book.title.length > 0 ? book.title : "",
 		author: book.author.length > 0 ? book.author : "",
 		cover: "",

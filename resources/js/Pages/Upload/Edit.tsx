@@ -14,7 +14,7 @@ const Edit: FC<Props> = ({ bookData }) => {
 		<div className="mb-32 space-y-6">
 			<Head title="Add book" />
 			<div>
-				<h2 className="text-2xl font-medium tracking-tight">Edit book</h2>
+				<h2 className="text-2xl font-bold tracking-tight">Edit book</h2>
 				<p className="text-sm text-muted-foreground">Edit a book's content</p>
 			</div>
 			<div>
