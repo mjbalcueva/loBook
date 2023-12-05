@@ -62,7 +62,7 @@ const BookHeader = ({ book }: { book: Book }) => {
 	)
 
 	return (
-		<div className="-mb-24 -mt-64 flex flex-wrap space-x-4 md:-mb-20 md:-mt-60 lg:-mt-56 xl:-mb-24 xl:space-x-8">
+		<div className="-mb-20 -mt-64 flex flex-wrap space-x-4 md:-mb-24 md:-mt-60 lg:-mt-56 xl:-mb-24 xl:space-x-8">
 			<img
 				src={book.cover}
 				alt={book.title}
