@@ -122,12 +122,17 @@ const ChapterList = ({ chapters }: { chapters: Book["chapters"] }) => {
 	const [isAscending, setIsAscending] = useState(true)
 
 	const ascendingChapters = useMemo(() => {
-		return chapters!.map((chapter) => chapter)
+		return chapters!.map((chapter, key) => {
+			return {
+				...chapter,
+				key: key + 1,
+			}
+		})
 	}, [chapters])
 
 	const descendingChapters = useMemo(() => {
-		return chapters!.map((chapter) => chapter).reverse()
-	}, [chapters])
+		return ascendingChapters.slice().reverse()
+	}, [ascendingChapters])
 
 	return (
 		<Collapsible
@@ -156,17 +161,17 @@ const ChapterList = ({ chapters }: { chapters: Book["chapters"] }) => {
 				) : (
 					<div className="space-y-1">
 						{isAscending
-							? ascendingChapters.map((chapter, id) => (
+							? ascendingChapters.map((chapter) => (
 									<ChapterCard
 										key={chapter.id}
-										id={id}
+										id={chapter.key}
 										chapter={chapter}
 									/>
 							  ))
-							: descendingChapters.map((chapter, id) => (
+							: descendingChapters.map((chapter) => (
 									<ChapterCard
 										key={chapter.id}
-										id={id}
+										id={chapter.key}
 										chapter={chapter}
 									/>
 							  ))}
