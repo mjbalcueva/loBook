@@ -1,10 +1,17 @@
-import { FC, useMemo } from "react"
+import { Link } from "@inertiajs/react"
+import { FC, useMemo, useState } from "react"
 
-import { HeartIcon } from "lucide-react"
+import { ClockIcon, HeartIcon, ScrollIcon } from "lucide-react"
 
 import { EmptyState } from "@/Components/empty-state"
 import { Badge } from "@/Components/ui/badge"
-import { Button } from "@/Components/ui/button"
+import { Button, buttonVariants } from "@/Components/ui/button"
+import {
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+} from "@/Components/ui/collapsible"
+import { Separator } from "@/Components/ui/separator"
 import { cn } from "@/Lib/utils"
 import { Book, Chapter } from "@/types"
 
@@ -24,6 +31,9 @@ const Show: FC<Props> = ({ book }) => {
 				<div className="relative">
 					<div className="absolute h-full w-full scale-x-150 bg-background/80 backdrop-blur-md" />
 					<div className="relative pt-28">
+						<p>{book.description}</p>
+						<Separator className="my-4" />
+						<h3 className="mb-4 text-2xl font-bold">Chapters</h3>
 						<ChapterList chapters={book.chapters} />
 					</div>
 				</div>
@@ -108,26 +118,109 @@ const BookTags = ({ tags }: { tags: string[] }) => {
 }
 
 const ChapterList = ({ chapters }: { chapters: Book["chapters"] }) => {
+	const [isOpen, setIsOpen] = useState(true)
+	const [isAscending, setIsAscending] = useState(true)
+
+	const ascendingChapters = useMemo(() => {
+		return chapters!.map((chapter) => chapter)
+	}, [chapters])
+
+	const descendingChapters = useMemo(() => {
+		return chapters!.map((chapter) => chapter).reverse()
+	}, [chapters])
+
 	return (
-		<>
-			{chapters!.length === 0 ? (
-				<EmptyState message="No chapters uploaded yet." />
-			) : (
-				<div className="">
-					{chapters!.map((chapter) => (
-						<ChapterCard
-							key={chapter.id}
-							chapter={chapter}
-						/>
-					))}
-				</div>
-			)}
-		</>
+		<Collapsible
+			open={isOpen}
+			onOpenChange={setIsOpen}
+			className="space-y-2"
+		>
+			<div className="flex items-center justify-between space-x-4">
+				<Button
+					variant="secondary"
+					onClick={() => setIsAscending(!isAscending)}
+				>
+					{isAscending ? "Ascending" : "Descending"}
+				</Button>
+				<h4 className="text-sm font-semibold">Ch. 0 - {chapters!.length}</h4>
+				<CollapsibleTrigger
+					className={buttonVariants({ variant: "secondary" })}
+				>
+					Collapse
+				</CollapsibleTrigger>
+			</div>
+
+			<CollapsibleContent>
+				{chapters!.length === 0 ? (
+					<EmptyState message="No chapters uploaded yet." />
+				) : (
+					<div className="space-y-1">
+						{isAscending
+							? ascendingChapters.map((chapter, id) => (
+									<ChapterCard
+										key={chapter.id}
+										id={id}
+										chapter={chapter}
+									/>
+							  ))
+							: descendingChapters.map((chapter, id) => (
+									<ChapterCard
+										key={chapter.id}
+										id={id}
+										chapter={chapter}
+									/>
+							  ))}
+					</div>
+				)}
+			</CollapsibleContent>
+		</Collapsible>
 	)
 }
 
-const ChapterCard = ({ chapter }: { chapter: Chapter }) => {
-	return <div className="">{chapter.title}</div>
+const ChapterCard = ({ id, chapter }: { id: number; chapter: Chapter }) => {
+	const relativeDate = (date: string) => {
+		const now = new Date()
+		const then = new Date(date)
+
+		const seconds = Math.round((now.getTime() - then.getTime()) / 1000)
+		const minutes = Math.round(seconds / 60)
+		const hours = Math.round(minutes / 60)
+		const days = Math.round(hours / 24)
+		const weeks = Math.round(days / 7)
+		const months = Math.round(days / 30)
+		const years = Math.round(days / 365)
+
+		if (seconds < 60) return `${seconds} seconds ago`
+		if (minutes < 60) return `${minutes} minutes ago`
+		if (hours < 24) return `${hours} hours ago`
+		if (days < 7) return `${days} days ago`
+		if (weeks < 4) return `${weeks} weeks ago`
+		if (months < 12) return `${months} months ago`
+		return `${years} years ago`
+	}
+
+	return (
+		<Link
+			href={"chapter.id"}
+			className="flex w-full items-center justify-between rounded border px-4 py-3 text-start text-sm"
+			as="button"
+		>
+			<div className="flex flex-col gap-0.5 py-0.5">
+				<div className="flex items-center gap-1">
+					<span className="w-4">🇬🇧</span>
+					<span className="font-bold">Ch. {id}</span>
+				</div>
+				<div className="flex items-center gap-1">
+					<span className="w-4"></span>
+					<span className="text-muted-foreground">{chapter.title}</span>
+				</div>
+			</div>
+			<div className="flex items-center gap-1">
+				<ClockIcon className="h-4 w-4" />
+				<span>{relativeDate(chapter.created_at)}</span>
+			</div>
+		</Link>
+	)
 }
 
 export default Show
