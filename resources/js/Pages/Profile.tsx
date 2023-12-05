@@ -48,7 +48,7 @@ const Profile = ({ auth, mustVerifyEmail, status }: Props) => {
 	return (
 		<>
 			<Head title="Profile" />
-			<div className="space-y-4 pb-14 pt-4">
+			<div className="space-y-4 pt-4">
 				{cards.map((card) => (
 					<Card key={card.title}>
 						<CardHeader>

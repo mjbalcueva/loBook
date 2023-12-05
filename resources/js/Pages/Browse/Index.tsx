@@ -24,7 +24,10 @@ const Browse: FC<Props> = ({ bookData }) => {
 				link="browse.show"
 			/>
 
-			<Paginate bookData={bookData} />
+			<Paginate
+				bookData={bookData}
+				className=" mt-4"
+			/>
 		</>
 	)
 }

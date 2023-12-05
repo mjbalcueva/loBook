@@ -39,7 +39,7 @@ const AuthenticatedLayout = ({ user, children }: Props) => {
 					className="sticky top-0 z-50 w-full bg-background/40 backdrop-blur-lg dark:bg-background/80"
 				/>
 
-				<div className="px-2 md:container">{children}</div>
+				<div className="px-2 pb-14 md:container">{children}</div>
 			</div>
 		</RootLayout>
 	)
