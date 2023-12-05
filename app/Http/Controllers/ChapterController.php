@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Chapter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ChapterController extends Controller
 {
@@ -21,7 +22,7 @@ class ChapterController extends Controller
    */
   public function create()
   {
-    //
+    return Inertia::render('Upload/{book}/create');
   }
 
   /**
@@ -49,7 +50,9 @@ class ChapterController extends Controller
    */
   public function edit(Chapter $chapter)
   {
-    //
+    return Inertia::render('Upload/{book}/Edit', [
+      'ChapterData' => $chapter->load('chapters'),
+    ]);
   }
 
   /**
@@ -57,14 +60,19 @@ class ChapterController extends Controller
    */
   public function update(Request $request, Chapter $chapter)
   {
-    //
+    $chapter->update($request->all());
+
+    return redirect()->route('uploads.edit')->with('success', 'Chapter updated successfully');
   }
 
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Chapter $chapter)
+  public function destroy(string $id)
   {
-    //
+    $chapter = Chapter::findOrFail($id);
+    $chapter->delete();
+
+    return redirect()->route('upload.edit')->with('success', 'Chapter deleted successfully');
   }
 }

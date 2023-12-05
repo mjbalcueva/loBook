@@ -35,7 +35,12 @@ class UploadController extends Controller
    */
   public function store(Request $request)
   {
-
+    $requestBook = $request->validate([
+      'title' => 'required',
+      'description' => 'required',
+      'cover' => 'image|jpeg,png,jpg,gif,svg|max:2048',
+      'author' => 'required',
+    ]);
     $requestBook = $request->all();
     $requestBook['user_id'] = Auth::user()->id;
 
@@ -66,6 +71,12 @@ class UploadController extends Controller
    */
   public function update(Request $request, Book $book)
   {
+    $requestBook = $request->validate([
+      'title' => 'required',
+      'description' => 'required',
+      'cover' => 'image|jpeg,png,jpg,gif,svg|max:2048',
+      'author' => 'required',
+    ]);
     $book->update($request->all());
 
     return redirect()->route('uploads.index')->with('success', 'Book updated successfully');
