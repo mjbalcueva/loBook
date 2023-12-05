@@ -52,20 +52,18 @@ const BookHeader = ({ book }: { book: Book }) => {
 	)
 
 	return (
-		<div className="-mb-12 -mt-64 flex space-x-4 sm:-mb-16 md:-mb-20 md:-mt-60 xl:-mb-24 xl:-mt-56 xl:space-x-8">
+		<div className="-mb-24 -mt-64 flex flex-wrap space-x-4 md:-mb-20 md:-mt-60 lg:-mt-56 xl:-mb-24 xl:space-x-8">
 			<img
 				src={book.cover}
 				alt={book.title}
 				className="z-10 aspect-[3/4] h-44 rounded border bg-slate-500 object-cover sm:h-52 md:h-60 lg:h-72 xl:h-80"
 			/>
 			<div className="z-10 flex flex-1 flex-col justify-between">
-				<div className="flex-1 space-y-2">
+				<div className="flex-1 md:space-y-2">
 					<h1 className="text-2xl font-black leading-7 lg:text-4xl lg:leading-none xl:text-5xl">
 						{book.title}
 					</h1>
-					<h2 className="text-sm sm:text-base md:text-lg lg:text-xl">
-						{book.author}
-					</h2>
+					<h2 className="md:text-lg lg:text-xl">{book.author}</h2>
 				</div>
 				<div className="flex flex-col gap-y-2">
 					<BookActions book={book} />
