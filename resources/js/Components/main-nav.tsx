@@ -26,11 +26,11 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 	}[]
 }
 
-const MainNav = ({ user, navLinks, className }: Props) => {
+const MainNav = ({ user, navLinks, ...props }: Props) => {
 	const appName = usePage<PageProps>().props.appName
 
 	return (
-		<div className={cn("border-b px-2 py-2 md:px-0 lg:py-4", className)}>
+		<div {...props}>
 			<div className="flex w-full items-center md:container">
 				<div className="flex items-center lg:hidden">
 					<Sheet>
