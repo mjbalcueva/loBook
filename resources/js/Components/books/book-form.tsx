@@ -35,6 +35,7 @@ const BookForm: FC<Props> = ({ book }) => {
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
+		// console.log(data)
 		patch(route("uploads.update", book.id))
 	}
 

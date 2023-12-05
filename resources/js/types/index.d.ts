@@ -36,7 +36,7 @@ export interface Book {
 	chapters?: Chapter[]
 }
 
-interface Link {
+export interface Link {
 	url: string | null
 	label: string
 	active: boolean
