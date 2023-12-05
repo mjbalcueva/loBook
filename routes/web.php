@@ -25,7 +25,7 @@ use Inertia\Inertia;
  *  "/{book_id}/{chapter_id}"
  *
  *  "/uploads"
- *  "/uploads/books"
+ *  "/uploads/{book_id}"
  *  "/uploads/{book_id}/chapters"
  *  "/uploads/{book_id}/{chapter_id}"
  * 
