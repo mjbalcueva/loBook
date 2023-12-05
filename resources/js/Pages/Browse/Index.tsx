@@ -2,8 +2,6 @@ import { Head } from "@inertiajs/react"
 import { FC } from "react"
 
 import { BookList } from "@/Components/books/book-list"
-import { Paginate } from "@/Components/paginate"
-import { Separator } from "@/Components/ui/separator"
 import { Book, Page } from "@/types"
 
 interface Props {
@@ -24,10 +22,6 @@ const Browse: FC<Props> = ({ bookData }) => {
 				bookData={bookData}
 				link="browse.show"
 			/>
-
-			<Separator className="mb-4 mt-8" />
-
-			<Paginate bookData={bookData} />
 		</>
 	)
 }
