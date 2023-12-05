@@ -79,7 +79,7 @@ const BookCardActions: FC<Props> = ({ book }) => {
 const BookCardContent: FC<Props> = ({ book }) => {
 	return (
 		<div className="text-sm font-light leading-6 tracking-wide text-muted-foreground">
-			<p className="line-clamp-3 sm:line-clamp-5 md:line-clamp-3 lg:line-clamp-6 xl:line-clamp-6 2xl:line-clamp-none">
+			<p className="line-clamp-2 sm:line-clamp-2 md:line-clamp-1 lg:line-clamp-4 xl:line-clamp-5">
 				{book.description}
 			</p>
 		</div>
