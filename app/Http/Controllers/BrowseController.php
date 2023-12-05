@@ -14,10 +14,8 @@ class BrowseController extends Controller
    */
   public function index()
   {
-    $bookData = Book::with('chapters')->paginate(8);
-
     return Inertia::render('Browse/Index', [
-      'bookData' => $bookData,
+      'bookData' => Book::with('chapters')->paginate(8),
     ]);
   }
 
@@ -27,9 +25,8 @@ class BrowseController extends Controller
    */
   public function show(Book $book)
   {
-    // Route::get('/browse/{book_id}', [BrowseController::class, 'show'])->name('browse.show');
-    // display the book and its chapters that matches the book_id in the route
-
-    dd($book);
+    return Inertia::render('Browse/Show', [
+      'bookData' => $book->load('chapters')->toArray(),
+    ]);
   }
 }
