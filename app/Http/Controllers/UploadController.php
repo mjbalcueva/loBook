@@ -85,10 +85,10 @@ class UploadController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Request $request, Book $book)
   {
-    $book = Book::findOrFail($id);
-    $book->delete();
+    $request = Book::findOrFail($book->id);
+    $request->delete();
 
     return redirect()->route('upload.index')->with('success', 'Book deleted successfully');
   }

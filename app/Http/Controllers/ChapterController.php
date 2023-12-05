@@ -68,10 +68,10 @@ class ChapterController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Request $request, Chapter $chapter)
   {
-    $chapter = Chapter::findOrFail($id);
-    $chapter->delete();
+    $request = Chapter::findOrFail($chapter->id);
+    $request->delete();
 
     return redirect()->route('upload.edit')->with('success', 'Chapter deleted successfully');
   }
