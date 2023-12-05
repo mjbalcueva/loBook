@@ -1,7 +1,7 @@
 import { Link } from "@inertiajs/react"
 import { FC, useMemo, useState } from "react"
 
-import { ClockIcon, HeartIcon, ScrollIcon } from "lucide-react"
+import { ClockIcon, HeartIcon } from "lucide-react"
 
 import { EmptyState } from "@/Components/empty-state"
 import { Badge } from "@/Components/ui/badge"
@@ -119,7 +119,7 @@ const BookTags = ({ tags }: { tags: string[] }) => {
 
 const ChapterList = ({ chapters }: { chapters: Book["chapters"] }) => {
 	const [isOpen, setIsOpen] = useState(true)
-	const [isAscending, setIsAscending] = useState(true)
+	const [isAscending, setIsAscending] = useState(false)
 
 	const ascendingChapters = useMemo(() => {
 		return chapters!.map((chapter, key) => {
@@ -138,7 +138,7 @@ const ChapterList = ({ chapters }: { chapters: Book["chapters"] }) => {
 		<Collapsible
 			open={isOpen}
 			onOpenChange={setIsOpen}
-			className="space-y-2"
+			className="space-y-4"
 		>
 			<div className="flex items-center justify-between space-x-4">
 				<Button
@@ -206,23 +206,23 @@ const ChapterCard = ({ id, chapter }: { id: number; chapter: Chapter }) => {
 
 	return (
 		<Link
-			href={"chapter.id"}
-			className="flex w-full items-center justify-between rounded border px-4 py-3 text-start text-sm"
+			href={route("chapters.show", [chapter.book_id, chapter.id])}
+			className="flex w-full items-center justify-between rounded bg-secondary/50 px-4 py-3 text-start text-sm transition-all hover:rounded-none hover:bg-secondary/80"
 			as="button"
 		>
 			<div className="flex flex-col gap-0.5 py-0.5">
-				<div className="flex items-center gap-1">
+				<div className="flex items-center gap-1.5">
 					<span className="w-4">🇬🇧</span>
 					<span className="font-bold">Ch. {id}</span>
 				</div>
-				<div className="flex items-center gap-1">
+				<div className="flex items-center gap-1.5">
 					<span className="w-4"></span>
 					<span className="text-muted-foreground">{chapter.title}</span>
 				</div>
 			</div>
-			<div className="flex items-center gap-1">
+			<div className="flex min-w-fit items-center gap-1.5">
 				<ClockIcon className="h-4 w-4" />
-				<span>{relativeDate(chapter.created_at)}</span>
+				<span className="text-sm">{relativeDate(chapter.created_at)}</span>
 			</div>
 		</Link>
 	)
