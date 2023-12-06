@@ -52,7 +52,6 @@ Route::middleware('auth', 'verified')->group(function () {
 
   Route::get('/uploads/{book}/chapters', [ChapterController::class, 'create'])->name('chapters.create');
   Route::post('/uploads/{book}/chapters', [ChapterController::class, 'store'])->name('chapters.store');
-  Route::get('/uploads/{book}/{chapter}', [ChapterController::class, 'show'])->name('chapters.show');
   Route::get('/uploads/{book}/{chapter}', [ChapterController::class, 'edit'])->name('chapters.edit');
   Route::patch('/uploads/{book}/{chapter}', [ChapterController::class, 'update'])->name('chapters.update');
   Route::delete('/uploads/{book}/{chapter}', [ChapterController::class, 'destroy'])->name('chapters.destroy');

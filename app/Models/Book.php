@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Book extends Model
 {
   use HasFactory;
-
   /**
    * The attributes that are mass assignable.
    *
@@ -30,12 +29,13 @@ class Book extends Model
   {
     return $this->belongsTo(User::class, 'user_id');
   }
-
   // relationship to chapters
   public function chapters(): HasMany
   {
     return $this->hasMany(Chapter::class, 'book_id');
   }
-
+  
+  
+  
 
 }

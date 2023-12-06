@@ -22,4 +22,5 @@ class DatabaseSeeder extends Seeder
       )
     )->create();
   }
+
 }
