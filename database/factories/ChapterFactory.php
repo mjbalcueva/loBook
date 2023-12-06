@@ -19,8 +19,35 @@ class ChapterFactory extends Factory
   {
     return [
       'title' => $this->faker->sentence(),
-      'content' => $this->faker->paragraph(),
+      'content' => $this->generateContent(rand(3, 7)),
       'book_id' => Book::factory(),
     ];
+  }
+
+  private function generateContent(int $count): string
+  {
+    $contentArray = [];
+
+    for ($i = 0; $i < $count; $i++) {
+      $contentArray[] = [
+        "id" => $this->faker->uuid,
+        "type" => "paragraph",
+        "props" => [
+          "textColor" => "default",
+          "backgroundColor" => "default",
+          "textAlignment" => "left"
+        ],
+        "content" => [
+          [
+            "type" => "text",
+            "text" => $this->faker->paragraph(20),
+            "styles" => new \stdClass() // empty object
+          ]
+        ],
+        "children" => []
+      ];
+    }
+
+    return str_replace("\n", "", json_encode($contentArray));
   }
 }

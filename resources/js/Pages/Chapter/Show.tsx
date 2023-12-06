@@ -1,16 +1,24 @@
 import { FC } from "react"
 
+import { Viewer } from "@/Components/editor"
+import { Separator } from "@/Components/ui/separator"
+import { Chapter } from "@/types"
+
 interface Props {
-	chapterData: any
+	chapterData: Chapter
 }
 
 const Show: FC<Props> = ({ chapterData }) => {
 	return (
-		<>
-			<pre>
-				<code>{JSON.stringify(chapterData, null, 2)}</code>
-			</pre>
-		</>
+		<div>
+			<div>
+				<h1>{chapterData.title}</h1>
+			</div>
+			<Separator />
+			<div>
+				<Viewer content={chapterData.content} />
+			</div>
+		</div>
 	)
 }
 

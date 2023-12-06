@@ -77,4 +77,27 @@ const Editor: FC<Props> = ({ onChange, initialContent, editable }) => {
 	)
 }
 
-export { Editor }
+interface ViewerProps {
+	content?: string
+}
+
+const Viewer: FC<ViewerProps> = ({ content }) => {
+	const { theme: resolvedTheme } = useTheme()
+
+	const editor: BlockNoteEditor = useBlockNote({
+		editable: false,
+		initialContent: content
+			? (JSON.parse(content) as PartialBlock[])
+			: undefined,
+	})
+
+	return (
+		<BlockNoteView
+			editor={editor}
+			theme={resolvedTheme === "dark" ? theme.dark : theme.light}
+			onChange={() => {}}
+		/>
+	)
+}
+
+export { Editor, Viewer }
