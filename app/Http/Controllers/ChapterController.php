@@ -42,7 +42,9 @@ class ChapterController extends Controller
    */
   public function show(Chapter $chapter)
   {
-    //
+    return Inertia::render('Browse/Show/Chapter', [
+      'chapter' => $chapter->load('contents'),
+    ]);
   }
 
   /**
