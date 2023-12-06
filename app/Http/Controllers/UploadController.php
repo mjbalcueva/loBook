@@ -62,7 +62,7 @@ class UploadController extends Controller
   public function edit(Book $book)
   {
     return Inertia::render('Upload/Edit', [
-      'bookData' => $book->load('chapters'),
+      'bookData' => $book,
     ]);
   }
 

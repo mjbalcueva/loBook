@@ -53,7 +53,7 @@ class ChapterController extends Controller
    */
   public function edit(Book $book, Chapter $chapter)
   {
-    return Inertia::render('Chapter/Show', [
+    return Inertia::render('Chapter/Edit', [
       'chapterData' => $chapter,
     ]);
   }
