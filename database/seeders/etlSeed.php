@@ -21,7 +21,6 @@ class etlSeed extends Seeder
         {
             if(!$firstLine)
             {
-
                 Book::create([
                     'user_id' => $data['0'],
                     'title' => $data['1'],
