@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Book;
-use App\Models\User;
+use App\Models\etlnew;
 
 class etlSeed extends Seeder
 {
