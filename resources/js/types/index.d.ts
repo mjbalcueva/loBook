@@ -12,7 +12,6 @@ export type PageProps<
 	auth: {
 		user: User
 	}
-	books: Book[]
 }
 
 export interface Chapter {
