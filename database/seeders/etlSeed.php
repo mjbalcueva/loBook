@@ -22,7 +22,7 @@ class etlSeed extends Seeder
             if(!$firstLine)
             {
 
-                User::create([
+                Book::create([
                     'user_id' => $data['0'],
                     'title' => $data['1'],
                     'author' => $data['2'],
