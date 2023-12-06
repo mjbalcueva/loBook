@@ -11,11 +11,13 @@ interface Props {
 const Show: FC<Props> = ({ chapterData }) => {
 	return (
 		<div>
-			<div>
-				<h1>{chapterData.title}</h1>
+			<div className="flex h-32 items-center justify-center">
+				<h1 className="text-3xl font-medium tracking-wide">
+					{chapterData.title}
+				</h1>
 			</div>
 			<Separator />
-			<div>
+			<div className="mt-10">
 				<Viewer content={chapterData.content} />
 			</div>
 		</div>
