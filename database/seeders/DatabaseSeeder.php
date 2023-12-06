@@ -22,4 +22,9 @@ class DatabaseSeeder extends Seeder
       )
     )->create();
   }
+
+  public function run2(): void
+  {
+    
+  }
 }

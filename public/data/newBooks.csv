@@ -1,0 +1,7 @@
+user_id,title,author ,cover,description,genres
+11,mac book,mac mac,https://arjunamrutiya.medium.com/a-step-by-step-guide-to-importing-and-exporting-csv-files-using-laravel-without-packages-4274b3ed03df,novel,action
+11,renier book,renier renier,https://arjunamrutiya.medium.com/a-step-by-step-guide-to-importing-and-exporting-csv-files-using-laravel-without-packages-4274b3ed03df,novel,action
+11,my book,my my,https://arjunamrutiya.medium.com/a-step-by-step-guide-to-importing-and-exporting-csv-files-using-laravel-without-packages-4274b3ed03df,love story,action
+11,story of mac,mac mac,https://arjunamrutiya.medium.com/a-step-by-step-guide-to-importing-and-exporting-csv-files-using-laravel-without-packages-4274b3ed03df,love story,action
+11,story renier,renier renier,https://arjunamrutiya.medium.com/a-step-by-step-guide-to-importing-and-exporting-csv-files-using-laravel-without-packages-4274b3ed03df,slice of life,action
+11,my story,my my,https://arjunamrutiya.medium.com/a-step-by-step-guide-to-importing-and-exporting-csv-files-using-laravel-without-packages-4274b3ed03df,slice of life,action
