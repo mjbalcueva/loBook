@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Models\Chapter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,27 +41,27 @@ class ChapterController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(Chapter $chapter)
+  public function show(Book $book, Chapter $chapter)
   {
-    return Inertia::render('Browse/Show/Chapter', [
-      'chapter' => $chapter->load('contents'),
+    return Inertia::render('Chapter/Show', [
+      'chapterData' => $chapter,
     ]);
   }
 
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(Chapter $chapter)
+  public function edit(Book $book, Chapter $chapter)
   {
-    return Inertia::render('Upload/{book}/Edit', [
-      'ChapterData' => $chapter->load('chapters'),
+    return Inertia::render('Chapter/Show', [
+      'chapterData' => $chapter,
     ]);
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Chapter $chapter)
+  public function update(Request $request, Book $book, Chapter $chapter)
   {
     $chapter->update($request->all());
 
@@ -70,7 +71,7 @@ class ChapterController extends Controller
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(Request $request, Chapter $chapter)
+  public function destroy(Request $request, Book $book, Chapter $chapter)
   {
     $request = Chapter::findOrFail($chapter->id);
     $request->delete();
