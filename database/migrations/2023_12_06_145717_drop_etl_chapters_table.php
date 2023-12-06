@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('e_t_l_s', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            
-        });
+        //
+        Schema::dropIfExists('etl_chapters');
     }
 
     /**
@@ -23,6 +20,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('e_t_l_s');
+        //
     }
 };
