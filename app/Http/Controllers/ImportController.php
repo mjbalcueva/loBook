@@ -14,6 +14,12 @@ class ImportController extends Controller
 
   public function store(Request $request)
   {
-    dd($request->all());
+    $csv = $request->file('csv');
+
+    if ($csv) {
+      $contents = file_get_contents($csv->getRealPath());
+
+      dd($contents);
+    }
   }
 }
