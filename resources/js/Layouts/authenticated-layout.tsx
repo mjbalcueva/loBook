@@ -8,7 +8,11 @@ import {
 	useState,
 } from "react"
 
-import { HardDriveUploadIcon, LayoutDashboardIcon } from "lucide-react"
+import {
+	HardDriveUploadIcon,
+	ImportIcon,
+	LayoutDashboardIcon,
+} from "lucide-react"
 
 import { MainNav } from "@/Components/main-nav"
 import { Sidebar } from "@/Components/sidebar"
@@ -40,6 +44,11 @@ const links = [
 		title: "Uploads",
 		href: "/uploads",
 		icon: <HardDriveUploadIcon className="h-5 w-5" />,
+	},
+	{
+		title: "Import",
+		href: "/import",
+		icon: <ImportIcon className="h-5 w-5" />,
 	},
 ]
 const AuthenticatedLayout = ({ user, children }: Props) => {
