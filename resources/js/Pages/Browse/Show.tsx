@@ -12,7 +12,7 @@ import {
 	CollapsibleTrigger,
 } from "@/Components/ui/collapsible"
 import { Separator } from "@/Components/ui/separator"
-import { cn } from "@/Lib/utils"
+import { cn, split } from "@/Lib/utils"
 import { Book, Chapter } from "@/types"
 
 interface Props {
@@ -56,10 +56,7 @@ const BackgroundImage = ({ src, alt }: { src: string; alt: string }) => {
 }
 
 const BookHeader = ({ book }: { book: Book }) => {
-	const tags = useMemo(
-		() => book.genres.split(",").map((genre) => genre.trim()),
-		[book.genres],
-	)
+	const tags = split(book.genres)
 
 	return (
 		<div className="-mb-20 -mt-64 flex flex-wrap space-x-4 md:-mb-24 md:-mt-60 lg:-mt-56 xl:-mb-24 xl:space-x-8">
@@ -76,7 +73,7 @@ const BookHeader = ({ book }: { book: Book }) => {
 					<h2 className="md:text-lg lg:text-xl">{book.author}</h2>
 				</div>
 				<div className="flex flex-col gap-y-2">
-					<BookActions book={book} />
+					<BookActions />
 					<BookTags tags={tags} />
 				</div>
 			</div>
@@ -84,7 +81,7 @@ const BookHeader = ({ book }: { book: Book }) => {
 	)
 }
 
-const BookActions = ({ book }: { book: Book }) => {
+const BookActions = () => {
 	return (
 		<div className="flex items-center gap-x-2">
 			<Button className="lg:h-11 lg:px-9 lg:text-base xl:h-12 xl:px-10">
