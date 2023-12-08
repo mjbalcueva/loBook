@@ -64,7 +64,7 @@ const BookForm: FC<Props> = ({ book }) => {
 						className="sm:w-72"
 					/>
 
-					<Form.Image
+					<Form.File
 						label="Book Cover"
 						value={data.cover}
 						onChange={(e) => setData("cover", e.target.value)}
