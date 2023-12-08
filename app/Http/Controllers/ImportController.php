@@ -9,16 +9,19 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ImportController extends Controller
 {
-    public function create() {
-        return Inertia::render('Import');
-    }
+  public function create()
+  {
+    return Inertia::render('Import');
+  }
 
-    public function store(Request $request) {
-        
-    }
+  public function store(Request $request)
+  {
+    $csv = $request->file('csv');
 
-    public function export() 
-    {
-        return Excel::download(new BooksExports, 'books.xlsx');
+    if ($csv) {
+      $contents = file_get_contents($csv->getRealPath());
+
+      dd($contents);
     }
+  }
 }
