@@ -204,7 +204,7 @@ const ChapterCard = ({ id, chapter }: { id: number; chapter: Chapter }) => {
 	return (
 		<Link
 			href={route("chapters.show", [chapter.book_id, chapter.id])}
-			className="flex w-full items-center justify-between rounded bg-secondary/50 px-4 py-3 text-start text-sm transition-all hover:rounded-none hover:bg-secondary/80"
+			className="flex w-full items-center justify-between rounded bg-secondary/50 px-4 py-3 text-start text-sm transition-all hover:bg-secondary/80"
 			as="button"
 		>
 			<div className="flex flex-col gap-0.5 py-0.5">
