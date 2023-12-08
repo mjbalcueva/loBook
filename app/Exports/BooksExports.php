@@ -8,8 +8,8 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 class BooksExports implements FromCollection
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         return Book::select('user_id', 'title', 'author', 'cover', 'description', 'genres')->get();

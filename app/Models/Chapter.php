@@ -16,6 +16,7 @@ class Chapter extends Model
    * @var array<int, string>
    */
   protected $fillable = [
+    'book_id',
     'title',
     'content',
   ];
