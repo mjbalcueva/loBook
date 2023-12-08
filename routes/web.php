@@ -65,7 +65,6 @@ Route::middleware('auth', 'verified')->group(function () {
   Route::post('/import', [ImportController::class, 'store'])->name('import.store');
 
   route::controller(ImportController::class)->group(function () {
-
     Route::get('books-export', 'export')->name('books.export');
     Route::post('books-import', 'import')->name('books.import');
   });
