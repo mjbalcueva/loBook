@@ -8,7 +8,7 @@ use Inertia\Inertia;
 class ImportController extends Controller
 {
     public function create() {
-        return Inertia::render('Import/Create');
+        return Inertia::render('Import');
     }
 
     public function store(Request $request) {
