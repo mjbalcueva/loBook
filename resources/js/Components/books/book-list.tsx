@@ -31,13 +31,8 @@ const BookList: FC<Props> = ({ bookData, link }) => {
 						))}
 					</div>
 
-					{bookData.links.length > 3 && (
-						<>
-							<Separator className="mb-4 mt-8" />
-
-							<Paginate bookData={bookData} />
-						</>
-					)}
+					<Separator className="mb-4 mt-8" />
+					<Paginate bookData={bookData} />
 				</>
 			)}
 		</>
