@@ -23,8 +23,8 @@ interface Props {
 
 const SearchInput: FC<Props> = ({ navLinks }) => {
 	const user = usePage<PageProps>().props.auth?.user
-	const [otherBooks, setOtherBooks] = useState<Book[]>([])
 	const [userBooks, setUserBooks] = useState<Book[]>([])
+	const [otherBooks, setOtherBooks] = useState<Book[]>([])
 	const [open, setOpen] = useState(false)
 	const [loading, setLoading] = useState(false)
 
@@ -33,12 +33,16 @@ const SearchInput: FC<Props> = ({ navLinks }) => {
 		setLoading(true)
 		fetch("/api/get-books")
 			.then((response) => response.json())
-			.then((data) => {
-				setOtherBooks(
-					data.books.filter((book: Book) => book.user_id !== user?.id),
-				)
+			.then((data: { books: Book[] }) => {
 				setUserBooks(
-					data.books.filter((book: Book) => book.user_id === user?.id),
+					data.books.filter(
+						(book) => String(book.user_id) === String(user?.id),
+					),
+				)
+				setOtherBooks(
+					data.books.filter(
+						(book) => String(book.user_id) !== String(user?.id),
+					),
 				)
 				setLoading(false)
 			})
