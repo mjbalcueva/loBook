@@ -15,6 +15,8 @@ interface Props {
 }
 
 const BookList: FC<Props> = ({ bookData, type }) => {
+	const link = type === "browse" ? "browse.show" : "uploads.edit"
+
 	return (
 		<>
 			{bookData.data.length === 0 ? (
@@ -26,7 +28,7 @@ const BookList: FC<Props> = ({ bookData, type }) => {
 							<BookCard
 								key={book.id}
 								book={book}
-								type={type}
+								link={link}
 							/>
 						))}
 					</div>

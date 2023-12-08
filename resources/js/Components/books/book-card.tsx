@@ -14,17 +14,16 @@ import { Book } from "@/types"
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	book: Book
-	type?: "browse" | "upload"
+	link?: string
 }
 
-const BookCard: FC<Props> = ({ book, type }) => {
-	const link = type === "browse" ? "browse.show" : "uploads.edit"
+const BookCard: FC<Props> = ({ book, link }) => {
 	return (
 		<div className="flex">
 			<BookCardHover
 				book={book}
 				side="right"
-				link={link}
+				link={link!}
 			>
 				<img
 					src={book.cover}
@@ -45,13 +44,13 @@ const BookCard: FC<Props> = ({ book, type }) => {
 	)
 }
 
-const BookCardTitle: FC<Props & { link: string }> = ({ book, link }) => {
+const BookCardTitle: FC<Props> = ({ book, link }) => {
 	return (
 		<div>
 			<BookCardHover
 				book={book}
 				className="line-clamp-1 font-medium underline-offset-2 hover:underline"
-				link={link}
+				link={link!}
 			>
 				{book.title}
 			</BookCardHover>
