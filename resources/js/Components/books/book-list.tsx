@@ -11,10 +11,12 @@ interface Props {
 	bookData: Page & {
 		data: Book[] | []
 	}
-	link?: string
+	type: "browse" | "upload"
 }
 
-const BookList: FC<Props> = ({ bookData, link }) => {
+const BookList: FC<Props> = ({ bookData, type }) => {
+	const link = type === "browse" ? "browse.show" : "uploads.edit"
+
 	return (
 		<>
 			{bookData.data.length === 0 ? (
@@ -31,13 +33,8 @@ const BookList: FC<Props> = ({ bookData, link }) => {
 						))}
 					</div>
 
-					{bookData.links.length > 3 && (
-						<>
-							<Separator className="mb-4 mt-8" />
-
-							<Paginate bookData={bookData} />
-						</>
-					)}
+					<Separator className="mb-4 mt-8" />
+					<Paginate bookData={bookData} />
 				</>
 			)}
 		</>
