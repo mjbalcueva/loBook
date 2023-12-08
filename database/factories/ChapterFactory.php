@@ -48,6 +48,6 @@ class ChapterFactory extends Factory
       ];
     }
 
-    return str_replace("\n", "", json_encode($contentArray));
+    return json_encode($contentArray);
   }
 }
