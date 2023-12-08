@@ -17,11 +17,13 @@ interface Props {
 	book: Book
 }
 
-const BookForm: FC<Props> = ({ book }) => {
+const EditBookForm: FC<Props> = ({ book }) => {
+	console.log(book.cover)
+
 	const { data, setData, patch, processing, errors } = useForm({
 		title: book.title.length > 0 ? book.title : "",
 		author: book.author.length > 0 ? book.author : "",
-		cover: "",
+		cover: {} as File,
 		description: book.description.length > 0 ? book.description : "",
 		genres: book.genres.length > 0 ? book.genres : "",
 		chapters: book.chapters
@@ -35,7 +37,6 @@ const BookForm: FC<Props> = ({ book }) => {
 
 	const onSubmit: FormEventHandler = (e) => {
 		e.preventDefault()
-		// console.log(data)
 		patch(route("uploads.update", book.id))
 	}
 
@@ -45,6 +46,13 @@ const BookForm: FC<Props> = ({ book }) => {
 				onSubmit={onSubmit}
 				className="space-y-4"
 			>
+				{book.cover && (
+					<img
+						src={book.cover}
+						alt="Cover"
+						className="m-auto aspect-[3/4] h-60 rounded bg-accent/80 object-cover sm:m-0 sm:h-64 lg:h-72"
+					/>
+				)}
 				<div className="flex flex-col flex-wrap gap-8 sm:flex-row">
 					<Form.Input
 						label="Book Title"
@@ -66,8 +74,11 @@ const BookForm: FC<Props> = ({ book }) => {
 
 					<Form.File
 						label="Book Cover"
-						value={data.cover}
-						onChange={(e) => setData("cover", e.target.value)}
+						onChange={(e) => {
+							if (e.target.files && e.target.files.length > 0) {
+								setData("cover", e.target.files[0])
+							}
+						}}
 						message={errors.cover}
 						className="text-muted-foreground file:mr-2 file:rounded-sm file:bg-accent/80 file:text-muted-foreground sm:w-72"
 					/>
@@ -134,4 +145,4 @@ const BookForm: FC<Props> = ({ book }) => {
 	)
 }
 
-export { BookForm }
+export { EditBookForm }

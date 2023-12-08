@@ -1,7 +1,7 @@
 import { Head } from "@inertiajs/react"
 import { FC } from "react"
 
-import { BookForm } from "@/Components/books/book-form"
+import { EditBookForm } from "@/Components/upload/edit-book-form"
 import { Separator } from "@/Components/ui/separator"
 import { Book } from "@/types"
 
@@ -21,7 +21,7 @@ const Edit: FC<Props> = ({ bookData }) => {
 				<Separator />
 			</div>
 			<div>
-				<BookForm book={bookData} />
+				<EditBookForm book={bookData} />
 			</div>
 		</div>
 	)
