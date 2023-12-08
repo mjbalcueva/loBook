@@ -62,7 +62,8 @@ Route::middleware('auth', 'verified')->group(function () {
   Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
   Route::get('/import', [ImportController::class, 'create'])->name('import.create');
-  Route::post('/import', [ImportController::class, 'store'])->name('import.store');
+  Route::post('/import', [ImportController::class, 'import'])->name('import.import');
+  Route::get('/export', [ImportController::class, 'export'])->name('import.export');
 });
 
 require __DIR__ . '/auth.php';
