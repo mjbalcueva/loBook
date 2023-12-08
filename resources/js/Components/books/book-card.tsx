@@ -29,7 +29,7 @@ const BookCard: FC<Props> = ({ book, link }) => {
 				<img
 					src={book.cover}
 					alt={book.title}
-					className="aspect-[3/4] h-40 cursor-pointer select-none bg-accent object-cover lg:h-56"
+					className="aspect-[3/4] h-40 cursor-pointer select-none rounded bg-accent object-cover lg:h-56"
 				/>
 			</BookCardHover>
 			<div className="flex flex-1 flex-col space-y-1 px-2">
