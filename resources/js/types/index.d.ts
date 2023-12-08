@@ -8,7 +8,7 @@ export interface User {
 export type PageProps<
 	T extends Record<string, unknown> = Record<string, unknown>,
 > = T & {
-	appName: string
+	appName?: string
 	auth: {
 		user: User
 	}

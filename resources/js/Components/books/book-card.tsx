@@ -10,6 +10,7 @@ import {
 	HoverCardContent,
 	HoverCardTrigger,
 } from "@/Components/ui/hover-card"
+import { date, split } from "@/Lib/utils"
 import { Book } from "@/types"
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -87,7 +88,7 @@ const BookCardContent: FC<Props> = ({ book }) => {
 }
 
 const BookCardFooter: FC<Props> = ({ book }) => {
-	const tags = book.genres.split(",").map((genre) => genre.trim())
+	const tags = split(book.genres)
 	return (
 		<div className="flex flex-wrap gap-x-1 gap-y-1">
 			{tags.slice(0, 3).map((tag) => (
@@ -116,8 +117,7 @@ const BookCardHover: FC<
 		side?: "right" | "top" | "bottom" | "left" | undefined
 	}
 > = ({ book, link, side, className, children }) => {
-	const date = (date: string) => format(new Date(date), "MMM d, yyyy - hh:mm a")
-	const tags = book.genres.split(",").map((genre) => genre.trim())
+	const tags = split(book.genres)
 	return (
 		<HoverCard>
 			<HoverCardTrigger asChild>

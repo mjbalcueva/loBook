@@ -11,10 +11,11 @@ interface Props {
 const Show: FC<Props> = ({ chapterData }) => {
 	return (
 		<div>
-			<div className="flex h-32 items-center justify-center">
+			<div className="flex h-32 flex-col items-center justify-center">
 				<h1 className="text-3xl font-medium tracking-wide">
 					{chapterData.title}
 				</h1>
+				<h3>{chapterData.created_at}</h3>
 			</div>
 			<Separator />
 			<div className="mt-10">
