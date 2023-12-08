@@ -12,7 +12,14 @@ import { Textarea, TextareaProps } from "@/Components/ui/textarea"
 import { cn } from "@/Lib/utils"
 
 const Form = ({ children, ...props }: HTMLAttributes<HTMLFormElement>) => {
-	return <form {...props}>{children}</form>
+	return (
+		<form
+			{...props}
+			encType="multipart/form-data"
+		>
+			{children}
+		</form>
+	)
 }
 
 const FormItem = ({ children, ...props }: HTMLAttributes<HTMLDivElement>) => {
@@ -96,7 +103,7 @@ const FormTextarea = ({
 	)
 }
 
-const FormImage = ({
+const FormFile = ({
 	label,
 	message,
 	...props
@@ -185,6 +192,6 @@ Form.Input = FormInput
 Form.Textarea = FormTextarea
 Form.Checkbox = FormCheckbox
 Form.Action = FormAction
-Form.Image = FormImage
+Form.File = FormFile
 
 export { Form, FormItem, FormMessage }
