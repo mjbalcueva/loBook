@@ -6,6 +6,7 @@ use App\Imports\BookImport;
 use Illuminate\Http\Request;
 use App\Exports\BooksExports;
 use App\Models\Book;
+use App\Models\Chapter;
 use Inertia\Inertia;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -18,11 +19,11 @@ class ImportController extends Controller
 
   public function store(Request $request)
   {
-    $csv = $request->file('csv');
+    $csvbooks = $request->file('books');
+    $csvchapters = $request->file('chapters');
 
-    if ($csv) {
-      $contents = file_get_contents($csv->getRealPath());
-      $csvFile = fopen($csv->getRealPath(), "r");
+    if ($csvbooks) {
+      $csvFile = fopen($csvbooks->getRealPath(), "r");
       $firstLine = true;
       while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
         if (!$firstLine) {
@@ -39,7 +40,22 @@ class ImportController extends Controller
         $firstLine = false;
       }
       fclose($csvFile);
-      dd($contents);
+    }
+    if ($csvchapters) {
+      $csvFile = fopen($csvchapters->getRealPath(), "r");
+      $firstLine = true;
+      while (($data = fgetcsv($csvFile, 2000, ",")) !== FALSE) {
+        if (!$firstLine) {
+          Chapter::create([
+            'book_id' => $data['0'],
+            'title' => $data['1'],
+            'content' => $data['2'],
+
+          ]);
+        }
+        $firstLine = false;
+      }
+      fclose($csvFile);
     }
   }
 }

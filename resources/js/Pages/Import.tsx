@@ -54,7 +54,7 @@ const Import = () => {
 						label="Upload Chapter CSV"
 						onChange={(e) => {
 							if (e.target.files && e.target.files.length > 0) {
-								setData("books", e.target.files[0])
+								setData("chapters", e.target.files[0])
 							}
 						}}
 						className="text-muted-foreground file:mr-2 file:rounded-sm file:bg-accent/80 file:text-muted-foreground sm:w-72"
