@@ -11,10 +11,10 @@ interface Props {
 	bookData: Page & {
 		data: Book[] | []
 	}
-	link?: string
+	type: "browse" | "upload"
 }
 
-const BookList: FC<Props> = ({ bookData, link }) => {
+const BookList: FC<Props> = ({ bookData, type }) => {
 	return (
 		<>
 			{bookData.data.length === 0 ? (
@@ -26,7 +26,7 @@ const BookList: FC<Props> = ({ bookData, link }) => {
 							<BookCard
 								key={book.id}
 								book={book}
-								link={link}
+								type={type}
 							/>
 						))}
 					</div>

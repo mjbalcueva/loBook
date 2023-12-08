@@ -1,7 +1,6 @@
 import { Link } from "@inertiajs/react"
 import { FC, HTMLAttributes, ReactNode } from "react"
 
-import { format } from "date-fns"
 import { HeartIcon, ListIcon } from "lucide-react"
 
 import { Badge } from "@/Components/ui/badge"
@@ -15,10 +14,11 @@ import { Book } from "@/types"
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
 	book: Book
-	link?: string
+	type?: "browse" | "upload"
 }
 
-const BookCard: FC<Props> = ({ book, link }) => {
+const BookCard: FC<Props> = ({ book, type }) => {
+	const link = type === "browse" ? "browse.show" : "uploads.edit"
 	return (
 		<div className="flex">
 			<BookCardHover
@@ -45,7 +45,7 @@ const BookCard: FC<Props> = ({ book, link }) => {
 	)
 }
 
-const BookCardTitle: FC<Props> = ({ book, link }) => {
+const BookCardTitle: FC<Props & { link: string }> = ({ book, link }) => {
 	return (
 		<div>
 			<BookCardHover
@@ -115,6 +115,7 @@ const BookCardFooter: FC<Props> = ({ book }) => {
 const BookCardHover: FC<
 	Props & {
 		side?: "right" | "top" | "bottom" | "left" | undefined
+		link: string
 	}
 > = ({ book, link, side, className, children }) => {
 	const tags = split(book.genres)
