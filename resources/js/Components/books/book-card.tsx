@@ -1,7 +1,6 @@
 import { Link } from "@inertiajs/react"
 import { FC, HTMLAttributes, ReactNode } from "react"
 
-import { format } from "date-fns"
 import { HeartIcon, ListIcon } from "lucide-react"
 
 import { Badge } from "@/Components/ui/badge"
@@ -24,7 +23,7 @@ const BookCard: FC<Props> = ({ book, link }) => {
 			<BookCardHover
 				book={book}
 				side="right"
-				link={link}
+				link={link!}
 			>
 				<img
 					src={book.cover}
@@ -51,7 +50,7 @@ const BookCardTitle: FC<Props> = ({ book, link }) => {
 			<BookCardHover
 				book={book}
 				className="line-clamp-1 font-medium underline-offset-2 hover:underline"
-				link={link}
+				link={link!}
 			>
 				{book.title}
 			</BookCardHover>
@@ -115,6 +114,7 @@ const BookCardFooter: FC<Props> = ({ book }) => {
 const BookCardHover: FC<
 	Props & {
 		side?: "right" | "top" | "bottom" | "left" | undefined
+		link: string
 	}
 > = ({ book, link, side, className, children }) => {
 	const tags = split(book.genres)

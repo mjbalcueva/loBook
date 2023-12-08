@@ -33,7 +33,7 @@ const Index: FC<Props> = ({ bookData }) => {
 
 			<BookList
 				bookData={bookData}
-				link="uploads.edit"
+				type="upload"
 			/>
 		</>
 	)

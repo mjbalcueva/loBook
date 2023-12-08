@@ -20,7 +20,7 @@ const Browse: FC<Props> = ({ bookData }) => {
 
 			<BookList
 				bookData={bookData}
-				link="browse.show"
+				type="browse"
 			/>
 		</>
 	)

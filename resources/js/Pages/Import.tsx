@@ -9,7 +9,8 @@ const Import = () => {
 	const { toast } = useToast()
 
 	const { data, setData, post, processing } = useForm({
-		csv: {} as File,
+		books: {} as File,
+		chapters: {} as File,
 	})
 
 	const onSubmit: FormEventHandler = (e) => {
@@ -39,16 +40,26 @@ const Import = () => {
 				className="space-y-4"
 				onSubmit={onSubmit}
 			>
-				<Form.File
-					label="CSV File"
-					placeholder="Author"
-					onChange={(e) => {
-						if (e.target.files && e.target.files.length > 0) {
-							setData("csv", e.target.files[0])
-						}
-					}}
-					className="text-muted-foreground file:mr-2 file:rounded-sm file:bg-accent/80 file:text-muted-foreground sm:w-72"
-				/>
+				<div className="flex gap-4">
+					<Form.File
+						label="Upload Book CSV"
+						onChange={(e) => {
+							if (e.target.files && e.target.files.length > 0) {
+								setData("books", e.target.files[0])
+							}
+						}}
+						className="text-muted-foreground file:mr-2 file:rounded-sm file:bg-accent/80 file:text-muted-foreground sm:w-72"
+					/>
+					<Form.File
+						label="Upload Chapter CSV"
+						onChange={(e) => {
+							if (e.target.files && e.target.files.length > 0) {
+								setData("books", e.target.files[0])
+							}
+						}}
+						className="text-muted-foreground file:mr-2 file:rounded-sm file:bg-accent/80 file:text-muted-foreground sm:w-72"
+					/>
+				</div>
 				<Form.Action processing={processing}>Submit</Form.Action>
 			</Form>
 		</>
