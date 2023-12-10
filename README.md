@@ -29,14 +29,17 @@ Welcome to loBook, your all-in-one solution for customizing and organizing your 
 <div align="center">
   <a href="techStack">Tech Stack</a>
   <span> • </span>
+  <a href="sdlc">SDLC</a>
+  <span> • </span>
   <a href="features">Features</a>
   <span> • </span>
   <a href="install">Install</a>
-</div> 
+</div>
 
 <!-- Showcase SECTION -->
 <h2>Showcase</h2>
-<img alt="sample" src="./resources/img/sample.png">
+<img alt="sample" src="./resources/img/showcase_1.png">
+<img alt="sample" src="./resources/img/showcase_2.png">
 
 <!-- Tech SECTION -->
 <h2 id="techStack">Tech Stack</h2>
@@ -44,7 +47,7 @@ Welcome to loBook, your all-in-one solution for customizing and organizing your 
 The loBook tech stack combines <b>Laravel Breeze</b>, <b>React</b>, <b>PEST</b>, <b>MySQL</b>, <b>Node.js</b>, and <b>PHP</b>, collectively providing a comprehensive and robust solution for customizing and managing book collections.
 </p>
 
-<ul>
+<ul align="justify">
   <li><b>Laravel Breeze:</b> 
     handles user authentication and sets up the basic structure of the Laravel application.
   </li>
@@ -65,11 +68,33 @@ The loBook tech stack combines <b>Laravel Breeze</b>, <b>React</b>, <b>PEST</b>,
   </li>
 </ul >
 
+<!-- SDLC -->
+<h2 id="sdlc">SDLC</h2>
+<div align="justify">
+  <p>Given the dynamic nature of the system, we have chosen the <b>iterative model</b>. This model allows for the evolution of features over successive cycles, which is especially valuable when catering to diverse needs. For example, functionalities such as adding and editing content may undergo refinement based on user feedback.
+
+  The incremental development structure ensures that core features are delivered early, enabling users to benefit from the system's essential capabilities swiftly. Moreover, the iterative model facilitates continuous user feedback, fostering a collaborative development process that aligns the evolving system with user expectations.
+
+  The approach's flexibility is particularly advantageous in addressing challenges associated with CSV file uploads. It allows for a gradual and refined implementation of this crucial functionality.
+  </p>
+</div>
+
 <!-- Features SECTION -->
 <h2 id="features">Features</h2>
-<p align="justify">
-Quis tempor enim velit fugiat qui ullamco officia irure ullamco nostrud amet sint. Amet mollit velit voluptate id cupidatat aute enim laborum adipisicing. Laborum nisi duis et tempor ex anim. Tempor ad ullamco officia irure enim veniam ea magna ex incididunt.
-</p>
+<ul align="justify">
+  <li><b>User-friendly Interface:</b> 
+    Enhances software accessibility, foster higher user retention, and ease of use
+  </li>
+  <li><b>Responsive Design:</b> 
+   Adapts seamlessly to the user's current device, ensuring an optimal and tailored experience 
+  </li>
+  <li><b>Security Measures:</b> 
+    Implemented email verification to mitigate the risk of fraudulent account creation using fake or disposable email addresses
+  </li>
+      <li><b>File import:</b> 
+   Allows the user to upload data csv data 
+  </li>
+</ul >
 
 <!-- Installation SECTION -->
 <h2 id="install">Installation</h2>
