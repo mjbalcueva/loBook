@@ -104,7 +104,7 @@ Welcome to the installation guide for loBook. Follow these simple steps to get s
 <ol>
   <li>Clone the repository: <b>https://github.com/mjbalcueva/loBook.git</b></li>
   <li>Using the terminal, install composer: <b>composer install</b></li>
-  <li>Install the node depencies: <b>npm i</b></li>
+  <li>Install the node dependencies: <b>npm i</b></li>
   <li>Setup the .env variables</li>
   <li>Run table migrations using: <b>php artisan migrate</b></li>
   <li>Run the server: <b>php artisan serve</b> and <b>npm run dev</b></li>
